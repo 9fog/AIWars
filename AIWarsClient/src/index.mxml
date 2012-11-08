@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955" minHeight="600"
+			   applicationComplete="init(event)"
+			   >
+	<fx:Script>
+		<![CDATA[
+			import file.FileLoader;
+			
+			import mx.events.FlexEvent;
+			
+			import parser.commands.CMap;
+			import parser.FileParser;
+			import parser.PC;
+			
+			import spark.primitives.supportClasses.FilledElement;
+			
+			protected function init(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				var url:String = "data/log.txt";
+				var loader:FileLoader = new FileLoader();
+				loader.loadData(url, onLogLoad);
+			}
+			
+			private function onLogLoad(data:String):void
+			{
+				var p:FileParser = new FileParser();
+				p.parse(data);			
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+</s:Application>

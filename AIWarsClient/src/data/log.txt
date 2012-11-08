@@ -1,0 +1,19 @@
+init
+map 3 3 000000000
+players 2 
+flag 0 1 1
+create 0 1 0 0 1
+end
+
+turn 1
+move 0 0 1 1 
+end
+turn 2
+move 0 0 2 1 
+end
+turn 3
+move 0 1 2 1 
+end
+turn 4
+move 0 2 2 1 
+end
