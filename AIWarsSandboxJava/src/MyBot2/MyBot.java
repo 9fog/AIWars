@@ -12,7 +12,7 @@ public class MyBot extends AbstractBot {
 
 	@Override
 	public void processInit(Simulator sim, int mapSizeX, int mapSizeY, ArrayList<ObjectRock> rocks, ArrayList<ObjectFlag> flags, ArrayList<ObjectUnit> units) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 111
 		
 	}
 
