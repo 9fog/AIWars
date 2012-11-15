@@ -1,0 +1,30 @@
+<serverConfig>
+	<server>
+                <localIp>192.168.0.1</localIp>
+		<userport>23001</userport>                
+
+                <debug>1</debug>
+		<dbURL>jdbc:mysql://localhost/def?useEncoding=true&amp;characterEncoding=UTF-8</dbURL>
+		<dbUser>root</dbUser>
+		<dbPass>psw</dbPass>
+
+                <!--
+		<dbURL>jdbc:mysql://46.4.189.241/def16_defender?useEncoding=true&amp;characterEncoding=UTF-8</dbURL>
+		<dbUser>def16_defender</dbUser>
+		<dbPass>EPK1tZLg</dbPass>
+                -->
+		<dbMaxConnections>30</dbMaxConnections>
+		<dbDriver>org.gjt.mm.mysql.Driver</dbDriver>
+                <useRedis>0</useRedis>     
+                <redisUrl>192.168.1.95</redisUrl>
+                <redisPort>6379</redisPort>                
+                <redisConnections>2</redisConnections>  
+                <statPort>20300</statPort>                  
+
+                <useMongo>0</useMongo>     
+                <mongoIP>localhost</mongoIP>     
+                <mongoPort>27017</mongoPort>     
+                <mongoDB>testbase</mongoDB>     
+
+	</server>
+</serverConfig>
