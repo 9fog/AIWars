@@ -1,13 +1,13 @@
 package Sandbox;
 
 import java.io.File;
-import java.lang.reflect.Constructor;
-import java.net.URI;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 
 import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
 
 public class Simulator
 {
@@ -65,13 +65,55 @@ public class Simulator
 	  
 	  _connector.send(cmd.toJSONString());
   }  
+  
+  private void sendReady(int side) {
+	  JSONObject cmd = new JSONObject();
+	  cmd.put("_op", "Ready");
+	  cmd.put("_side", side);
+	  _connector.send(cmd.toJSONString());
+  }
   //==========================================================================
   
 
-  public void processServerCommand(String cmd) {
-	  
+  public void processServerCommand(String msg) {
+		JSONObject cmd;
+		try {
+	        cmd=(JSONObject)JSONValue.parse(msg);
+	        
+			try {
+				Method method = getClass().getMethod("process_"+cmd.get("_op"), JSONObject.class);
+				method.invoke(this, cmd); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			  
+		} catch (Exception e) { //Иногда запрос полиси приходит сюда. Видно полиси-сервер не справляется с нагрузкой			
+			e.printStackTrace();			
+		}						
   }
 
-  private void process_init() {
+  
+  public void process_init(JSONObject cmd) {
+	  int side = Integer.parseInt(cmd.get("_side")+"");
+	  
+	  ArrayList<ObjectRock> rocks = new ArrayList<ObjectRock>();
+	  ArrayList<ObjectFlag> flags = new ArrayList<ObjectFlag>();
+	  ArrayList<ObjectUnit> units = new ArrayList<ObjectUnit>();
+	  
+	  //TODO::....
+	  
+	  _sides.get(side).processInit(this, Integer.parseInt(cmd.get("mapSizeX")+""), Integer.parseInt(cmd.get("mapSizeY")+""), rocks, flags, units);
+	  
+	  sendReady(side);
+  }
+  
+  private void process_tick(JSONObject cmd) {
+	  int side = Integer.parseInt(cmd.get("_side")+"");
+
+	  ArrayList<Object> events = new ArrayList<Object>();
+	  //TODO::....
+	  
+	  _sides.get(side).processTick(events);
+	  
+	  sendReady(side);	  
   }
 }

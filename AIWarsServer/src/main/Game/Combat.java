@@ -114,6 +114,8 @@ public class Combat {
 		
 		res.put("_op", "init");
 		res.put("_side", side);
+		res.put("mapSizeX", _map.getSizeX());
+		res.put("mapSizeY", _map.getSizeY());
 		res.put("mapDump", _map.getDump());		
 		
 		JSONArray fl = new JSONArray();

@@ -7,6 +7,8 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.Calendar;
 
+import net.minidev.json.JSONObject;
+
 public class Connector
 {
   private final Socket _socket;
@@ -28,6 +30,13 @@ public class Connector
      this._wrapper.start();
 
      this._simulator = new Simulator(this);
+     
+     //Send initialization command
+     JSONObject cmd = new JSONObject();
+     cmd.put("_op", "testFight");
+     cmd.put("botsCount", Config.BOTS.length);
+     cmd.put("mapName", Config.MAP_NAME);
+     send (cmd.toJSONString());
   }
 
   public void send(String msg)
@@ -85,7 +94,7 @@ public class Connector
 
              Connector.this._simulator.processServerCommand(data);
 
-             sleep(100L);
+             sleep(100);
           }
         }
         catch (IOException e) {
@@ -104,63 +113,65 @@ public class Connector
      public int qStartPoint = 0;
      public int qStopPoint = 0;
      public int qMaxIndex = 500;
-     public String[] Queue = new String[this.qMaxIndex + 1];
+     public String[] Queue = new String[qMaxIndex + 1];
      private String message;
 
-    public void run() { try { Connector.log("Transmitter started");
-        while (true)
-        {
-           synchronized (this.Queue) {
-             this.message = this.Queue[this.qStartPoint];
-             this.Queue[this.qStartPoint] = null;
-          }
-          try
-          {
-             Connector.this.socketWriter.write(this.message + "");
-             Connector.this.socketWriter.flush();
-          }
-          catch (Exception e)
-          {
-             e.printStackTrace();
-             Connector.this.close();
-          }
+     public void run() { 
+     	try { 
+     		Connector.log("Transmitter started");
+         while (true) {
+           while (qStartPoint!=qStopPoint){   //Если указатели не равны, значит есть что отсылать
+        	   synchronized (Queue) {
+        		   message = Queue[qStartPoint];
+        		   Queue[qStartPoint] = null;
+        	   }
+        	   try {
+        		   socketWriter.write(message + "\0");
+        		   socketWriter.flush();
+        	   }
+        	   catch (Exception e) {
+        		   e.printStackTrace();
+        		   close();
+        	   }
 
-           this.qStartPoint += 1;
-           if (this.qStartPoint > this.qMaxIndex) {
-             this.qStartPoint = 0;
-          }
-          try
-          {
-             sleep(20L);
-          } catch (InterruptedException e) {
-             e.printStackTrace();
-          }
-           while (this.qStartPoint == this.qStopPoint)
-          {
-            try
-            {
-               sleep(20L);
-            } catch (InterruptedException e) {
-               e.printStackTrace();
-            }
-          }
-        } } catch (NullPointerException e) {
-         e.printStackTrace();
-      } 
+        	   qStartPoint += 1;
+        	   if (qStartPoint > qMaxIndex) {
+        		   qStartPoint = 0;
+        	   }           
+           
+        	   try
+        	   {
+        		   sleep(100);
+        	   } catch (InterruptedException e) {
+        		   e.printStackTrace();
+        	   }
+           }
+           
+            while (qStartPoint == qStopPoint) {
+             try {
+                sleep(100);
+             } catch (InterruptedException e) {
+                e.printStackTrace();
+             }
+           }
+         } 
+       } catch (NullPointerException e) {
+          e.printStackTrace();
+       } 
     }
 
     public void addInQueue(String d)
     {
        synchronized (this) {
-         this.Queue[this.qStopPoint] = d;
-         this.qStopPoint += 1;
-         if (this.qStopPoint > this.qMaxIndex) {
-           this.qStopPoint = 0;
-        }
-
-         if (this.qStartPoint == this.qStopPoint) {
+         Queue[qStopPoint] = d;
+         qStopPoint ++;
+         if (qStopPoint > qMaxIndex) {
+           qStopPoint = 0;
+         }
+         
+         if (qStartPoint == qStopPoint) {
            Connector.log("Error: wrapper owerflow");
-           Connector.this.close();
+           close();
         }
       }
     }

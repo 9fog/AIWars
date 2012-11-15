@@ -150,7 +150,10 @@ public class Main extends TCombat {
 		
 		return null;
 	}
-		
+
+	public JSONObject process_Ready(CommandContext ctx) throws Exception {
+		return null;
+	}	
 	//======================== CHEATS ===========================================================
 
 	
