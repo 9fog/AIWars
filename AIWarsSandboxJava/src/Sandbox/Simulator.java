@@ -6,6 +6,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 
+import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
 
@@ -99,7 +100,26 @@ public class Simulator
 	  ArrayList<ObjectFlag> flags = new ArrayList<ObjectFlag>();
 	  ArrayList<ObjectUnit> units = new ArrayList<ObjectUnit>();
 	  
-	  //TODO::....
+	  //Rocks
+	  JSONArray ja = (JSONArray)cmd.get("mapDump");
+	  for (Object o : ja) {
+		  JSONObject jo = (JSONObject)o;
+		  rocks.add(new ObjectRock(Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));
+	  }
+	  
+	  //Flags
+	  ja = (JSONArray)cmd.get("flags");
+	  for (Object o : ja) {
+		  JSONObject jo = (JSONObject)o;
+		  flags.add(new ObjectFlag(Integer.parseInt(jo.get("id")+""), Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));
+	  }
+	  
+	  //Units
+	  ja = (JSONArray)cmd.get("units");
+	  for (Object o : ja) {
+		  JSONObject jo = (JSONObject)o;
+		  units.add(new ObjectUnit(Integer.parseInt(jo.get("id")+""), jo.get("type")+"", Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));
+	  }
 	  
 	  _sides.get(side).processInit(this, Integer.parseInt(cmd.get("mapSizeX")+""), Integer.parseInt(cmd.get("mapSizeY")+""), rocks, flags, units);
 	  
