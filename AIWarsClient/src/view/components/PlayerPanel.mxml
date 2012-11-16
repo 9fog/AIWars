@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				   xmlns:s="library://ns.adobe.com/flex/spark" 
+				   xmlns:mx="library://ns.adobe.com/flex/mx" 
+				   >
+	<fx:Script>
+		<![CDATA[
+			import model.vo.UserVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			private var _users:ArrayCollection;
+			
+			public function update(users:Vector.<UserVO>):void
+			{
+				_users = new ArrayCollection();
+				for each(var user:UserVO in users)
+				{
+					_users.addItem(user);
+				}
+				_users.refresh();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:List 
+		id="list"
+		width="100%"
+		height="100%"
+		dataProvider="{_users}"
+		itemRenderer="view.components.UserItemRenderer"
+		left="3"
+		right="3"
+		top="3"
+		bottom="3"
+		borderAlpha="0.3"
+		/>
+</s:BorderContainer>

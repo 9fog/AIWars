@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="true"
+				left="3"
+				right="3"
+				top="3"
+				height="25"
+				width="100%"
+				>
+	<fx:Script>
+		<![CDATA[
+			import model.vo.UserVO;
+			
+			 
+			
+			override public function set data(value:Object):void
+			{
+				super.data = value;
+				txtName.text = (data as UserVO).name;
+				txtId.text = (data as UserVO).id.toString();
+				bgColor.setStyle("backgroundColor",(data as UserVO).color);
+			}
+		]]>
+	</fx:Script>
+	
+	<s:HGroup
+		height="100%"
+		width="100%"
+		horizontalAlign="left"
+		verticalAlign="middle"
+		paddingLeft="5"
+		>
+		<s:Label 
+			id="txtId" 
+			height="25" 
+			text="id" 
+			textAlign="left" 
+			verticalAlign="middle"
+			/>
+		
+		<s:BorderContainer 
+			id="bgColor"
+			backgroundColor="0xffffff"
+			height="11"
+			width="30"
+			/>
+		
+		<s:Label 
+			id="txtName" 
+			width="100%" 
+			height="25" 
+			text="name" 
+			textAlign="left" 
+			verticalAlign="middle"
+			/>	
+	</s:HGroup>
+	
+	
+</s:ItemRenderer>

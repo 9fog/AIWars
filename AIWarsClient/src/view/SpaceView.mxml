@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 width="400" height="300"
+		 title="AIWars (simple view)"
+		 currentState="play" xmlns:view="view.*"
+		 resize="onResize(event)" xmlns:components="view.components.*"
+		 >
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.ResizeEvent;
+			protected function pause(event:MouseEvent):void
+			{
+				dispatchEvent(new ActionEvent(ActionEvent.PAUSE));
+				currentState = "pause";
+			}
+			
+			protected function play(event:MouseEvent):void
+			{
+				dispatchEvent(new ActionEvent(ActionEvent.PLAY));
+				currentState = "play";
+			}
+
+			protected function restart(event:MouseEvent):void
+			{
+				dispatchEvent(new ActionEvent(ActionEvent.RESTART));
+				currentState = "play";
+			}
+			
+			public function onResize(event:ResizeEvent):void
+			{
+				var k:Number = Math.min(bc.width / conteiner.width, bc.height / conteiner.height)-0.2;
+				if (k>0)
+				{
+					hc.scaleX = hc.scaleY = k;
+				}
+			}
+			
+			public function clear():void
+			{
+				txtLog.text = "";
+				conteiner.removeAllElements();
+				hc.scaleX = hc.scaleY = 1;
+				playerPanel.update(null);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="pause"/>
+		<s:State name="play"/>
+		<s:State name="end"/>
+	</s:states>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:VGroup 
+		
+		width="100%" 
+		height="100%" 
+		gap="3" 
+		paddingBottom="3" 
+		paddingLeft="3"
+		paddingRight="3" 
+		paddingTop="3"
+		>
+		<s:BorderContainer 
+			width="100%" 
+			height="30" 
+			>
+			<s:HGroup 
+				width="100%" 
+				height="100%" 
+				verticalAlign="middle"
+				horizontalAlign="left"
+				paddingLeft="3"
+				>
+				<s:Button 
+					height="20" 
+					label="play"
+					includeIn="pause" 
+					click="play(event)"
+					/>
+				<s:Button 
+					height="20" 
+					label="pause"
+					includeIn="play"
+					click="pause(event)"
+					/>
+				<s:Button 
+					height="20" 
+					label="restart"
+					includeIn="end"
+					click="restart(event)"
+					/>
+			</s:HGroup>
+		</s:BorderContainer>
+		
+		<mx:HDividedBox 
+			width="100%" 
+			height="100%"
+			paddingBottom="1" 
+			paddingLeft="1"
+			paddingRight="1" 
+			paddingTop="1"
+			>
+			
+			<s:BorderContainer 
+				width="100%" 
+				height="100%"
+				id="bc"
+				>
+				<s:HGroup
+					width="100%" 
+					height="100%"
+					paddingLeft="3"
+					paddingRight="3"
+					paddingBottom="3"
+					paddingTop="3"
+					horizontalAlign="center"
+					verticalAlign="middle"
+					id="hc"
+					>
+				<s:BorderContainer 
+					width="100%" 
+					height="100%"
+					id="conteiner"
+					>
+				</s:BorderContainer>
+				</s:HGroup>
+			</s:BorderContainer>
+			 <s:VGroup
+				 width="50%" 
+				 height="100%"
+				 >
+				 <components:PlayerPanel
+					 id="playerPanel"
+					 height="30%"
+					 width="100%"
+					 />
+				 <s:BorderContainer 
+					 width="100%" 
+					 height="100%"
+					 >
+					 <s:TextArea 
+						 width="100%" 
+						 height="100%"
+						 id="txtLog"
+						 paddingLeft="5"
+						 paddingRight="5"
+						 paddingTop="5"
+						 paddingBottom="5"
+						 >
+						 
+					 </s:TextArea>
+				 </s:BorderContainer>
+			 </s:VGroup>
+			
+		</mx:HDividedBox>
+	</s:VGroup>
+</s:Panel>

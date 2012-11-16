@@ -1,0 +1,8 @@
+<data>
+	<units>
+		<unit type="1" look_range="3" shot_range_min="0" shot_range_max="2" hp_cannon_max="100" hp_gear_max="100">recon</unit>
+		<unit type="2" look_range="4" shot_range_min="0" shot_range_max="3" hp_cannon_max="100" hp_gear_max="100">attack</unit>
+		<unit type="3" look_range="5" shot_range_min="1" shot_range_max="4" hp_cannon_max="100" hp_gear_max="100">artillery</unit>
+		<unit type="4" look_range="6" shot_range_min="0" shot_range_max="5" hp_cannon_max="100" hp_gear_max="100">base</unit>
+	</units>
+</data>

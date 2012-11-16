@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="100%" height="100%"
+			   minHeight="500"
+			   minWidth="600"
+			   applicationComplete="init(event)" xmlns:view="view.*"
+			   >
+	<fx:Script>
+		<![CDATA[
+			import controller.Engine;
+			
+			import model.Config;
+			
+			import model.FileLoader;
+			import model.parser.FileParser;
+			import model.parser.PC;
+			import model.parser.commands.CMap;
+			
+			import mx.events.FlexEvent;
+			
+			import spark.primitives.supportClasses.FilledElement;
+			
+			import view.SpaceMediator;
+			
+			public var conf_url:String = "data/conf.xml";
+			public var data_url:String = "data/log.txt";
+			
+			protected function init(event:FlexEvent):void
+			{
+				var confLoader:FileLoader = new FileLoader();
+				confLoader.loadData(conf_url, onConfLoad);
+			}
+			
+			private function onConfLoad(data:String):void
+			{
+				Config.instanse.init(data);
+				var loader:FileLoader = new FileLoader();
+				loader.loadData(data_url, onLogLoad);
+			}
+			
+			private function onLogLoad(data:String):void
+			{
+				var p:FileParser = new FileParser();
+				var engine:Engine = new Engine(p.parse(data));
+				var mediator:SpaceMediator = new SpaceMediator(view, engine);
+				engine.init();
+				engine.start();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<view:SpaceView 
+		id="view" 
+		width="100%" 
+		height="100%"
+		
+		/>
+</s:Application>

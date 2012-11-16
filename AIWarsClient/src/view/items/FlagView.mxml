@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items:AView xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:items="view.items.*" xmlns:local="*"
+		 
+		 >
+	<fx:Script>
+		<![CDATA[
+			import com.greensock.TweenLite;
+			import com.greensock.easing.Linear;
+			
+			import model.vo.AItemVO;
+			import model.vo.FlagVO;
+			
+			import mx.events.FlexEvent;
+			
+			override public function update(value:AItemVO):void
+			{
+				var prevProgress:int = (vo as FlagVO).progress;
+				super.update(value);
+				var flag:FlagVO = vo as FlagVO;
+				if (flag.progress != prevProgress)
+				{
+					var mc:MovieClip = new MovieClip();
+					mc.graphics.clear();
+					mc.graphics.beginFill(flag.color,1);
+					mc.graphics.drawRect(0,0,unit.width,unit.height);
+					mc.graphics.endFill();
+					unit.mc_conteiner.addChild(mc);
+					unit.mc_progress_mask.gotoAndStop(flag.progress);
+					//TweenLite.to(unit.mc_progress_mask,1,{frame:flag.progress, ease:Linear.easeNone});
+				}
+				
+			}
+			
+		]]>
+	</fx:Script>
+		<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<local:Flag id="unit" />
+</items:AView>

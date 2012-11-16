@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="true" parentProject="44da2fc1-04d5-4c8c-bda9-23798fd340df" projectUUID="44da2fc1-04d5-4c8c-bda9-23798fd340df" pureCatalystProject="false" sdkVersion="4.5.1" uuid="523922b1-033c-444f-9c06-7cfc4af93702" version="15">
+  <projects/>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="523922b1-033c-444f-9c06-7cfc4af93702"/>
+    <linked location="E:/work/AIWarsClient_4/libs" path="/libs" position="1" uuid="523922b1-033c-444f-9c06-7cfc4af93702"/>
+    <linked location="E:/work/AIWarsClient_4/src/view/assets/assets.swc" path="/src/view/assets/assets.swc" position="2" uuid="523922b1-033c-444f-9c06-7cfc4af93702"/>
+    <linked location="E:/work/AIWarsClient_4/src/view/assets/greensock.swc" path="/src/view/assets/greensock.swc" position="3" uuid="523922b1-033c-444f-9c06-7cfc4af93702"/>
+  </swc>
+  <misc/>
+  <theme/>
+  <mxmlFormattingPrefs groupAttributesByState="true" maxLineWidth="100" mxmlAlignAttributes="true" mxmlAttributeOrder="id,userLabel,includeIn,excludeFrom,visible,x,y,z,left,right,top,bottom,width,height,minWidth,minHeight,maxWidth,maxHeight,label" mxmlKeepAttributeValuesOrganized="true"/>
+</fxpProperties>

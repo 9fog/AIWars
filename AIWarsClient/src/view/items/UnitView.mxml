@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items:AView xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:items="view.items.*" xmlns:local="*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import model.vo.AItemVO;
+			import model.vo.UnitVO;
+			
+			import view.SpaceMediator;
+			
+			protected var unit:*;
+						
+			override public function set vo(value:AItemVO):void
+			{
+				super.vo = value;
+				
+				trace((vo as UnitVO).type.typeId);
+				switch((vo as UnitVO).type.typeId)
+				{
+					case 1:
+					{
+						unit = recon;
+						this.removeElement(tank);
+						this.removeElement(artillery);
+						this.removeElement(base);
+						break;
+					}
+					case 2:
+					{
+						unit = tank;
+						this.removeElement(recon);
+						this.removeElement(artillery);
+						this.removeElement(base);
+						break;
+					}
+					case 3:
+					{
+						unit = artillery;
+						this.removeElement(recon);
+						this.removeElement(tank);
+						this.removeElement(base);
+						break;
+					}	
+					case 4:
+					{
+						unit = base;
+						this.removeElement(recon);
+						this.removeElement(tank);
+						this.removeElement(artillery);
+						break;
+					}	
+				}
+				
+				var mc:MovieClip = new MovieClip();
+				mc.graphics.clear();
+				mc.graphics.beginFill(_color,1);
+				mc.graphics.drawRect(-unit.width/2,-unit.height/2,unit.width,unit.height);
+				mc.graphics.endFill();
+				unit.addChild(mc);
+				mc.mask = unit.mc_mask;
+				
+				lookRange = (vo as UnitVO).type.lookRange;
+			}
+			
+			override public function update(value:AItemVO):void
+			{
+				_vo = value;
+				var item:UnitVO = vo as UnitVO;
+				trace("cr-",item.id, rotation, item.cannonRotation);
+				
+				unit.mc_cannon.rotation = item.fire? item.cannonRotation-rotation:0;
+				if (item.fire)
+					unit.mc_cannon.mc_fire.gotoAndPlay(1);
+				if (item.hit)
+				{
+					unit.addChild(unit.mc_hit);
+					unit.mc_hit.gotoAndPlay(1);
+				}
+			}
+			
+			private function set lookRange(value:int):void
+			{
+				var c:MovieClip = new MovieClip();
+				c.graphics.lineStyle(1,_color,0.25,true,"normal",null,null,1);
+				c.graphics.drawCircle(0,0,value * SpaceMediator.SIZE);
+				unit.addChild(c);
+			}
+		]]>
+	</fx:Script>
+	
+	<local:Recon id="recon"/>
+	<local:Tank id="tank"/>
+	<local:Artillery id="artillery"/>
+	<local:Base id="base"/>
+</items:AView>
