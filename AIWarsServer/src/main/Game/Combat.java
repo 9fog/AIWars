@@ -12,6 +12,10 @@ import main.Game.CombatData.CombatMap.CombatMapLoader;
 import main.Game.CombatData.CombatMap.FlagPointer;
 import main.Game.CombatData.CombatMap.ObjectPointer;
 import main.Game.CombatData.CombatMap.UnitPointer;
+import main.Game.CombatData.Events.Event;
+import main.Game.CombatData.Events.EventUnitHide;
+import main.Game.CombatData.Events.EventUnitShow;
+import main.Game.CombatData.Orders.OrderMove;
 import main.Game.DataTables.UnitTypesTable;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
@@ -25,11 +29,17 @@ public class Combat {
 	private final int     _sides;
 	
 	private CombatMap _map;
+	private boolean[] _readyList;
 	private ArrayList<HashMap<Integer, Unit>> _squads, _deadList;
+	private ArrayList<ArrayList<Event>> _events;
 	private HashMap<Integer, Unit> _allUnits;
 	private ArrayList<HashMap<Integer, Unit>> _visibility;
 	private ArrayList<Flag> _flags;
 	
+	private int _tickNumber = 0; 
+	
+	public static final int MAX_TICKS = 10;
+	public static final int TICK_TIME = 500;
 	
 	public static final int[][] DIRECTIONS = {{7, 0, 1}, 
 		                                      {6, 0, 2},
@@ -74,8 +84,10 @@ public class Combat {
 			_deadList.add(new HashMap<Integer, Unit>());
 		}		
 		
+		_readyList = new boolean[_sides];
 		for (int j=0; j<_sides; j++) {
 			_squads.add(new HashMap<Integer, Unit>());
+			_readyList[j] = false;
 		}		
 		
 		//Расставляем флаги и юниты
@@ -96,6 +108,7 @@ public class Combat {
 				_map.placeObject(new MapObjectRock(), op.x, op.y);
 			}
 		}		
+		
 		
 		//Отправить клентам стартовые состояния
 		//Дамп карты, расположение флагов, 
@@ -142,6 +155,84 @@ public class Combat {
 		return res.toJSONString();
 	}
 	
+	public void processReady(int side) {
+		_readyList[side] = true;
+		
+		if (allReady()) {
+			nextTick();
+		}
+	}
+	
+	public void processOrderMove(int side, int unitId, int toX, int toY) {
+		Unit u = _squads.get(side).get(unitId);
+		if (u.isMobile()) {
+			u.setOrder(new OrderMove(u, toX, toY));
+		}
+	}
+	
+	public boolean allReady() {
+		for (int i=0; i<_sides; i++) {
+			if (!_readyList[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private void nextTick() {
+		for (int i=0; i<_sides; i++) {
+			_readyList[i] = false;
+		}
+		
+		if (_tickNumber>=MAX_TICKS) {
+			for (int i=0; i<_sides; i++) {
+				JSONObject cmd = new JSONObject();
+				cmd.put("_op", "finish");
+				cmd.put("_side", i);
+				sendToChannel(_channel, cmd.toJSONString());
+			}			
+			return;
+		}	
+				
+		long virtualTime = _tickNumber * TICK_TIME;
+		_events = new ArrayList<ArrayList<Event>>(); 
+		for (int i=0; i<_sides; i++) {
+			_events.add(new ArrayList<Event>());
+		}
+		
+		//TODO:: process moving, shoting and capturing
+    	for (HashMap<Integer, Unit> hm : _squads) {
+    		for (Unit u : hm.values()) {
+    			u.processTick(virtualTime);
+    		}
+    	}		
+		
+		
+    	//===============================================
+    	
+    	//Send tick events to bots
+		for (int i=0; i<_sides; i++) {
+			JSONObject cmd = new JSONObject();
+			cmd.put("_op", "tick");
+			cmd.put("_side", i);
+			
+			JSONArray events = new JSONArray();
+			for (Event e : _events.get(i)) {
+				events.add(e.toJSON());
+			}
+			cmd.put("events", events);
+			
+			sendToChannel(_channel, cmd.toJSONString());
+		}
+		
+		_tickNumber++;
+	}
+	
+	public void addEvent(int forSide, Event event) {
+		_events.get(forSide).add(event);
+	}
+	
+	
 	public void notifyFlag(Flag ff) {
 		int side = ff.getSide();
 		for (Flag f : _flags) {
@@ -166,7 +257,6 @@ public class Combat {
 	
 	public void updateVisibility(Unit u) {
 		//!!! Этот алгоритм рассчитан только на две воюющие стороны !!!		
-		/*
 		for (int side = 0; side<_sides; side++) {
 			if (side != u.getSide()) {
 				for (Unit eu : _squads.get(side).values()) {
@@ -190,43 +280,47 @@ public class Combat {
 						//log("Unit #"+u.getId()+" can NOT see unit #"+eu.getId());
 					}
 					
-					if (eu.getLookingSize()==0) { //Этот юнит врага я не вижу
+					if (eu.getLookingSize(u.getSide())==0) { //Этот юнит врага я не вижу
 						if (_visibility.get(u.getSide()).containsKey(eu.getId())) { //Но до этого его видели
 							_visibility.get(u.getSide()).remove(eu.getId());
 							//TODO:: Отправить мне пакет "скрыть юнит"
+							//---------
+							addEvent(u.getSide(), new EventUnitHide(eu.getId()));
 							//log("Hide unit " + eu.getId());
-							u.getPlayer().send(Protocol.snd_Combat_HideUnit(eu));
+							//u.getPlayer().send(Protocol.snd_Combat_HideUnit(eu));
 						}
 					} else { //Этот юнит вижу
-						if (!_visibility.get(u.getSide()).containsKey(eu.getId())) { //А реньше не видел
+						if (!_visibility.get(u.getSide()).containsKey(eu.getId())) { //А раньше не видел
 							_visibility.get(u.getSide()).put(eu.getId(), eu);
 							//TODO:: Отправить мне пакет "показать юнит"
+							addEvent(u.getSide(), new EventUnitShow(eu.getId(), eu.getType().role(), eu.getSide(), eu.getX(), eu.getY(), eu.isArmed()?1:0, eu.isMobile()?1:0));
 							//log("Show unit " + eu.getId());							
-							u.getPlayer().send(Protocol.snd_Combat_ShowUnit(eu));
+							//u.getPlayer().send(Protocol.snd_Combat_ShowUnit(eu));
 						}						
 					}
 				}
 								
-				if (u.getLookingSize()==0) { //Меня не видят
+				if (u.getLookingSize(side)==0) { //Меня не видят
 					//log("Меня не видят");
 					if (_visibility.get(side).containsKey(u.getId())) { //А раньше видели
 						_visibility.get(side).remove(u.getId());
 						//TODO:: Отправить врагу пакет "скрыть юнит"
+						addEvent(side, new EventUnitHide(u.getId()));
 						//log("Hide unit " + u.getId());
-						_sides_players.get(side).send(Protocol.snd_Combat_HideUnit(u));
+						//_sides_players.get(side).send(Protocol.snd_Combat_HideUnit(u));
 					}
 				} else {  //Меня видят
 					//log("Меня видят");
 					if (!_visibility.get(side).containsKey(u.getId())) { //А раньше не видели
 						_visibility.get(side).put(u.getId(), u);
 						//TODO:: Отправить врагу пакет "показать юнит"
+						addEvent(side, new EventUnitShow(u.getId(), u.getType().role(), u.getSide(), u.getX(), u.getY(), u.isArmed()?1:0, u.isMobile()?1:0));
 						//log("Show unit " + u.getId());						
-						_sides_players.get(side).send(Protocol.snd_Combat_ShowUnit(u));
+						//_sides_players.get(side).send(Protocol.snd_Combat_ShowUnit(u));
 					}					
 				}
 			}			
-		}
-		*/
+		}		
 	}
 
 	public void sendToChannel(Channel ch, String data) {

@@ -17,7 +17,7 @@ public class OrderFire extends Order {
 	}
 	
 	
-	public void processTick() {
+	public void processTick(long timePoint) {
 		if (!_target.isAlive()) {						
 			return;
 		}
@@ -25,7 +25,7 @@ public class OrderFire extends Order {
 			return;
 		}
 		
-		if (_unit.getReloadTimer().getState()==0) {
+		if (_unit.getReloadTimer().getState(timePoint)==0) {
 			long range2 = Utils.getRange2(_unit.getX(), _unit.getY(), _target.getX(), _target.getY());
 			if ((range2>_unit.getFireDisperce()*_unit.getFireDisperce()*4)&&(Utils.runProb(70))) {
 				tX = _target.getX() - _unit.getFireDisperce() + Utils.getRand(_unit.getFireDisperce()*2+1)-1;

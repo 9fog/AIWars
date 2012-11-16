@@ -30,8 +30,8 @@ public class Flag extends MapObject {
 	public int getSide() { return _side;}
 	
 	
-	public void processTick() {
-		if (_timer.getState()==0) {
+	public void processTick(long timePoint) {
+		if (_timer.getState(timePoint)==0) {
 			countUnits();
 			
 			int delta = _sidesPower[0] - _sidesPower[1]; 

@@ -13,8 +13,9 @@ public class Unit extends MapObject {
 	private int _id, _side;
 	private UnitType _type;
 	private Combat _combat;
-	private ArrayList<Unit> _iSeeThem;
-	private ArrayList<Unit> _theySeeMe;	
+	private ArrayList<ArrayList<Unit>> _iSeeThem;
+	private ArrayList<ArrayList<Unit>> _theySeeMe;	
+	private ArrayList<Unit> _theyAllSeeMe;
 	
 	private Timer _reloadTimer = new Timer("", 0);  //Таймер перезарядки орудия
 	
@@ -58,8 +59,14 @@ public class Unit extends MapObject {
 		_maxHP = type.max_hp();
 		_hp = type.max_hp();
 		
-		_iSeeThem = new ArrayList<Unit>();
-		_theySeeMe = new ArrayList<Unit>();
+		_iSeeThem = new ArrayList<ArrayList<Unit>>();		
+		_theySeeMe = new ArrayList<ArrayList<Unit>>();
+		_theyAllSeeMe = new ArrayList<Unit>();
+		
+		for (int i=0; i<_combat.getSidesCount(); i++) {
+			_iSeeThem.add(new ArrayList<Unit>());
+			_theySeeMe.add(new ArrayList<Unit>());
+		}
 		
 		//_order2 = new OrderIdle(this);
 	}
@@ -184,37 +191,42 @@ public class Unit extends MapObject {
 	
 	//Меня видят
 	synchronized public void addLookingUnit(Unit u) {
-		if (_theySeeMe.indexOf(u)==-1) {
-			_theySeeMe.add(u);
-		}
+		if (_theySeeMe.get(u.getSide()).indexOf(u)==-1) {
+			_theySeeMe.get(u.getSide()).add(u);
+			_theyAllSeeMe.add(u);
+		}		
 	}
 	synchronized public void removeLookingUnit(Unit u) {
-		_theySeeMe.remove(u);
+		_theySeeMe.get(u.getSide()).remove(u);
+		_theyAllSeeMe.remove(u);
 	}
-	public int getLookingSize() {return _theySeeMe.size();}
-	public Unit getLookingUnit() { return _theySeeMe.get(0);}
+	public int getLookingSize(int side) {return _theySeeMe.get(side).size();}
+	public ArrayList<Unit> getLookingUnits() {
+		return _theyAllSeeMe;
+	}
 	
 	//Я вижу
 	synchronized public void addSeenUnit(Unit u) {
-		if (_iSeeThem.indexOf(u)==-1) {
-			_iSeeThem.add(u);
+		if (_iSeeThem.get(u.getSide()).indexOf(u)==-1) {
+			_iSeeThem.get(u.getSide()).add(u);
 		}
 	}
 	synchronized public void removeSeenUnit(Unit u) {_iSeeThem.remove(u);}
 	public int getSeenSize() {return _iSeeThem.size();}
 	
 	
-	public void processTick() {
+	public void processTick(long timePoint) {
 		if (!isAlive()) return;
 		
 		if (_order!=null) {
-			_order.processTick();
+			_order.processTick(timePoint);
 		}
 		if (_order2!=null) {
-			_order2.processTick();
+			_order2.processTick(timePoint);
 		}
 		if (_order3!=null) {
-			_order3.processTick();
+			_order3.processTick(timePoint);
 		}
+
 	}
 }

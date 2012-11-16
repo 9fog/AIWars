@@ -27,7 +27,7 @@ public class OrderRotateTurret extends Order {
 	public int getDir() { return _dir;}
 	
 	
-	public void processTick() {
+	public void processTick(long timePoint) {
 		if (_rotateTimer.getState()==0) {
 			_unit.setTurretLook(_unit.getTurretLook() + _delta);
 

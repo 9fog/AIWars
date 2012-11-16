@@ -14,7 +14,7 @@ public class OrderIdle extends Order {
 	}
 	
 	
-	public void processTick() {			
+	public void processTick(long timePoint) {			
 		if (!_unit.isArmed()) { return; }
 
 		/*

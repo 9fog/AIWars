@@ -15,7 +15,7 @@ public class OrderGroundShot extends Order {
 	}
 	
 	
-	public void processTick() {
+	public void processTick(long timePoint) {
 		if (!_unit.isArmed()) {
 			_unit.setOrder2(new OrderIdle(_unit));
 			return;

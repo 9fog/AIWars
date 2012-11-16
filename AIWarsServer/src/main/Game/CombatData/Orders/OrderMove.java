@@ -3,12 +3,15 @@ package main.Game.CombatData.Orders;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import core.Timer;
+import net.minidev.json.JSONObject;
+
 import core.Utils;
 
 import main.Game.Combat;
+import main.Game.CombatData.Timer;
 import main.Game.CombatData.Unit;
 import main.Game.CombatData.CombatMap.ObjectPointer;
+import main.Game.CombatData.Events.EventUnitMove;
 import main.Game.Net.Protocol;
 
 public class OrderMove extends Order {
@@ -50,9 +53,9 @@ public class OrderMove extends Order {
 		}
 		isReady = true;		
 	}
+ 	
 	
-	
-	public void processTick() {
+	public void processTick(long timePoint) {
 		if (!isReady) {
 			prepare();
 			return;
@@ -68,20 +71,20 @@ public class OrderMove extends Order {
 			return;
 		}
 		if (_timer == null) {
-			setNextPoint();
+			setNextPoint(timePoint);
 		}
 				
-		if (_timer.getState()==0) { //Дошли до очередной точки
+		if (_timer.getState(timePoint)==0) { //Дошли до очередной точки
 			if (_path.size()>0) {
-				setNextPoint();
+				setNextPoint(timePoint);
 			} else {
 				_unit.setOrder(null);
 			}
 		}		
 	}
 	
-	private void setNextPoint() {
-		_timer = new Timer("", Utils.getTimeStamp() + _unit.getMovingSpeed());
+	private void setNextPoint(long timePoint) {
+		_timer = new Timer("", timePoint + _unit.getMovingSpeed());
 		
 		_curTarget = _path.get(0);
 		_path.remove(_curTarget);
@@ -95,18 +98,24 @@ public class OrderMove extends Order {
 			_unit.setGearLook(Combat.DIRECTIONS[nextY - _unit.getY() + 1][nextX - _unit.getX() + 1]);
 			_unit.setXY(nextX, nextY);
 		
-			String send = Protocol.snd_Combat_UnitMoving(_unit.getId(), nextX, nextY, _unit.getGearLook(), _timer.getState());
-			//_unit.getPlayer().send(send);
+			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitMove(_unit.getId(), nextX, nextY));
 			
-			//_unit.getCombat().updateVisibility(_unit);
+			_unit.getCombat().updateVisibility(_unit);
 			
 			//Оповестить противника, если он видит
-			if (_unit.getLookingSize()>0) {
-				//_unit.getLookingUnit().getPlayer().send(send);
+			if (_unit.getLookingUnits().size()>0) {
+				for (int i=0; i<_unit.getCombat().getSidesCount(); i++) {
+					if (i!=_unit.getSide()) {
+						if (_unit.getLookingSize(i)>0) {
+							_unit.getCombat().addEvent(i, new EventUnitMove(_unit.getId(), nextX, nextY));							
+						}
+					}
+				}
 			}
 		} else {
 			_path = _unit.getCombat().getMap().findPath(_unit.getX(), _unit.getY(), _toX, _toY);			
 			prepare();
 		}
+
 	}
 }

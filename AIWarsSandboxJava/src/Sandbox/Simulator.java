@@ -126,7 +126,7 @@ public class Simulator
 	  sendReady(side);
   }
   
-  private void process_tick(JSONObject cmd) {
+  public void process_tick(JSONObject cmd) {
 	  int side = Integer.parseInt(cmd.get("_side")+"");
 
 	  ArrayList<Object> events = new ArrayList<Object>();
@@ -135,5 +135,9 @@ public class Simulator
 	  _sides.get(side).processTick(events);
 	  
 	  sendReady(side);	  
+  }
+  
+  public void process_finish(JSONObject cmd) {
+	  
   }
 }

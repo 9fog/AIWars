@@ -16,7 +16,7 @@ public class OrderPassiveAttack extends Order {
 	}
 	
 	
-	public void processTick() {
+	public void processTick(long timePoint) {
 		if (!_enemy.isAlive()) {
 			_unit.setOrder2(new OrderIdle(_unit));
 			_unit.setOrder3(null);

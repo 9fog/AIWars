@@ -152,8 +152,15 @@ public class Main extends TCombat {
 	}
 
 	public JSONObject process_Ready(CommandContext ctx) throws Exception {
+		_combatsList.get(ctx.channel.getId()).processReady(Integer.parseInt(ctx.cmd.get("_side")+""));
 		return null;
 	}	
+	
+	public JSONObject process_orderMove(CommandContext ctx) throws Exception {
+		_combatsList.get(ctx.channel.getId()).processOrderMove(Integer.parseInt(ctx.cmd.get("_side")+""), Integer.parseInt(ctx.cmd.get("unitId")+""), Integer.parseInt(ctx.cmd.get("toX")+""), Integer.parseInt(ctx.cmd.get("toY")+""));
+		return null;
+	}	
+	
 	//======================== CHEATS ===========================================================
 
 	

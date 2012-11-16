@@ -41,7 +41,7 @@ public class OrderFollow extends Order {
 	}
 		
 	
-	public void processTick(){
+	public void processTick(long timePoint){
 		if (!_unit.isMobile()) {
 			_unit.setOrder(null);
 			return;			

@@ -18,7 +18,7 @@ public class OrderAttack extends Order {
 	}
 	
 	
-	public void processTick() {
+	public void processTick(long timePoint) {
 		if (!_target.isAlive()) {
 			_unit.setOrder(null);
 			_unit.setOrder2(new OrderIdle(_unit));

@@ -1,10 +1,10 @@
 package main.Game.CombatData.Orders;
 
-public class Order {
+import main.Game.Combat;
+
+public abstract class Order {
 	public boolean isReady = false;
 	public boolean isInvalid = false;
 
-	public void processTick() {
-		
-	}
+	public abstract void processTick(long timePoint);
 }
