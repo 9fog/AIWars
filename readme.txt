@@ -8,3 +8,6 @@
 
 ** Making and debugging bots tutorial **
 * Soon...
+
+** Discussions
+* Русский форум проекта находится здесь: http://aiwars.9fog.com/forum/ 
