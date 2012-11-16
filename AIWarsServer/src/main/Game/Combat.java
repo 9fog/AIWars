@@ -36,9 +36,9 @@ public class Combat {
 	private ArrayList<HashMap<Integer, Unit>> _visibility;
 	private ArrayList<Flag> _flags;
 	
-	private int _tickNumber = 0; 
+	private int _tickNumber = 0; 	
+	private final int _maxTicks;
 	
-	public static final int MAX_TICKS = 10;
 	public static final int TICK_TIME = 500;
 	
 	public static final int[][] DIRECTIONS = {{7, 0, 1}, 
@@ -51,9 +51,10 @@ public class Combat {
 	public final String[] DEFAULT_MAPS = {"testMapSmall.map", "testMap2x2.map"};
 	
 	
-	public Combat(Channel channel, int botsCount, String mapName) throws Exception{
+	public Combat(Channel channel, int botsCount, int maxTicks, String mapName) throws Exception{
 		_channel = channel;
-		_sides = botsCount;				
+		_sides = botsCount;		
+		_maxTicks = maxTicks;
 		
 		if (mapName.equals("")) { //Default map
 			if (_sides==2) {
@@ -184,7 +185,7 @@ public class Combat {
 			_readyList[i] = false;
 		}
 		
-		if (_tickNumber>=MAX_TICKS) {
+		if (_tickNumber>=_maxTicks) {
 			for (int i=0; i<_sides; i++) {
 				JSONObject cmd = new JSONObject();
 				cmd.put("_op", "finish");

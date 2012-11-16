@@ -36,6 +36,7 @@ public class Connector
      cmd.put("_op", "testFight");
      cmd.put("botsCount", Config.BOTS.length);
      cmd.put("mapName", Config.MAP_NAME);
+     cmd.put("maxTicks", Config.COMBAT_MAX_TICKS);
      send (cmd.toJSONString());
   }
 

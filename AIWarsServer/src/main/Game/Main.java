@@ -145,7 +145,7 @@ public class Main extends TCombat {
 	public JSONObject process_testFight(CommandContext ctx) throws Exception {
 		int botsCount = Integer.parseInt(ctx.cmd.get("botsCount")+"");
 		
-		Combat c = new Combat(ctx.channel, botsCount, ctx.cmd.get("mapName")+"");	
+		Combat c = new Combat(ctx.channel, botsCount, Integer.parseInt(ctx.cmd.get("maxTicks")+""), ctx.cmd.get("mapName")+"");	
 		_combatsList.put(ctx.channel.getId(), c);
 		
 		return null;
