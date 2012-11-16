@@ -131,6 +131,25 @@ public class Simulator
 
 	  ArrayList<Object> events = new ArrayList<Object>();
 	  //TODO::....
+	  JSONArray eventsJ = (JSONArray)cmd.get("events");	  
+	  for (Object o : eventsJ) {
+		  JSONObject jo = (JSONObject)o;
+		  String event = jo.get("event")+"";
+		  
+		  if (event.equals(EventMoveUnit.EVENT)) {
+			  events.add(new EventMoveUnit(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("toX")+""), Integer.parseInt(jo.get("toY")+"")));
+		  } else
+			  
+	      if (event.equals(EventShowUnit.EVENT)) {
+			  events.add(new EventShowUnit(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("side")+""), jo.get("type")+"",  
+					                      Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+""), 
+					                      Boolean.parseBoolean(jo.get("isArmed")+""), Boolean.parseBoolean(jo.get("isMobile")+"")));	      
+	      } else
+	    	  
+	      if (event.equals(EventHideUnit.EVENT)) {
+			  events.add(new EventHideUnit(Integer.parseInt(jo.get("unitId")+"")));
+	      }    	 
+	  }
 	  
 	  _sides.get(side).processTick(events);
 	  

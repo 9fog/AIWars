@@ -43,9 +43,9 @@ public class MyBot extends AbstractBot {
 			}
 		}
 		
-		//Orders
+		//Test orders
 		if (_tickNumber==0) { //First tick
-			//Give random test orders to all units;
+			//Give orders to all units - move to flags!
 			int flagNum = 0;
 			for (ObjectUnit u : _units) {
 				if (!u.type.equals("base")) {

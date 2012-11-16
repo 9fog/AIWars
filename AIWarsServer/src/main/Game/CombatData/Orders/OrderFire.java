@@ -52,18 +52,20 @@ public class OrderFire extends Order {
 			int flyTime = 10*(int)range2;
 			//log("fromX="+_unit.getX()+"; fromY="+_unit.getY()+"; tX="+tX+"; tY="+tY+"; range2 = "+range2+"; flyTime="+flyTime);
 			
-			String send = Protocol.snd_Combat_UnitFire(_unit, tX, tY, flyTime);
+			//String send = Protocol.snd_Combat_UnitFire(_unit, tX, tY, flyTime);
 			//!!!_unit.getPlayer().send(send);
 			
 			//Оповестить противника, если он видит
+			/*
 			if (_unit.getLookingSize()>0) {
 				//!!! _unit.getLookingUnit().getPlayer().send(send);
-			}						
+			}
+			*/						
 			
 			//!!! Boom boom = new Boom(_unit, tX, tY, flyTime);	
 			//!!! _unit.getCombat().addBoom(boom);
 			
-			_unit.getReloadTimer().setEndTime(Utils.getTimeStamp() + _unit.getFireRate());
+			_unit.getReloadTimer().setEndTime(timePoint + _unit.getFireRate());
 		}		
 	}
 	

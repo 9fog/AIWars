@@ -1,5 +1,6 @@
 package main.Game.CombatData.Orders;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import main.Game.CombatData.Unit;
@@ -16,13 +17,12 @@ public class OrderIdle extends Order {
 	
 	public void processTick(long timePoint) {			
 		if (!_unit.isArmed()) { return; }
-
-		/*
-		HashMap<Integer, Unit> enemies = _unit.getCombat().getMyVisibility(_unit.getSide());
+		
+		ArrayList<Unit> enemies = _unit.getLookingUnits();
 		if (enemies.size()>0) {
 			Unit newTarget = null;
-			for (Unit eu : enemies.values()) {
-				if (!eu.isAlive()) continue;
+			for (Unit eu : enemies) {
+				//if (!eu.isArmed()) continue;
 				
 				long newRange = _unit.getRange2(eu); 
 				if ((newRange>=_unit.getShotRangeMin2())&&(newRange<=_unit.getShotRangeMax2())) {
@@ -34,8 +34,7 @@ public class OrderIdle extends Order {
 			if (newTarget!=null) {
 				_unit.setOrder2(new OrderPassiveAttack(_unit, newTarget));
 			}
-		}	
-		*/			
+		}					
 	}
 	
 	

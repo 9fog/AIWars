@@ -34,15 +34,17 @@ public class OrderRotateTurret extends Order {
 			String send = Protocol.snd_Combat_UnitRotateTurret(_unit);
 			//!!! _unit.getPlayer().send(send);
 			//Оповестить противника, если он видит
+			/*
 			if (_unit.getLookingSize()>0) {
 				//!!! _unit.getLookingUnit().getPlayer().send(send);
-			}			
+			}
+			*/			
 			
 			if (_unit.getTurretLook() == _dir) {
 				_unit.setOrder3(null);
 				return;
 			} else {
-				_rotateTimer.setEndTime(Utils.getTimeStamp() + _unit.getRotateSpeed());
+				_rotateTimer.setEndTime(timePoint + _unit.getRotateSpeed());
 			}
 		}
 	}

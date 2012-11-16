@@ -23,9 +23,8 @@ public class OrderPassiveAttack extends Order {
 			return;
 		}
 		
-		//Проверим, не ушел ли юнит из зоны видимости
-		/* !!!!!!
-		if (!_unit.getCombat().getMyVisibility(_unit.getSide()).containsKey(_enemy.getId())) {
+		//Проверим, не ушел ли юнит из зоны видимости		
+		if (!_unit.getLookingUnits().contains(_enemy)) {
 			_unit.setOrder2(new OrderIdle(_unit));
 			_unit.setOrder3(null);
 			return;			
@@ -62,8 +61,7 @@ public class OrderPassiveAttack extends Order {
 						_unit.setOrder3(new OrderFire(_unit, _enemy));
 					}
 				break;
-		}
-		*/
+		}		
 	}
 		
 	

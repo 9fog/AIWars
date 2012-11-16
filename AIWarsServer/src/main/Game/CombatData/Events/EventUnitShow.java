@@ -8,11 +8,10 @@ public class EventUnitShow extends Event {
 	public final int side;
 	public final int x;
 	public final int y;
-	public final int isArmed;
-	public final int isMobile;
+	public final boolean isArmed;
+	public final boolean isMobile;
 		
-	public EventUnitShow(int unitId, String type, int side, int x, int y, int isArmed,
-			int isMobile) {
+	public EventUnitShow(int unitId, String type, int side, int x, int y, boolean isArmed, boolean isMobile) {
 		this.unitId = unitId;
 		this.type = type;
 		this.side = side;

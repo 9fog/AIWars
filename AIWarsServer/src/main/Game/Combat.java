@@ -293,7 +293,7 @@ public class Combat {
 						if (!_visibility.get(u.getSide()).containsKey(eu.getId())) { //А раньше не видел
 							_visibility.get(u.getSide()).put(eu.getId(), eu);
 							//TODO:: Отправить мне пакет "показать юнит"
-							addEvent(u.getSide(), new EventUnitShow(eu.getId(), eu.getType().role(), eu.getSide(), eu.getX(), eu.getY(), eu.isArmed()?1:0, eu.isMobile()?1:0));
+							addEvent(u.getSide(), new EventUnitShow(eu.getId(), eu.getType().role(), eu.getSide(), eu.getX(), eu.getY(), eu.isArmed(), eu.isMobile()));
 							//log("Show unit " + eu.getId());							
 							//u.getPlayer().send(Protocol.snd_Combat_ShowUnit(eu));
 						}						
@@ -314,7 +314,7 @@ public class Combat {
 					if (!_visibility.get(side).containsKey(u.getId())) { //А раньше не видели
 						_visibility.get(side).put(u.getId(), u);
 						//TODO:: Отправить врагу пакет "показать юнит"
-						addEvent(side, new EventUnitShow(u.getId(), u.getType().role(), u.getSide(), u.getX(), u.getY(), u.isArmed()?1:0, u.isMobile()?1:0));
+						addEvent(side, new EventUnitShow(u.getId(), u.getType().role(), u.getSide(), u.getX(), u.getY(), u.isArmed(), u.isMobile()));
 						//log("Show unit " + u.getId());						
 						//_sides_players.get(side).send(Protocol.snd_Combat_ShowUnit(u));
 					}					

@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import main.Game.Combat;
 import main.Game.CombatData.Orders.Order;
+import main.Game.CombatData.Orders.OrderIdle;
 import main.Game.CombatData.Orders.OrderMove;
 
 import core.*;
@@ -68,7 +69,7 @@ public class Unit extends MapObject {
 			_theySeeMe.add(new ArrayList<Unit>());
 		}
 		
-		//_order2 = new OrderIdle(this);
+		_order2 = new OrderIdle(this);
 	}
 	
 	public int getId() {return _id;}
