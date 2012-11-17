@@ -255,5 +255,10 @@ package view
 			}
 		}
 		
+		public function scroll(delta:int):void
+		{
+			_view.scaling(delta);
+		}
+		
 	}
 }

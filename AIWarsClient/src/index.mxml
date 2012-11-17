@@ -6,19 +6,21 @@
 			   minHeight="500"
 			   minWidth="600"
 			   applicationComplete="init(event)" xmlns:view="view.*"
+			   mouseWheel="scroll(event)"
 			   >
 	<fx:Script>
 		<![CDATA[
 			import controller.Engine;
 			
 			import model.Config;
-			
 			import model.FileLoader;
 			import model.parser.FileParser;
 			import model.parser.PC;
 			import model.parser.commands.CMap;
 			
+			import mx.controls.Alert;
 			import mx.events.FlexEvent;
+			import mx.utils.URLUtil;
 			
 			import spark.primitives.supportClasses.FilledElement;
 			
@@ -29,6 +31,20 @@
 			
 			protected function init(event:FlexEvent):void
 			{
+				//hardcode, neds to rewrite.
+				var urlStr:String = ExternalInterface.call('window.location.href.toString');
+				var nameLog:String = "log_file";
+				var index:int = urlStr.indexOf(nameLog);
+				if (index>0)
+				{
+					index+=nameLog.length+1;
+					var end:int = urlStr.indexOf("&",index);
+					if (end<0) 
+						end = urlStr.length;
+					data_url = urlStr.substring(index,end);
+					data_url = data_url.replace("+","\\");
+				}
+				//end hardcode
 				var confLoader:FileLoader = new FileLoader();
 				confLoader.loadData(conf_url, onConfLoad);
 			}
@@ -39,14 +55,23 @@
 				var loader:FileLoader = new FileLoader();
 				loader.loadData(data_url, onLogLoad);
 			}
-			
+			private var mediator:SpaceMediator;
 			private function onLogLoad(data:String):void
 			{
 				var p:FileParser = new FileParser();
 				var engine:Engine = new Engine(p.parse(data));
-				var mediator:SpaceMediator = new SpaceMediator(view, engine);
+				mediator = new SpaceMediator(view, engine);
 				engine.init();
 				engine.start();
+			}
+			
+			protected function scroll(event:MouseEvent):void
+			{
+				if (mediator)
+				{
+					mediator.scroll(event.delta);
+				}
+				
 			}
 			
 		]]>
