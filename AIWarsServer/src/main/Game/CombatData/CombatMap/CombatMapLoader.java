@@ -41,7 +41,6 @@ public class CombatMapLoader {
 	public ArrayList<ObjectPointer> objects;
 	
 	public CombatMapLoader(String mapName) throws Exception {
-		//FileReader input = new FileReader(Config.getInstance().getVarString("mapsFolder")+mapName);
 		FileReader input = new FileReader("maps/"+mapName);
 		BufferedReader bufRead = new BufferedReader(input);
 		String myLine = null;

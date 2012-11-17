@@ -4,6 +4,7 @@ package main.Game;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import main.Game.CombatData.CombatLog;
 import main.Game.CombatData.Flag;
 import main.Game.CombatData.MapObjectRock;
 import main.Game.CombatData.Unit;
@@ -39,6 +40,8 @@ public class Combat {
 	private int _tickNumber = 0; 	
 	private final int _maxTicks;
 	
+	private CombatLog _log;
+	
 	public static final int TICK_TIME = 500;
 	
 	public static final int[][] DIRECTIONS = {{7, 0, 1}, 
@@ -49,6 +52,9 @@ public class Combat {
 	
 	//public final String[] DEFAULT_MAPS = {"testMap1x1.map", "testMap2x2.map"};
 	public final String[] DEFAULT_MAPS = {"testMapSmall.map", "testMap2x2.map"};
+	
+	public final String LOG_URL = "http://aiwars.9fog.com/combat_log/view.html?url=";
+	public final String LOG_DIR = "logs/";
 	
 	
 	public Combat(Channel channel, int botsCount, int maxTicks, String mapName) throws Exception{
@@ -109,25 +115,30 @@ public class Combat {
 				_map.placeObject(new MapObjectRock(), op.x, op.y);
 			}
 		}		
-		
+				
+		_log = new CombatLog(LOG_DIR+Utils.getTimeStamp()+".log");
 		
 		//Отправить клентам стартовые состояния
 		//Дамп карты, расположение флагов, 
 		//расположение своих юнитов		
 		for (int i=0; i<botsCount; i++) {
 			sendToChannel(_channel, getStartInfo(i));
-		}				
+		}
+		
+		//Проинитить лог боя
 	}
 	
 	public int getSidesCount() {return _sides;}
 	public CombatMap getMap() {return _map;} 
 	public ArrayList<Flag> getFlags() {return _flags;}
+	public CombatLog getLog() { return _log;} 
 		
 	public String getStartInfo(int side) {
 		JSONObject res = new JSONObject();
 		
-		res.put("_op", "init");
+		res.put("_op", "init");		
 		res.put("_side", side);
+		res.put("logUrl", LOG_URL+_log.getFileName());
 		res.put("mapSizeX", _map.getSizeX());
 		res.put("mapSizeY", _map.getSizeY());
 		res.put("mapDump", _map.getDump());		
