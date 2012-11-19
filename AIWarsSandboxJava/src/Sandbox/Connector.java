@@ -1,15 +1,11 @@
 package Sandbox;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.Socket;
-import java.util.Calendar;
-
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
+
+import java.io.*;
+import java.net.Socket;
+import java.util.Calendar;
 
 public class Connector {
     private final Socket _socket;
@@ -20,7 +16,7 @@ public class Connector {
 
     public Connector()
             throws IOException {
-        this._socket = new Socket("192.168.1.95", 23001);
+        this._socket = new Socket(Config.SERVER_IP, Config.SERVER_PORT);
 
         this.socketReader = new BufferedReader(new InputStreamReader(this._socket.getInputStream(), "UTF-8"));
         this.socketWriter = new BufferedWriter(new OutputStreamWriter(this._socket.getOutputStream(), "UTF-8"));
