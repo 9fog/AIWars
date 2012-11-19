@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.Calendar;
 
+import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 
 public class Connector {
@@ -31,9 +32,14 @@ public class Connector {
         this._simulator = new Simulator(this);
 
         //Send initialization command
+        JSONArray botNames = new JSONArray();
+        for (String name : Config.BOTS) {
+        	botNames.add(name);
+        }
+        
         JSONObject cmd = new JSONObject();
         cmd.put("_op", "testFight");
-        cmd.put("botsCount", Config.BOTS.length);
+        cmd.put("botNames", botNames);
         cmd.put("mapName", Config.MAP_NAME);
         cmd.put("maxTicks", Config.COMBAT_MAX_TICKS);
         send(cmd.toJSONString());
@@ -74,15 +80,15 @@ public class Connector {
             Connector.log("Reciever started...");
             while (!Connector.this._socket.isClosed())
                 try {
-                    char[] charBuffer = new char[4096];
+                    char[] charBuffer = new char[1];
 
-                    while (socketReader.read(charBuffer, 0, 1) != -1) {   //one question - WTF?
+                    while (socketReader.read(charBuffer, 0, 1) != -1) {
                         StringBuilder sb = new StringBuilder();
                         String data = "";
 
                         while ((charBuffer[0] != 0) && (sb.length() < 4096)) {
                             sb.append(charBuffer[0]);
-                            socketReader.read(charBuffer, 0, 1);//not clear logic
+                            socketReader.read(charBuffer, 0, 1);
                         }
 
                         data = sb.toString();
@@ -90,7 +96,7 @@ public class Connector {
 
                         _simulator.processServerCommand(data);
 
-                        sleep(100);//magic constant, and why sleep thread?
+                        sleep(10);
                     }
                 } catch (IOException e) {
                     if ("Socket closed".equals(e.getMessage())) {

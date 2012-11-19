@@ -98,7 +98,7 @@ public class OrderMove extends Order {
 			_unit.setGearLook(Combat.DIRECTIONS[nextY - _unit.getY() + 1][nextX - _unit.getX() + 1]);
 			_unit.setXY(nextX, nextY);
 		
-			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitMove(_unit.getId(), nextX, nextY));
+			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitMove(_unit.getId(), nextX, nextY), "move "+_unit.getSide()+" "+_unit.getId()+" "+nextX+" "+nextY+" "+_unit.getMovingSpeed());
 			
 			_unit.getCombat().updateVisibility(_unit);
 			
@@ -107,7 +107,7 @@ public class OrderMove extends Order {
 				for (int i=0; i<_unit.getCombat().getSidesCount(); i++) {
 					if (i!=_unit.getSide()) {
 						if (_unit.getLookingSize(i)>0) {
-							_unit.getCombat().addEvent(i, new EventUnitMove(_unit.getId(), nextX, nextY));							
+							_unit.getCombat().addEvent(i, new EventUnitMove(_unit.getId(), nextX, nextY), "move "+i+" "+_unit.getId()+" "+nextX+" "+nextY+" "+_unit.getMovingSpeed());							
 						}
 					}
 				}

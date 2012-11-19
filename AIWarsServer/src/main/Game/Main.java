@@ -2,21 +2,13 @@ package main.Game;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
 
 import org.jboss.netty.channel.Channel;
 
-import com.sun.net.httpserver.HttpServer;
-
-import main.Game.CombatData.CombatMap.CombatMapLoader;
-import main.Game.DataTables.Config;
 import main.Game.DataTables.UnitTypesTable;
 import main.Game.Net.CommandContext;
-import main.Game.Net.Http_stat;
 import main.Game.Net.JSONCommand;
 import main.Stats.StatVars;
 
@@ -27,7 +19,6 @@ import net.minidev.json.JSONValue;
 import core.TCombat;
 import core.Utils;
 import core.attributeException;
-import core.coreConfig;
 import core.NettyServer.NetContext;
 
 public class Main extends TCombat {
@@ -143,9 +134,13 @@ public class Main extends TCombat {
 	
 	
 	public JSONObject process_testFight(CommandContext ctx) throws Exception {
-		int botsCount = Integer.parseInt(ctx.cmd.get("botsCount")+"");
+		ArrayList<String> botNames = new ArrayList<String>();
+		JSONArray namesArray = (JSONArray)ctx.cmd.get("botNames");
+		for (Object jo : namesArray) {
+			botNames.add(jo+"");
+		}
 		
-		Combat c = new Combat(ctx.channel, botsCount, Integer.parseInt(ctx.cmd.get("maxTicks")+""), ctx.cmd.get("mapName")+"");	
+		Combat c = new Combat(ctx.channel, botNames, Integer.parseInt(ctx.cmd.get("maxTicks")+""), ctx.cmd.get("mapName")+"");	
 		_combatsList.put(ctx.channel.getId(), c);
 		
 		return null;

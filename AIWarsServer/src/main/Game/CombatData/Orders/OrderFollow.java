@@ -1,7 +1,6 @@
 package main.Game.CombatData.Orders;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import core.*;
 import main.Game.CombatData.Unit;
@@ -86,9 +85,9 @@ public class OrderFollow extends Order {
 			_unit.getCombat().updateVisibility(_unit);
 			
 			//Оповестить противника, если он видит
-			if (_unit.getLookingSize()>0) {
+			//if (_unit.getLookingSize()>0) {
 				//!!! _unit.getLookingUnit().getPlayer().send(send);
-			}
+			//}
 		} else {
 			prepare();
 		}

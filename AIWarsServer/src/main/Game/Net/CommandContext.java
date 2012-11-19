@@ -1,7 +1,5 @@
 package main.Game.Net;
 
-import main.Game.Player;
-import main.Game.PlayersList;
 import net.minidev.json.JSONObject;
 import org.jboss.netty.channel.Channel;
 

@@ -1,7 +1,6 @@
 package main.Game.CombatData;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import main.Game.Combat;
 import main.Game.CombatData.Orders.Order;

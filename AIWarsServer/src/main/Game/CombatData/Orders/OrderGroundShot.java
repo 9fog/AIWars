@@ -50,9 +50,9 @@ public class OrderGroundShot extends Order {
 		//!!!! String send = Protocol.snd_Combat_UnitFire(_unit, tX, tY, flyTime);
 		//!!!! _unit.getPlayer().send(send);
 		//Оповестить противника, если он видит
-		if (_unit.getLookingSize()>0) {
+		//if (_unit.getLookingSize()>0) {
 			//!!!! _unit.getLookingUnit().getPlayer().send(send);
-		}						
+		//}						
 		
 		//!!! Boom boom = new Boom(_unit, tX, tY, flyTime);	
 		//!!!! _unit.getCombat().addBoom(boom);

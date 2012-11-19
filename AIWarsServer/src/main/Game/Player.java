@@ -1,22 +1,9 @@
 package main.Game;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-
-import main.Game.DataTables.Config;
-import net.minidev.json.JSONArray;
-
 import org.jboss.netty.channel.Channel;
-
-import com.mongodb.BasicDBList;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
 
 import core.Utils;
 import core.coreConfig;
-import core.myMongo;
 
 public class Player {
 	private final String _id;

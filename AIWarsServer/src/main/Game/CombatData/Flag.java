@@ -1,7 +1,6 @@
 package main.Game.CombatData;
 
 import main.Game.Combat;
-import main.Game.Net.Protocol;
 import core.*;
 
 public class Flag extends MapObject {

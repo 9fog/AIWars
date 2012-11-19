@@ -14,7 +14,7 @@ import core.*;
 public class CombatMap {
 	private final int _sizeX, _sizeY;
 	private MapObject[][] _objects;
-	//private String _mapDump;
+	private String _mapDumpStr;
 	private JSONArray _mapDump;
 	
 	public CombatMap(CombatMapLoader cml) {
@@ -22,7 +22,7 @@ public class CombatMap {
 		_sizeY = cml.sizeY;
 		
 		_objects = new MapObject[_sizeY][_sizeX];
-		//_mapDump = "";
+		_mapDumpStr = "";
 		_mapDump = new JSONArray();
 		
 		for (ObjectPointer op : cml.objects) {
@@ -33,6 +33,7 @@ public class CombatMap {
 				p.put("x", op.x);
 				p.put("y", op.y);
 				_mapDump.add(p);
+				_mapDumpStr += op.x+":"+op.y+";";
 			}
 		}
 	}
@@ -41,6 +42,7 @@ public class CombatMap {
 	public int getSizeY() {return _sizeY;}
 	
 	public JSONArray getDump() {return _mapDump;}
+	public String getDumpStr() {return _mapDumpStr;} 
 		
 	public void placeObject(MapObject o, int x, int y) {
 		_objects[y][x] = o;

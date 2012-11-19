@@ -57,9 +57,9 @@ public class Combat {
 	public final String LOG_DIR = "logs/";
 	
 	
-	public Combat(Channel channel, int botsCount, int maxTicks, String mapName) throws Exception{
+	public Combat(Channel channel, ArrayList<String> botNames, int maxTicks, String mapName) throws Exception{
 		_channel = channel;
-		_sides = botsCount;		
+		_sides = botNames.size();		
 		_maxTicks = maxTicks;
 		
 		if (mapName.equals("")) { //Default map
@@ -116,16 +116,26 @@ public class Combat {
 			}
 		}		
 				
+		//Проинициализировать COMBAT LOG
 		_log = new CombatLog(LOG_DIR+Utils.getTimeStamp()+".log");
+		for (int i=0; i<_sides; i++) {
+			_log.append("player "+i+" "+botNames.get(i));
+			for (Unit u : _squads.get(i).values()) {
+				_log.append("create "+u.getId()+" "+u.getType().id()+" "+u.getX()+" "+u.getY()+" "+i);
+			}
+		}		
+		_log.append("map "+_map.getSizeX()+" "+_map.getSizeY()+" "+_map.getDumpStr());		
+		for (Flag f : _flags) {
+			_log.append("flag "+f.getId()+" "+f.getX()+" "+f.getY());
+		}		
+		_log.append("end");
 		
 		//Отправить клентам стартовые состояния
 		//Дамп карты, расположение флагов, 
 		//расположение своих юнитов		
-		for (int i=0; i<botsCount; i++) {
+		for (int i=0; i<_sides; i++) {
 			sendToChannel(_channel, getStartInfo(i));
 		}
-		
-		//Проинитить лог боя
 	}
 	
 	public int getSidesCount() {return _sides;}
@@ -202,9 +212,12 @@ public class Combat {
 				cmd.put("_op", "finish");
 				cmd.put("_side", i);
 				sendToChannel(_channel, cmd.toJSONString());
+				_log.close();
 			}			
 			return;
 		}	
+		
+		_log.append("turn "+_tickNumber);
 				
 		long virtualTime = _tickNumber * TICK_TIME;
 		_events = new ArrayList<ArrayList<Event>>(); 
@@ -238,10 +251,12 @@ public class Combat {
 		}
 		
 		_tickNumber++;
+		_log.append("end");
 	}
 	
-	public void addEvent(int forSide, Event event) {
+	public void addEvent(int forSide, Event event, String logEvent) {
 		_events.get(forSide).add(event);
+		_log.append(logEvent);
 	}
 	
 	
@@ -297,7 +312,7 @@ public class Combat {
 							_visibility.get(u.getSide()).remove(eu.getId());
 							//TODO:: Отправить мне пакет "скрыть юнит"
 							//---------
-							addEvent(u.getSide(), new EventUnitHide(eu.getId()));
+							addEvent(u.getSide(), new EventUnitHide(eu.getId()), "hide "+u.getSide()+" "+eu.getId());
 							//log("Hide unit " + eu.getId());
 							//u.getPlayer().send(Protocol.snd_Combat_HideUnit(eu));
 						}
@@ -305,7 +320,7 @@ public class Combat {
 						if (!_visibility.get(u.getSide()).containsKey(eu.getId())) { //А раньше не видел
 							_visibility.get(u.getSide()).put(eu.getId(), eu);
 							//TODO:: Отправить мне пакет "показать юнит"
-							addEvent(u.getSide(), new EventUnitShow(eu.getId(), eu.getType().role(), eu.getSide(), eu.getX(), eu.getY(), eu.isArmed(), eu.isMobile()));
+							addEvent(u.getSide(), new EventUnitShow(eu.getId(), eu.getType().role(), eu.getSide(), eu.getX(), eu.getY(), eu.isArmed(), eu.isMobile()), "show "+u.getSide()+" "+eu.getSide()+" "+eu.getId()+" "+eu.getType().id()+" "+eu.getX()+" "+eu.getY()+" "+eu.isArmed()+" "+eu.isMobile());
 							//log("Show unit " + eu.getId());							
 							//u.getPlayer().send(Protocol.snd_Combat_ShowUnit(eu));
 						}						
@@ -317,7 +332,7 @@ public class Combat {
 					if (_visibility.get(side).containsKey(u.getId())) { //А раньше видели
 						_visibility.get(side).remove(u.getId());
 						//TODO:: Отправить врагу пакет "скрыть юнит"
-						addEvent(side, new EventUnitHide(u.getId()));
+						addEvent(side, new EventUnitHide(u.getId()), "hide "+u.getSide()+" "+u.getId());
 						//log("Hide unit " + u.getId());
 						//_sides_players.get(side).send(Protocol.snd_Combat_HideUnit(u));
 					}
@@ -326,7 +341,7 @@ public class Combat {
 					if (!_visibility.get(side).containsKey(u.getId())) { //А раньше не видели
 						_visibility.get(side).put(u.getId(), u);
 						//TODO:: Отправить врагу пакет "показать юнит"
-						addEvent(side, new EventUnitShow(u.getId(), u.getType().role(), u.getSide(), u.getX(), u.getY(), u.isArmed(), u.isMobile()));
+						addEvent(side, new EventUnitShow(u.getId(), u.getType().role(), u.getSide(), u.getX(), u.getY(), u.isArmed(), u.isMobile()), "show "+side+" "+u.getSide()+" "+u.getId()+" "+u.getType().id()+" "+u.getX()+" "+u.getY()+" "+u.isArmed()+" "+u.isMobile());
 						//log("Show unit " + u.getId());						
 						//_sides_players.get(side).send(Protocol.snd_Combat_ShowUnit(u));
 					}					
