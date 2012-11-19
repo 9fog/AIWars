@@ -130,7 +130,7 @@ public class Simulator
 	  int side = Integer.parseInt(cmd.get("_side")+"");
 
 	  ArrayList<Object> events = new ArrayList<Object>();
-	  //TODO::....
+	  
 	  JSONArray eventsJ = (JSONArray)cmd.get("events");	  
 	  for (Object o : eventsJ) {
 		  JSONObject jo = (JSONObject)o;

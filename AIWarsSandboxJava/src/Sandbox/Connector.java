@@ -76,19 +76,19 @@ public class Connector {
                 try {
                     char[] charBuffer = new char[4096];
 
-                    while (Connector.this.socketReader.read(charBuffer, 0, 1) != -1) {   //one question - WTF?
+                    while (socketReader.read(charBuffer, 0, 1) != -1) {   //one question - WTF?
                         StringBuilder sb = new StringBuilder();
                         String data = "";
 
                         while ((charBuffer[0] != 0) && (sb.length() < 4096)) {
                             sb.append(charBuffer[0]);
-                            Connector.this.socketReader.read(charBuffer, 0, 1);//not clear logic
+                            socketReader.read(charBuffer, 0, 1);//not clear logic
                         }
 
                         data = sb.toString();
                         Connector.log("RCV > " + data);
 
-                        Connector.this._simulator.processServerCommand(data);
+                        _simulator.processServerCommand(data);
 
                         sleep(100);//magic constant, and why sleep thread?
                     }
