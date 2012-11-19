@@ -164,6 +164,7 @@ pip-log.txt
 
 #IDE folders
 .idea
+*.iml
 
 #Java compiled files
 *.class
