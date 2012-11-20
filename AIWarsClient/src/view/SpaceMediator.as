@@ -132,7 +132,7 @@ package view
 					cell.height = len;
 					cell.x = i * len;
 					cell.y = j * len;
-					cell.empty = space.map.array[i][j] == MapVO.EMPTY;
+					cell.empty = space.map.array[j][i] == MapVO.EMPTY;
 					conteiner.addElement(cell);
 				}
 				conteiner.width = space.map.width * len+2;

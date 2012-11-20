@@ -2,6 +2,8 @@ package model.parser.commands
 {
 	import controller.EngineEvent;
 	
+	import flash.geom.Point;
+	
 	import model.Space;
 	import model.parser.PC;
 	import model.vo.MapVO;
@@ -24,20 +26,29 @@ package model.parser.commands
 				var temp:Array = s.split(" ");
 				var w:int = int(temp[0]);
 				var h:int = int(temp[1]);
-				var content:Array = String(temp[2]).split("");
+				var points:Array = String(temp[2]).split(";");
+				var rocks:Array = [];
 				
-				var z:int = 0;
+				
 				var out:Array = [];
-				for (var i:int = 0;i < w; i++)
+				for (var i:int = 0;i < h; i++)
 				{
 					var line:Array = [];
-					for (var j:int = 0;j < h; j++)
+					for (var j:int = 0;j < w; j++)
 					{
-						line[j] = int(content[z]);
-							z+=1;
+						line[j] = 0;
 					}
 					out[i] = line;
 				}
+
+				for each(var xy:String in points)
+				{
+					var pare:Array = (xy as String).split(":");
+					var x:int = pare[0];
+					var y:int = pare[1];
+					out[y][x] = 1;
+				}
+				
 				
 				space.map = new MapVO(w, h, out);
 			return data;

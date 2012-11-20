@@ -16,6 +16,8 @@ package model
 			
 		}
 		
+		public var stepInterval:Number = 500;
+		
 		public function getUnitTypeField(id:int, field:String):int
 		{
 			var list:XMLList = conf.units;

@@ -47,7 +47,7 @@ package model.parser
 				
 				data = data.substring(end + END.length);
 				
-				while (data.length > 0)
+				while (data.length > 0 && start>=0 && end >=0)
 				{
 					start = data.indexOf(TURN);
 					end = data.indexOf(END);
@@ -58,6 +58,7 @@ package model.parser
 							steps.push(turn);
 						data = data.substring(end + END.length);
 					}
+					
 				}
 			}
 			return steps;

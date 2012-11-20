@@ -31,6 +31,7 @@ package model.parser.commands
 		 */ 
 		public static function getCommand(string:String):PC
 		{
+			if (string.length < 2) return null;
 			var end:int = string.indexOf(" ");
 			var name:String = string.substring(0,end);
 			return findCommand(name, string);

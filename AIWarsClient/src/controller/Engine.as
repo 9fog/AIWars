@@ -5,6 +5,7 @@ package controller
 	import flash.utils.Timer;
 	import flash.utils.setTimeout;
 	
+	import model.Config;
 	import model.Space;
 	import model.parser.PC;
 	import model.vo.AItemVO;
@@ -18,7 +19,7 @@ package controller
 			this.steps = steps;
 		}
 		
-		public var interval:int = 1000;
+		public var interval:int = Config.instanse.stepInterval;
 		
 		public  var steps:Vector.<TurnVO>;
 		public  var spaces:Vector.<Space> = new Vector.<Space>();

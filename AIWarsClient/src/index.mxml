@@ -27,7 +27,7 @@
 			import view.SpaceMediator;
 			
 			public var conf_url:String = "data/conf.xml";
-			public var data_url:String = "data/log.txt";
+			public var data_url:String = "data/data.log";
 			
 			protected function init(event:FlexEvent):void
 			{
