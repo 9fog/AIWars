@@ -4,6 +4,7 @@ package main.Game;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import main.Game.CombatData.Boom;
 import main.Game.CombatData.CombatLog;
 import main.Game.CombatData.Flag;
 import main.Game.CombatData.MapObjectRock;
@@ -35,7 +36,9 @@ public class Combat {
 	private ArrayList<ArrayList<Event>> _events;
 	private HashMap<Integer, Unit> _allUnits;
 	private ArrayList<HashMap<Integer, Unit>> _visibility;
-	private ArrayList<Flag> _flags;
+	private ArrayList<Flag> _flags;	
+	private ArrayList<Boom> _booms;
+	private ArrayList<Unit> _deadUnits;
 	
 	private int _tickNumber = 0; 	
 	private final int _maxTicks;
@@ -142,6 +145,14 @@ public class Combat {
 	public CombatMap getMap() {return _map;} 
 	public ArrayList<Flag> getFlags() {return _flags;}
 	public CombatLog getLog() { return _log;} 
+	
+	public void addBoom(Boom b) {		
+		_booms.add(b);
+	}	
+	
+	public void reportDeath(Unit u) {
+		
+	}
 		
 	public String getStartInfo(int side) {
 		JSONObject res = new JSONObject();
@@ -202,6 +213,8 @@ public class Combat {
 	}
 	
 	private void nextTick() {
+		_deadUnits = new ArrayList<Unit>();
+		
 		for (int i=0; i<_sides; i++) {
 			_readyList[i] = false;
 		}
@@ -225,13 +238,30 @@ public class Combat {
 			_events.add(new ArrayList<Event>());
 		}
 		
-		//TODO:: process moving, shoting and capturing
+		//Process orders
     	for (HashMap<Integer, Unit> hm : _squads) {
     		for (Unit u : hm.values()) {
     			u.processTick(virtualTime);
     		}
     	}		
-		
+    	
+    	//Process booms
+    	ArrayList<Boom> _toDel = new ArrayList<Boom>();
+    	for (Boom b : _booms) {
+    		b.processTick(virtualTime);   
+    		if (b.isDead) {
+    			_toDel.add(b);
+    		}
+    	}    	
+    	for (Boom b : _toDel) {
+    		_booms.remove(b);
+    	}    	
+    	
+    	//Clear dead units
+    	for (Unit u : _deadUnits) {    		
+    		_allUnits.remove(u);
+    		_squads.get(u.getSide()).remove(u.getId());    		
+    	}
 		
     	//===============================================
     	

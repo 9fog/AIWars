@@ -167,12 +167,13 @@ public class Unit extends MapObject {
 			}
 		} else 
 		if (_hp==0) {
-			getCombat().updateVisibility(this);
 			_isArmed = false;
 			_isMobile = false;
 			setOrder(null);
 			setOrder2(null);
 			setOrder3(null);
+			getCombat().updateVisibility(this);
+			getCombat().reportDeath(this);
 		}
 	}
 	

@@ -1,7 +1,10 @@
 package main.Game.CombatData.Orders;
 
 import core.*;
+import main.Game.CombatData.Boom;
 import main.Game.CombatData.Unit;
+import main.Game.CombatData.Events.EventUnitFire;
+import main.Game.CombatData.Events.EventUnitMove;
 import main.Game.Net.Protocol;
 
 public class OrderFire extends Order {
@@ -50,20 +53,27 @@ public class OrderFire extends Order {
 			}
 			
 			int flyTime = 10*(int)range2;
-			//log("fromX="+_unit.getX()+"; fromY="+_unit.getY()+"; tX="+tX+"; tY="+tY+"; range2 = "+range2+"; flyTime="+flyTime);
 			
-			//String send = Protocol.snd_Combat_UnitFire(_unit, tX, tY, flyTime);
-			//!!!_unit.getPlayer().send(send);
+			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitFire(_unit.getId()), "fire "+_unit.getSide()+" "+_unit.getId());
 			
 			//Оповестить противника, если он видит
-			/*
-			if (_unit.getLookingSize()>0) {
-				//!!! _unit.getLookingUnit().getPlayer().send(send);
+			if (_unit.getLookingUnits().size()>0) {
+				for (int i=0; i<_unit.getCombat().getSidesCount(); i++) {
+					if (i!=_unit.getSide()) {
+						if (_unit.getLookingSize(i)>0) {
+							_unit.getCombat().addEvent(i, new EventUnitFire(_unit.getId()), "fire "+i+" "+_unit.getId());							
+						}
+					}
+				}
 			}
-			*/						
 			
-			//!!! Boom boom = new Boom(_unit, tX, tY, flyTime);	
-			//!!! _unit.getCombat().addBoom(boom);
+			//log("fromX="+_unit.getX()+"; fromY="+_unit.getY()+"; tX="+tX+"; tY="+tY+"; range2 = "+range2+"; flyTime="+flyTime);
+			
+			//if (flyTime>_unit.getCombat().TICK_TIME) {
+			Boom boom = new Boom(_unit, timePoint, tX, tY, flyTime);
+			if (!boom.isDead) {
+				_unit.getCombat().addBoom(boom);
+			}
 			
 			_unit.getReloadTimer().setEndTime(timePoint + _unit.getFireRate());
 		}		

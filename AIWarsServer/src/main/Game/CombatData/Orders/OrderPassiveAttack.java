@@ -40,6 +40,7 @@ public class OrderPassiveAttack extends Order {
 		
 		int dir = _unit.getDirection(_enemy);
 		
+		//Поворот башни отменяем, я думаю
 		if (_unit.getTurretLook()!=dir) {
 			_mode = 0;
 		} else {

@@ -1,6 +1,8 @@
 package main.Game.CombatData.Orders;
 
 import main.Game.CombatData.Unit;
+import main.Game.CombatData.Events.EventUnitMove;
+import main.Game.CombatData.Events.EventUnitRotateTurret;
 import main.Game.Net.Protocol;
 import core.Timer;
 import core.Utils;
@@ -31,14 +33,18 @@ public class OrderRotateTurret extends Order {
 		if (_rotateTimer.getState()==0) {
 			_unit.setTurretLook(_unit.getTurretLook() + _delta);
 
-			String send = Protocol.snd_Combat_UnitRotateTurret(_unit);
-			//!!! _unit.getPlayer().send(send);
+			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitRotateTurret(_unit.getId(), _unit.getTurretLook()), "turret "+_unit.getSide()+" "+_unit.getId()+" "+_unit.getTurretLook());
+			
 			//Оповестить противника, если он видит
-			/*
-			if (_unit.getLookingSize()>0) {
-				//!!! _unit.getLookingUnit().getPlayer().send(send);
+			if (_unit.getLookingUnits().size()>0) {
+				for (int i=0; i<_unit.getCombat().getSidesCount(); i++) {
+					if (i!=_unit.getSide()) {
+						if (_unit.getLookingSize(i)>0) {
+							_unit.getCombat().addEvent(i, new EventUnitRotateTurret(_unit.getId(), _unit.getTurretLook()), "turret "+i+" "+_unit.getId()+" "+_unit.getTurretLook());							
+						}
+					}
+				}
 			}
-			*/			
 			
 			if (_unit.getTurretLook() == _dir) {
 				_unit.setOrder3(null);
