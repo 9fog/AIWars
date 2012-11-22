@@ -18,7 +18,10 @@ package model.parser.commands
 				CMove, 
 				CPlayer, 
 				CRemove, 
-				CShot
+				CFire,
+				CHide,
+				CShow,
+				CTurret
 			];
 		
 		

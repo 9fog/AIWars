@@ -12,7 +12,7 @@ package model.parser
 	import model.parser.commands.CMove;
 	import model.parser.commands.CPlayer;
 	import model.parser.commands.CRemove;
-	import model.parser.commands.CShot;
+	import model.parser.commands.CFire;
 	import model.parser.commands.CommandFactory;
 	
 	import model.vo.TurnVO;
@@ -54,6 +54,7 @@ package model.parser
 					if (start>=0 && end >=0)
 					{
 						var turn:TurnVO = parseStep(data.substring(start,end));
+						turn.turnId += 1;
 						if (turn != null)
 							steps.push(turn);
 						data = data.substring(end + END.length);
@@ -73,7 +74,7 @@ package model.parser
 			var arr:Array = data.split("\n");
 			
 			turn.turnId = int((arr[0] as String).replace(TURN+" ",""));
-			
+			trace(turn.turnId);
 			for(var i:int = 1; i < arr.length; i++)
 			{
 				var command:PC = CommandFactory.getCommand(arr[i]);

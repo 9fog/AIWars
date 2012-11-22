@@ -15,8 +15,9 @@ package model.vo
 		{
 			switch(id)
 			{
+				
 				case 0:
-					return 0x666600;
+					return 0x000080;
 				case 1:
 					return 0x990000;
 				case 2:
@@ -31,6 +32,8 @@ package model.vo
 					return 0x00CCCC;
 				case 7:
 					return 0xCCCC00;
+				case 8:
+					return 0x666600;
 			}
 			return 0xffffff;
 		}

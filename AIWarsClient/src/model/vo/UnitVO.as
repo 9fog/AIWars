@@ -17,8 +17,12 @@ package model.vo
 		public var fire:Boolean;
 		public var cannonRotation:Number;
 		public var hit:Boolean;
-		public var hpCannon:int;
-		public var hpGear:int;
+		public var hp:int;
+		public var hpMax:int;
+		public var isArmed:Boolean;
+		public var isMobile:Boolean;
+		public var isAlive:Boolean;
+		
 		
 		override public function get clone():AItemVO
 		{
@@ -35,8 +39,11 @@ package model.vo
 			item.cannonRotation = cannonRotation;
 			item.fire = false//fire; так надо
 			item.hit = false;//hit; так надо
-			item.hpCannon = hpCannon;
-			item.hpGear = hpGear;
+			item.hp = hp;
+			item.hpMax = hpMax;
+			item.isArmed = isArmed;
+			item.isMobile = isMobile;
+			item.isAlive = isAlive;
 			return item;
 		}
 		

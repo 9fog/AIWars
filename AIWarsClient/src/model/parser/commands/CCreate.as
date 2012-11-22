@@ -34,8 +34,6 @@ package model.parser.commands
 			item.vx = 0;
 			item.vy = 0;
 			item.userId = temp[4];
-			item.hpCannon = item.type.hpCannonMax;
-			item.hpGear = item.type.hpGearMax;
 			item.cannonRotation = 0;
 			space.all.push(item);
 			
