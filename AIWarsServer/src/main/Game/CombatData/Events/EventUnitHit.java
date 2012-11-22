@@ -15,9 +15,6 @@ public class EventUnitHit extends Event {
 		isAlive = alive;
 	}
 	
-
-
-
 	@Override
 	public JSONObject toJSON() {
 		JSONObject jo = new JSONObject();
@@ -28,5 +25,4 @@ public class EventUnitHit extends Event {
 		jo.put("isAlive", isAlive);
 		return jo;	
 	}
-
 }

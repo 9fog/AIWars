@@ -9,7 +9,6 @@ public class EventUnitFire extends Event {
 		this.unitId = unitId;
 	}
 	
-
 	@Override
 	public JSONObject toJSON() {
 		JSONObject jo = new JSONObject();

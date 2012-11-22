@@ -136,19 +136,35 @@ public class Simulator
 		  JSONObject jo = (JSONObject)o;
 		  String event = jo.get("event")+"";
 		  
-		  if (event.equals(EventMoveUnit.EVENT)) {
-			  events.add(new EventMoveUnit(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("toX")+""), Integer.parseInt(jo.get("toY")+"")));
+		  if (event.equals(EventUnitMove.EVENT)) {
+			  events.add(new EventUnitMove(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("toX")+""), Integer.parseInt(jo.get("toY")+"")));
 		  } else
 			  
-	      if (event.equals(EventShowUnit.EVENT)) {
-			  events.add(new EventShowUnit(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("side")+""), jo.get("type")+"",  
+	      if (event.equals(EventUnitShow.EVENT)) {
+			  events.add(new EventUnitShow(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("side")+""), jo.get("type")+"",  
 					                      Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+""), 
 					                      Boolean.parseBoolean(jo.get("isArmed")+""), Boolean.parseBoolean(jo.get("isMobile")+"")));	      
 	      } else
 	    	  
-	      if (event.equals(EventHideUnit.EVENT)) {
-			  events.add(new EventHideUnit(Integer.parseInt(jo.get("unitId")+"")));
-	      }    	 
+	      if (event.equals(EventUnitHide.EVENT)) {
+			  events.add(new EventUnitHide(Integer.parseInt(jo.get("unitId")+"")));
+	      } else
+	    	  
+		  if (event.equals(EventUnitFire.EVENT)) {
+			  events.add(new EventUnitFire(Integer.parseInt(jo.get("unitId")+"")));			  
+		  } else
+	    	  
+	      if (event.equals(EventBoom.EVENT)) {	    	  
+			  events.add(new EventBoom(Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));			  
+		  } else
+			  
+		  if (event.equals(EventUnitRotateTurret.EVENT)) {	    	  
+			  events.add(new EventUnitRotateTurret(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("turretLook")+"")));			  
+		  } else
+			  
+		  if (event.equals(EventUnitHit.EVENT)) {	    	  
+			  events.add(new EventUnitHit(Integer.parseInt(jo.get("unitId")+""), Boolean.parseBoolean(jo.get("isArmed")+""), Boolean.parseBoolean(jo.get("isMobile")+""), Boolean.parseBoolean(jo.get("isAlive")+"")));			  
+		  }			  
 	  }
 	  
 	  _sides.get(side).processTick(events);

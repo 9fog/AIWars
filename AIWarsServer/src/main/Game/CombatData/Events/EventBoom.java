@@ -14,9 +14,9 @@ public class EventBoom extends Event {
 	@Override
 	public JSONObject toJSON() {
 		JSONObject jo = new JSONObject();
+		jo.put("event", "Boom");		
 		jo.put("x", tX);
 		jo.put("y", tY);
 		return jo;	
 	}
-
 }

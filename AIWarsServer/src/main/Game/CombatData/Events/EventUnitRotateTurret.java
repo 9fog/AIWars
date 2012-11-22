@@ -19,5 +19,4 @@ public class EventUnitRotateTurret extends Event {
 		jo.put("turretLook", turretLook);
 		return jo;
 	}
-
 }

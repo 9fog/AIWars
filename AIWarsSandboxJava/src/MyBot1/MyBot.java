@@ -3,7 +3,7 @@ package MyBot1;
 import java.util.ArrayList;
 
 import Sandbox.AbstractBot;
-import Sandbox.EventMoveUnit;
+import Sandbox.EventUnitMove;
 import Sandbox.ObjectFlag;
 import Sandbox.ObjectRock;
 import Sandbox.ObjectUnit;
@@ -38,7 +38,7 @@ public class MyBot extends AbstractBot {
 	public void processTick(ArrayList<Object> events) {
 		// TODO...
 		for (Object eventObject : events) {
-			if (eventObject instanceof EventMoveUnit) {
+			if (eventObject instanceof EventUnitMove) {
 				//TODO::...
 			}
 		}
