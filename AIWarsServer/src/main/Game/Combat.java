@@ -87,6 +87,7 @@ public class Combat {
 		_deadList = new ArrayList<HashMap<Integer, Unit>>();
 		_allUnits = new HashMap<Integer, Unit>();
 		_flags    = new ArrayList<Flag>();
+		_booms    = new ArrayList<Boom>();
 		
 		_visibility = new ArrayList<HashMap<Integer, Unit>>();
 		for (int i=0; i<_sides; i++) {
@@ -120,7 +121,7 @@ public class Combat {
 		}		
 				
 		//Проинициализировать COMBAT LOG
-		_log = new CombatLog(LOG_DIR+Utils.getTimeStamp()+".log");
+		_log = new CombatLog(LOG_DIR+Utils.getTimeStamp()+".clog");
 		for (int i=0; i<_sides; i++) {
 			_log.append("player "+i+" "+botNames.get(i));
 			for (Unit u : _squads.get(i).values()) {
@@ -151,7 +152,8 @@ public class Combat {
 	}	
 	
 	public void reportDeath(Unit u) {
-		
+		_deadUnits.add(u);
+		_map.placeObject(null, u.getX(), u.getY());
 	}
 		
 	public String getStartInfo(int side) {

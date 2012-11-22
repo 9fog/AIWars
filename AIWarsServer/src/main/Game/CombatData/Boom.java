@@ -75,7 +75,7 @@ public class Boom {
 					u.applyDamage(damage);
 					
 					for (int i=0; i<_combat.getSidesCount(); i++) {
-						_combat.addEvent(i, new EventUnitHit(u.getId(), u.isArmed(), u.isMobile(), u.isAlive()), "hit "+u.getId()+" "+u.isArmed()+" "+u.isMobile()+" "+u.isAlive());						
+						_combat.addEvent(i, new EventUnitHit(u.getId(), u.isArmed(), u.isMobile(), u.isAlive()), "hit "+u.getId()+" "+u.getMaxHP()+" "+u.getHP()+" "+u.isArmed()+" "+u.isMobile()+" "+u.isAlive());						
 					}
 					/* old version
 					HashMap<String, String> data = new HashMap<String, String>();
