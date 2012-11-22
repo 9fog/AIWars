@@ -54,14 +54,14 @@ public class OrderFire extends Order {
 			
 			int flyTime = 10*(int)range2;
 			
-			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitFire(_unit.getId()), "fire "+_unit.getSide()+" "+_unit.getId());
+			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitFire(_unit.getId()), "fire "+_unit.getSide()+" "+_unit.getId()+" "+_target.getId());
 			
 			//Оповестить противника, если он видит
 			if (_unit.getLookingUnits().size()>0) {
 				for (int i=0; i<_unit.getCombat().getSidesCount(); i++) {
 					if (i!=_unit.getSide()) {
 						if (_unit.getLookingSize(i)>0) {
-							_unit.getCombat().addEvent(i, new EventUnitFire(_unit.getId()), "fire "+i+" "+_unit.getId());							
+							_unit.getCombat().addEvent(i, new EventUnitFire(_unit.getId()), "fire "+i+" "+_unit.getId()+" "+_target.getId());							
 						}
 					}
 				}
