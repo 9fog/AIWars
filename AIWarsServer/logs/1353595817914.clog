@@ -1,0 +1,335 @@
+init
+player 0 MyBot1
+create 1 4 0 3 0
+create 2 1 1 3 0
+player 1 MyBot2
+create 3 1 15 3 1
+create 4 4 16 3 1
+map 17 7 2:1;14:1;2:5;14:5;
+flag 1 8 3
+end
+turn 0
+end
+turn 1
+end
+turn 2
+move 0 2 2 3 750
+end
+turn 3
+end
+turn 4
+move 0 2 3 3 750
+end
+turn 5
+end
+turn 6
+move 0 2 4 3 750
+show 0 1 3 1 15 3 true true
+show 1 0 2 1 4 3 true true
+move 1 2 4 3 750
+end
+turn 7
+end
+turn 8
+move 0 2 5 3 750
+show 0 1 4 4 16 3 true true
+move 1 2 5 3 750
+end
+turn 9
+end
+turn 10
+move 0 2 6 3 750
+move 1 2 6 3 750
+end
+turn 11
+end
+turn 12
+move 0 2 7 4 750
+move 1 2 7 4 750
+capture 0 1 0 1
+capture 1 1 0 1
+end
+turn 13
+capture 0 1 0 2
+capture 1 1 0 2
+end
+turn 14
+move 0 2 8 4 750
+move 1 2 8 4 750
+capture 0 1 0 3
+capture 1 1 0 3
+end
+turn 15
+turret 1 4 7
+turret 0 4 7
+capture 0 1 0 4
+capture 1 1 0 4
+end
+turn 16
+move 0 2 9 4 750
+move 1 2 9 4 750
+turret 1 4 6
+turret 0 4 6
+capture 0 1 0 5
+capture 1 1 0 5
+end
+turn 17
+fire 1 4 2
+fire 0 4 2
+boom 0 9 5 7
+boom 1 9 5 7
+capture 0 1 0 6
+capture 1 1 0 6
+end
+turn 18
+move 0 2 9 3 750
+move 1 2 9 3 750
+capture 0 1 0 7
+capture 1 1 0 7
+end
+turn 19
+capture 0 1 0 8
+capture 1 1 0 8
+end
+turn 20
+fire 1 4 2
+fire 0 4 2
+boom 0 9 3 7
+boom 1 9 3 7
+hit 0 2 25 21 true true true
+hit 1 2 25 21 true true true
+capture 0 1 0 9
+capture 1 1 0 9
+end
+turn 21
+turret 0 2 1
+turret 1 2 1
+turret 1 3 7
+turret 0 3 7
+capture 0 1 0 10
+capture 1 1 0 10
+end
+turn 22
+turret 0 2 2
+turret 1 2 2
+turret 1 3 6
+turret 0 3 6
+end
+turn 23
+fire 0 2 3
+fire 1 2 3
+boom 0 15 3 5
+boom 1 15 3 5
+hit 0 3 25 22 true true true
+hit 1 3 25 22 true true true
+fire 1 3 2
+fire 0 3 2
+boom 0 9 3 5
+boom 1 9 3 5
+hit 0 2 25 17 true true true
+hit 1 2 25 17 true true true
+fire 1 4 2
+fire 0 4 2
+boom 0 8 3 7
+boom 1 8 3 7
+end
+turn 24
+end
+turn 25
+move 0 2 10 2 750
+move 1 2 10 2 750
+fire 0 2 3
+fire 1 2 3
+boom 0 15 2 5
+boom 1 15 2 5
+fire 1 3 2
+fire 0 3 2
+boom 0 11 2 5
+boom 1 11 2 5
+end
+turn 26
+fire 1 4 2
+fire 0 4 2
+boom 0 11 1 7
+boom 1 11 1 7
+end
+turn 27
+fire 0 2 3
+fire 1 2 3
+boom 0 14 3 5
+boom 1 14 3 5
+fire 1 3 2
+fire 0 3 2
+boom 0 10 1 5
+boom 1 10 1 5
+end
+turn 28
+end
+turn 29
+fire 0 2 3
+fire 1 2 3
+boom 0 15 3 5
+boom 1 15 3 5
+hit 0 3 25 19 true true true
+hit 1 3 25 19 true true true
+fire 1 3 2
+fire 0 3 2
+boom 0 10 1 5
+boom 1 10 1 5
+fire 1 4 2
+fire 0 4 2
+boom 0 9 3 7
+boom 1 9 3 7
+end
+turn 30
+end
+turn 31
+fire 0 2 3
+fire 1 2 3
+boom 0 14 3 5
+boom 1 14 3 5
+fire 1 3 2
+fire 0 3 2
+boom 0 10 2 5
+boom 1 10 2 5
+hit 0 2 25 13 true true true
+hit 1 2 25 13 true true true
+end
+turn 32
+fire 1 4 2
+fire 0 4 2
+boom 0 10 2 7
+boom 1 10 2 7
+hit 0 2 25 9 true true true
+hit 1 2 25 9 true true true
+end
+turn 33
+move 0 2 10 3 750
+move 1 2 10 3 750
+fire 0 2 3
+fire 1 2 3
+boom 0 16 2 5
+boom 1 16 2 5
+fire 1 3 2
+fire 0 3 2
+boom 0 11 4 5
+boom 1 11 4 5
+end
+turn 34
+end
+turn 35
+move 0 2 10 4 750
+move 1 2 10 4 750
+fire 0 2 3
+fire 1 2 3
+boom 0 16 2 5
+boom 1 16 2 5
+fire 1 3 2
+fire 0 3 2
+boom 0 10 5 5
+boom 1 10 5 5
+fire 1 4 2
+fire 0 4 2
+boom 0 10 4 7
+boom 1 10 4 7
+hit 0 2 25 5 true true true
+hit 1 2 25 5 true true true
+end
+turn 36
+end
+turn 37
+move 0 2 10 5 750
+move 1 2 10 5 750
+fire 0 2 3
+fire 1 2 3
+boom 0 15 4 5
+boom 1 15 4 5
+fire 1 3 2
+fire 0 3 2
+boom 0 10 4 5
+boom 1 10 4 5
+end
+turn 38
+fire 1 4 2
+fire 0 4 2
+boom 0 11 4 7
+boom 1 11 4 7
+end
+turn 39
+fire 0 2 3
+fire 1 2 3
+boom 0 15 3 5
+boom 1 15 3 5
+hit 0 3 25 15 true true true
+hit 1 3 25 15 true true true
+end
+turn 40
+fire 1 3 2
+fire 0 3 2
+boom 0 11 6 5
+boom 1 11 6 5
+end
+turn 41
+fire 0 2 3
+fire 1 2 3
+boom 0 16 2 5
+boom 1 16 2 5
+fire 1 4 2
+fire 0 4 2
+boom 0 9 5 7
+boom 1 9 5 7
+end
+turn 42
+fire 1 3 2
+fire 0 3 2
+boom 0 10 5 5
+boom 1 10 5 5
+hit 0 2 25 1 true true true
+hit 1 2 25 1 true true true
+end
+turn 43
+end
+turn 44
+move 0 2 11 5 750
+move 1 2 11 5 750
+fire 1 4 2
+fire 0 4 2
+boom 0 12 6 7
+boom 1 12 6 7
+end
+turn 45
+end
+turn 46
+move 0 2 12 4 750
+move 1 2 12 4 750
+fire 0 2 3
+fire 1 2 3
+boom 0 14 2 5
+boom 1 14 2 5
+fire 1 3 2
+fire 0 3 2
+boom 0 11 3 5
+boom 1 11 3 5
+end
+turn 47
+fire 1 4 2
+fire 0 4 2
+boom 0 13 3 7
+boom 1 13 3 7
+end
+turn 48
+fire 0 2 3
+fire 1 2 3
+boom 0 15 3 5
+boom 1 15 3 5
+hit 0 3 25 12 true true true
+hit 1 3 25 12 true true true
+end
+turn 49
+move 1 3 15 4 750
+move 0 3 15 4 750
+fire 1 3 2
+fire 0 3 2
+boom 0 13 3 5
+boom 1 13 3 5
+end

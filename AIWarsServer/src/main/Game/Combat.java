@@ -159,6 +159,10 @@ public class Combat {
 	public void notifyDeath(Unit u) {
 		_deadUnits.add(u);
 		_map.placeObject(null, u.getX(), u.getY());
+		
+		//TODO:: Не уничтожена ли база одного из противников?
+		//Условия завершения игры
+		//......
 	}
 		
 	public String getStartInfo(int side) {
@@ -268,6 +272,11 @@ public class Combat {
     	for (Unit u : _deadUnits) {    		
     		_allUnits.remove(u);
     		_squads.get(u.getSide()).remove(u.getId());    		
+    	}
+    	
+    	//Process flag capturing
+    	for (Flag f : _flags) {
+    		f.processTick(virtualTime);
     	}
 		
     	//===============================================

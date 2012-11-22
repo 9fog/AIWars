@@ -69,6 +69,10 @@ public class CombatMap {
 		
 		if ((dx==0)&&(dy==0)) {return null;}
 		
+		if ((toX<0)||(toX>_sizeX-1)||(toY<0)||(toY>_sizeY-1)) {
+			return null;
+		}
+		
 		if ((dx<=1)&&(dy<=1)&&(_objects[toY][toX]!=null)) {
 			return null;
 		}

@@ -164,6 +164,10 @@ public class Simulator
 			  
 		  if (event.equals(EventUnitHit.EVENT)) {	    	  
 			  events.add(new EventUnitHit(Integer.parseInt(jo.get("unitId")+""), Boolean.parseBoolean(jo.get("isArmed")+""), Boolean.parseBoolean(jo.get("isMobile")+""), Boolean.parseBoolean(jo.get("isAlive")+"")));			  
+		  } else
+			  
+		  if (event.equals(EventFlag.EVENT)) {	    	  
+			  events.add(new EventFlag(Integer.parseInt(jo.get("id")+""), Integer.parseInt(jo.get("side")+""), Integer.parseInt(jo.get("state")+"")));			  
 		  }			  
 	  }
 	  

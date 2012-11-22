@@ -1,6 +1,7 @@
 package main.Game.CombatData;
 
 import main.Game.Combat;
+import main.Game.CombatData.Events.EventFlag;
 import core.*;
 
 public class Flag extends MapObject {
@@ -30,26 +31,51 @@ public class Flag extends MapObject {
 	
 	
 	public void processTick(long timePoint) {
+		//log("processTick");
 		if (_timer.getState(timePoint)==0) {
 			countUnits();
 			
-			int delta = _sidesPower[0] - _sidesPower[1]; 
-			//log("delta = "+delta);
-			if (delta>0) {
-				incState(0, delta);
-			} else
-			if (delta<0) {
-				incState(1, -delta);
+			int dominateSide = -1;
+			int dominatePower = 0;
+			int sidesNearFlag = 0;
+			for (int i=0; i<_combat.getSidesCount(); i++) {
+				if (_sidesPower[i]>0) {
+					sidesNearFlag++;
+				}
+				
+				if (_sidesPower[i]>dominatePower) {
+					dominateSide = i;
+					dominatePower = _sidesPower[i];
+				}
 			}
 			
-			_timer.setEndTime(Utils.getTimeStamp() + PERIOD);
+			if ((dominateSide>-1)&&(sidesNearFlag<3)) {			
+				int delta = dominatePower;
+				for (int i=0; i<_combat.getSidesCount(); i++) {						
+					if (i!=dominateSide) {
+						delta -= _sidesPower[i];
+					}
+				}
+																			
+				//log("delta = "+delta);
+				if (delta>0) {
+					//if (dominateSide==_side) {
+						incState(dominateSide, delta);
+					//} else {
+					//	incState(dominateSide, -delta);						
+					//}
+				}			
+			}
+			
+			_timer.setEndTime(timePoint + PERIOD);
 		}
-	}
-	
+	}	
 	
 	private void countUnits() {
-		_sidesPower[0] = 0;
-		_sidesPower[1] = 0;
+		for (int i=0; i<_combat.getSidesCount(); i++) {
+			_sidesPower[i] = 0;			
+		}
+		
 		for (int i=getX()-1; i<=getX()+1; i++) {
 			for (int j=getY()-1; j<=getY()+1; j++) {
 				//log(i+":"+j);
@@ -61,9 +87,18 @@ public class Flag extends MapObject {
 				}catch(Exception e) {}
 			}
 		}
+		
+		/*
+		String log = "";
+		for (int i=0; i<_combat.getSidesCount(); i++) {
+			log += _sidesPower[i]+ " ";			
+		}
+		log(log);
+		*/
 	}
 	
 	private void incState(int side, int delta) {
+		//log("Side:"+_side+"; Dominator:"+side+"; Delta:"+delta);
 		if (_side==side) {
 			if (_state<STATE_MAX) {
 				_state+=delta;
@@ -76,6 +111,7 @@ public class Flag extends MapObject {
 		} else {
 			if (_state==0) {
 				_side = side;
+				_state = delta;
 				_combat.notifyFlag(this);
 			} else {
 				if (_state<delta) {
@@ -87,7 +123,9 @@ public class Flag extends MapObject {
 		}
 		
 		//REPORT
-		//_combat.send2all(Protocol.snd_Combat_Flag(_id, _side, _state));
+		for (int i=0; i<_combat.getSidesCount(); i++) {
+			_combat.addEvent(i, new EventFlag(_id, _side, _state), "capture "+i+" "+_id+" "+_side+" "+_state);
+		}
 	}
 	
 	private void log(String txt) {
