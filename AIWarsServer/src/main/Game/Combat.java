@@ -25,8 +25,11 @@ import net.minidev.json.JSONObject;
 import org.jboss.netty.channel.Channel;
 
 import core.Utils;
+import core.coreConfig;
 
 public class Combat {
+	private final Main _parent;
+	
 	private final Channel _channel;
 	private final int     _sides;
 	
@@ -56,11 +59,13 @@ public class Combat {
 	//public final String[] DEFAULT_MAPS = {"testMap1x1.map", "testMap2x2.map"};
 	public final String[] DEFAULT_MAPS = {"testMapSmall.map", "testMap2x2.map"};
 	
-	public final String LOG_URL = "http://aiwars.9fog.com/combat_log/view.html?url=";
-	public final String LOG_DIR = "logs/";
+	public final String LOG_URL = "http://aiwars.9fog.com/log_player/view.html?url=";
+	public final String LOG_DIR = coreConfig.getInstance().get("logDir");
 	
 	
-	public Combat(Channel channel, ArrayList<String> botNames, int maxTicks, String mapName) throws Exception{
+	public Combat(Main parent, Channel channel, ArrayList<String> botNames, int maxTicks, String mapName) throws Exception{
+		_parent = parent;
+		
 		_channel = channel;
 		_sides = botNames.size();		
 		_maxTicks = maxTicks;
@@ -151,7 +156,7 @@ public class Combat {
 		_booms.add(b);
 	}	
 	
-	public void reportDeath(Unit u) {
+	public void notifyDeath(Unit u) {
 		_deadUnits.add(u);
 		_map.placeObject(null, u.getX(), u.getY());
 	}
@@ -303,16 +308,6 @@ public class Combat {
 		//startFlagTimer();
 	}	
 	
-	public void notifyDeath(main.Game.CombatData.Unit u) {
-		/*
-		_deadList.get(u.getSide()).put(u.getId(), u);
-		if (_deadList.get(u.getSide()).size()==_squads.get(u.getSide()).size()) { //Все юниты одной из сторон мертвы
-			if (_flagTimer==null) {
-				Final(false);
-			}
-		}
-		*/
-	}
 	
 	public void updateVisibility(Unit u) {
 		//!!! Этот алгоритм рассчитан только на две воюющие стороны !!!		

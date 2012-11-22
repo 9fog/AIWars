@@ -140,7 +140,7 @@ public class Main extends TCombat {
 			botNames.add(jo+"");
 		}
 		
-		Combat c = new Combat(ctx.channel, botNames, Integer.parseInt(ctx.cmd.get("maxTicks")+""), ctx.cmd.get("mapName")+"");	
+		Combat c = new Combat(this, ctx.channel, botNames, Integer.parseInt(ctx.cmd.get("maxTicks")+""), ctx.cmd.get("mapName")+"");	
 		_combatsList.put(ctx.channel.getId(), c);
 		
 		return null;

@@ -137,9 +137,11 @@ public class Unit extends MapObject {
 		if (_hp<0) {
 			_hp = 0;
 		}
+		/*
 		if (_hp==0) {
 			_combat.notifyDeath(this);
 		}
+		*/
 		if (_hp>_maxHP) {
 			_hp = _maxHP;
 		}
@@ -173,7 +175,7 @@ public class Unit extends MapObject {
 			setOrder2(null);
 			setOrder3(null);
 			getCombat().updateVisibility(this);
-			getCombat().reportDeath(this);
+			getCombat().notifyDeath(this);
 		}
 	}
 	
