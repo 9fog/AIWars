@@ -62,7 +62,7 @@ public class Boom {
 			}		
 			
 			for (int i=0; i<_combat.getSidesCount(); i++) {
-				_combat.addEvent(i, new EventBoom(_tX, _tY), "boom "+_tX+" "+_tY);
+				_combat.addEvent(i, new EventBoom(_tX, _tY), "boom "+_tX+" "+_tY+" "+_shoter.getFirePower());
 			}			
 			
 			//Нанести повреждения
