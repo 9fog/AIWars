@@ -1,0 +1,3402 @@
+init
+player 0 MyBot1
+create 1 1 1 16 0
+create 3 4 0 17 0
+create 4 1 1 17 0
+create 7 2 1 18 0
+player 1 MyBot1
+create 2 3 48 16 1
+create 5 1 48 17 1
+create 6 4 49 17 1
+create 8 1 48 18 1
+map 50 36 15:6;16:6;19:6;15:7;35:7;17:9;7:12;40:12;15:22;34:28;4:32;13:32;
+flag 1 9 7
+flag 2 39 7
+flag 3 24 11
+flag 4 24 23
+flag 5 9 27
+flag 6 39 27
+end
+turn 0
+end
+turn 1
+end
+turn 2
+move 0 1 2 15 750
+move 0 4 2 17 750
+move 0 7 2 18 1250
+move 1 2 47 16 2250
+move 1 5 47 17 750
+move 1 8 47 18 750
+end
+turn 3
+end
+turn 4
+move 0 1 3 14 750
+move 0 4 3 17 750
+move 1 8 46 18 750
+end
+turn 5
+move 0 7 3 18 1250
+end
+turn 6
+move 0 1 4 13 750
+move 0 4 4 17 750
+move 1 5 46 17 750
+move 1 8 45 18 750
+end
+turn 7
+move 1 2 46 16 2250
+end
+turn 8
+move 0 1 5 12 750
+move 0 4 5 17 750
+move 0 7 4 18 1250
+move 1 8 44 18 750
+end
+turn 9
+end
+turn 10
+move 0 1 6 11 750
+move 0 4 6 17 750
+move 1 5 45 17 750
+move 1 8 43 18 750
+end
+turn 11
+move 0 7 5 18 1250
+end
+turn 12
+move 0 1 7 11 750
+move 0 4 7 17 750
+move 1 2 45 16 2250
+move 1 8 42 18 750
+end
+turn 13
+end
+turn 14
+move 0 1 8 10 750
+move 0 4 8 17 750
+move 0 7 6 18 1250
+move 1 5 44 17 750
+move 1 8 41 18 750
+end
+turn 15
+end
+turn 16
+move 0 1 9 9 750
+move 0 4 9 17 750
+move 1 5 44 16 750
+move 1 8 40 18 750
+end
+turn 17
+move 0 7 7 18 1250
+end
+turn 18
+move 0 1 10 8 750
+move 0 4 10 17 750
+move 1 5 44 15 750
+move 1 8 39 18 750
+capture 0 1 0 1
+capture 1 1 0 1
+end
+turn 19
+capture 0 1 0 2
+capture 1 1 0 2
+end
+turn 20
+move 0 1 10 7 750
+move 0 4 11 17 750
+move 0 7 8 18 1250
+move 1 5 44 14 750
+move 1 8 38 18 750
+capture 0 1 0 3
+capture 1 1 0 3
+end
+turn 21
+capture 0 1 0 4
+capture 1 1 0 4
+end
+turn 22
+move 0 4 12 17 750
+move 1 2 45 17 2250
+move 1 5 44 13 750
+move 1 8 37 18 750
+capture 0 1 0 5
+capture 1 1 0 5
+coins 0 1
+end
+turn 23
+move 0 7 9 18 1250
+capture 0 1 0 6
+capture 1 1 0 6
+end
+turn 24
+move 0 4 13 17 750
+move 1 5 44 12 750
+move 1 8 36 18 750
+capture 0 1 0 7
+capture 1 1 0 7
+end
+turn 25
+capture 0 1 0 8
+capture 1 1 0 8
+end
+turn 26
+move 0 4 14 17 750
+move 0 7 10 18 1250
+move 1 5 44 11 750
+move 1 8 35 18 750
+capture 0 1 0 9
+capture 1 1 0 9
+end
+turn 27
+move 1 2 44 17 2250
+capture 0 1 0 10
+capture 1 1 0 10
+coins 0 2
+end
+turn 28
+move 0 4 15 17 750
+move 1 5 43 10 750
+move 1 8 34 18 750
+end
+turn 29
+move 0 7 11 18 1250
+end
+turn 30
+move 0 4 16 17 750
+move 1 5 42 9 750
+move 1 8 33 18 750
+end
+turn 31
+end
+turn 32
+move 0 4 17 17 750
+move 0 7 12 18 1250
+move 1 2 43 17 2250
+move 1 5 41 8 750
+move 1 8 32 18 750
+coins 0 3
+end
+turn 33
+end
+turn 34
+move 0 4 18 17 750
+move 1 5 40 7 750
+move 1 8 31 17 750
+capture 0 2 1 1
+capture 1 2 1 1
+end
+turn 35
+move 0 7 13 18 1250
+capture 0 2 1 2
+capture 1 2 1 2
+end
+turn 36
+move 0 4 19 17 750
+move 1 8 30 16 750
+show 1 0 4 1 19 17 true true
+show 0 1 8 1 30 16 true true
+move 0 8 30 16 750
+capture 0 2 1 3
+capture 1 2 1 3
+end
+turn 37
+move 1 2 42 17 2250
+coins 0 4
+capture 0 2 1 4
+capture 1 2 1 4
+end
+turn 38
+move 0 4 20 17 750
+move 1 4 20 17 750
+move 0 7 14 18 1250
+move 1 8 29 15 750
+move 0 8 29 15 750
+capture 0 2 1 5
+capture 1 2 1 5
+coins 1 1
+end
+turn 39
+capture 0 2 1 6
+capture 1 2 1 6
+end
+turn 40
+move 0 4 21 17 750
+move 1 4 21 17 750
+move 1 8 28 14 750
+move 0 8 28 14 750
+capture 0 2 1 7
+capture 1 2 1 7
+end
+turn 41
+move 0 7 15 18 1250
+capture 0 2 1 8
+capture 1 2 1 8
+end
+turn 42
+move 0 4 22 17 750
+move 1 4 22 17 750
+move 1 2 41 17 2250
+move 1 8 27 13 750
+move 0 8 27 13 750
+coins 0 5
+capture 0 2 1 9
+capture 1 2 1 9
+end
+turn 43
+capture 0 2 1 10
+capture 1 2 1 10
+coins 1 2
+end
+turn 44
+move 0 4 23 17 750
+move 1 4 23 17 750
+move 0 7 16 18 1250
+move 1 8 26 12 750
+show 1 0 7 2 16 18 true true
+move 0 8 26 12 750
+end
+turn 45
+end
+turn 46
+move 0 4 24 17 750
+move 1 4 24 17 750
+move 1 8 25 11 750
+move 0 8 25 11 750
+capture 0 3 1 1
+capture 1 3 1 1
+end
+turn 47
+move 0 7 17 18 1250
+move 1 7 17 18 1250
+move 1 2 40 17 2250
+coins 0 6
+capture 0 3 1 2
+capture 1 3 1 2
+end
+turn 48
+move 0 4 25 17 750
+move 1 4 25 17 750
+coins 1 3
+capture 0 3 1 3
+capture 1 3 1 3
+coins 0 0
+create 9 attack 0 16 0
+end
+turn 49
+fire 0 4 8
+fire 1 4 8
+boom 0 26 11 5
+boom 1 26 11 5
+capture 0 3 1 4
+capture 1 3 1 4
+end
+turn 50
+move 0 4 26 17 750
+move 1 4 26 17 750
+move 0 7 18 18 1250
+move 1 7 18 18 1250
+move 0 9 1 15 1250
+capture 0 3 1 5
+capture 1 3 1 5
+coins 1 4
+end
+turn 51
+capture 0 3 1 6
+capture 1 3 1 6
+end
+turn 52
+move 0 4 27 17 750
+move 1 4 27 17 750
+move 1 2 39 17 2250
+coins 0 1
+capture 0 3 1 7
+capture 1 3 1 7
+end
+turn 53
+move 0 7 19 18 1250
+move 1 7 19 18 1250
+move 0 9 2 14 1250
+coins 1 5
+capture 0 3 1 8
+capture 1 3 1 8
+end
+turn 54
+move 0 4 28 17 750
+show 0 1 2 3 39 17 true true
+move 1 4 28 17 750
+turret 0 7 1
+turret 1 7 1
+capture 0 3 1 9
+capture 1 3 1 9
+end
+turn 55
+fire 0 7 8
+fire 1 7 8
+capture 0 3 1 10
+capture 1 3 1 10
+coins 1 6
+end
+turn 56
+move 0 4 29 17 750
+move 1 4 29 17 750
+move 0 7 20 17 1250
+move 1 7 20 17 1250
+move 0 9 3 13 1250
+coins 1 0
+create 10 attack 48 16 1
+end
+turn 57
+move 1 2 38 17 2250
+move 0 2 38 17 2250
+boom 0 24 12 10
+boom 1 24 12 10
+coins 0 2
+end
+turn 58
+move 0 4 30 17 750
+move 1 4 30 17 750
+move 1 10 47 16 1250
+coins 1 1
+end
+turn 59
+move 0 7 21 16 1250
+move 1 7 21 16 1250
+fire 0 7 8
+fire 1 7 8
+boom 0 26 10 10
+boom 1 26 10 10
+move 0 9 4 12 1250
+end
+turn 60
+move 0 4 31 17 750
+move 1 4 31 17 750
+coins 1 2
+end
+turn 61
+move 1 10 46 16 1250
+end
+turn 62
+move 0 4 32 16 750
+move 1 4 32 16 750
+move 0 7 22 15 1250
+move 1 7 22 15 1250
+move 0 9 5 11 1250
+move 1 2 37 17 2250
+move 0 2 37 17 2250
+turret 1 2 7
+turret 0 2 7
+coins 0 3
+end
+turn 63
+fire 0 7 8
+fire 1 7 8
+boom 0 26 11 10
+boom 1 26 11 10
+hit 0 8 25 23 true true true
+hit 1 8 25 23 true true true
+turret 1 2 6
+turret 0 2 6
+coins 1 3
+end
+turn 64
+move 0 4 33 15 750
+show 0 1 5 1 40 7 true true
+move 1 4 33 15 750
+move 1 10 45 16 1250
+end
+turn 65
+move 0 7 23 14 1250
+move 1 7 23 14 1250
+move 0 9 6 10 1250
+turret 1 8 7
+turret 0 8 7
+coins 1 4
+end
+turn 66
+move 0 4 34 14 750
+show 0 1 10 2 45 16 true true
+move 1 4 34 14 750
+turret 1 8 6
+turret 0 8 6
+end
+turn 67
+turret 0 4 1
+turret 1 4 1
+fire 0 7 8
+fire 1 7 8
+boom 0 25 11 10
+boom 1 25 11 10
+hit 0 8 25 14 true true true
+hit 1 8 25 14 true true true
+move 1 2 36 17 2250
+move 0 2 36 17 2250
+move 1 10 44 16 1250
+move 0 10 44 16 1250
+coins 0 4
+end
+turn 68
+move 0 4 35 13 750
+move 1 4 35 13 750
+move 0 7 24 13 1250
+move 1 7 24 13 1250
+move 0 9 7 9 1250
+move 1 8 25 12 750
+move 0 8 25 12 750
+coins 1 5
+end
+turn 69
+end
+turn 70
+move 0 4 36 12 750
+move 1 4 36 12 750
+turret 1 8 5
+turret 0 8 5
+move 1 10 43 16 1250
+move 0 10 43 16 1250
+coins 1 6
+end
+turn 71
+fire 0 7 8
+fire 1 7 8
+boom 0 25 12 10
+boom 1 25 12 10
+hit 0 8 25 4 true true true
+hit 1 8 25 4 true true true
+move 0 9 8 8 1250
+coins 1 0
+create 11 attack 48 16 1
+end
+turn 72
+move 0 4 37 11 750
+move 1 4 37 11 750
+move 1 2 35 17 2250
+move 0 2 35 17 2250
+fire 1 8 7
+fire 0 8 7
+boom 0 24 13 5
+boom 1 24 13 5
+hit 0 7 70 67 true true true
+hit 1 7 70 67 true true true
+turret 1 10 7
+turret 0 10 7
+coins 0 5
+end
+turn 73
+fire 0 4 5
+fire 1 4 5
+boom 0 41 8 5
+boom 1 41 8 5
+move 1 10 42 16 1250
+move 0 10 42 16 1250
+fire 1 10 4
+fire 0 10 4
+boom 0 38 12 10
+boom 1 38 12 10
+move 1 11 48 17 1250
+coins 1 1
+end
+turn 74
+move 0 4 38 10 750
+move 1 4 38 10 750
+move 0 7 25 13 1250
+move 1 7 25 13 1250
+end
+turn 75
+fire 0 4 5
+fire 1 4 5
+boom 0 40 7 5
+boom 1 40 7 5
+hit 0 5 25 21 true true true
+hit 1 5 25 21 true true true
+turret 1 5 7
+turret 0 5 7
+coins 1 2
+end
+turn 76
+move 0 4 39 9 750
+move 1 4 39 9 750
+turret 1 5 6
+turret 0 5 6
+turret 1 8 4
+turret 0 8 4
+move 1 10 41 16 1250
+move 0 10 41 16 1250
+move 1 11 48 18 1250
+end
+turn 77
+fire 0 4 5
+fire 1 4 5
+boom 0 40 7 5
+boom 1 40 7 5
+hit 0 5 25 18 true true true
+hit 1 5 25 18 true true true
+move 0 7 26 13 1250
+move 1 7 26 13 1250
+move 1 2 34 17 2250
+move 0 2 34 17 2250
+turret 1 5 5
+turret 0 5 5
+coins 0 6
+end
+turn 78
+move 0 4 40 8 750
+move 1 4 40 8 750
+turret 1 8 3
+turret 0 8 3
+coins 1 3
+coins 0 0
+create 12 attack 0 16 0
+end
+turn 79
+turret 0 4 0
+turret 1 4 0
+turret 0 7 0
+turret 1 7 0
+turret 1 5 4
+turret 0 5 4
+fire 1 8 7
+fire 0 8 7
+boom 0 26 13 5
+boom 1 26 13 5
+hit 0 7 70 64 true true true
+hit 1 7 70 64 true true true
+move 1 10 40 16 1250
+move 0 10 40 16 1250
+turret 1 10 0
+turret 0 10 0
+move 1 11 47 19 1250
+end
+turn 80
+fire 0 4 5
+fire 1 4 5
+boom 0 40 7 5
+boom 1 40 7 5
+hit 0 5 25 14 true true true
+hit 1 5 25 14 true true true
+move 0 7 26 12 1250
+move 1 7 26 12 1250
+move 0 12 1 15 1250
+fire 1 10 4
+fire 0 10 4
+coins 1 4
+end
+turn 81
+turret 1 2 7
+turret 0 2 7
+move 1 5 41 7 750
+move 0 5 41 7 750
+capture 0 2 1 9
+capture 1 2 1 9
+end
+turn 82
+move 1 2 33 17 2250
+move 0 2 33 17 2250
+turret 1 2 0
+turret 0 2 0
+turret 1 8 2
+turret 0 8 2
+move 1 10 39 16 1250
+move 0 10 39 16 1250
+move 1 11 46 20 1250
+boom 0 40 8 10
+boom 1 40 8 10
+hit 0 4 25 17 true true true
+hit 1 4 25 17 true true true
+coins 0 1
+capture 0 2 1 8
+capture 1 2 1 8
+end
+turn 83
+move 0 7 26 11 1250
+move 1 7 26 11 1250
+move 0 12 2 14 1250
+turret 1 2 1
+turret 0 2 1
+move 1 5 41 8 750
+move 0 5 41 8 750
+capture 0 2 1 7
+capture 1 2 1 7
+coins 1 5
+end
+turn 84
+fire 1 2 4
+fire 0 2 4
+fire 1 10 4
+fire 0 10 4
+capture 0 2 1 6
+capture 1 2 1 6
+end
+turn 85
+move 1 5 42 9 750
+move 0 5 42 9 750
+turret 1 8 1
+turret 0 8 1
+move 1 10 38 16 1250
+move 0 10 38 16 1250
+move 1 11 45 21 1250
+capture 0 2 1 5
+capture 1 2 1 5
+coins 1 6
+end
+turn 86
+move 0 4 40 9 750
+move 1 4 40 9 750
+turret 0 4 1
+turret 1 4 1
+move 0 7 25 11 1250
+move 1 7 25 11 1250
+move 0 12 3 13 1250
+boom 0 39 7 10
+boom 1 39 7 10
+coins 1 0
+create 13 attack 48 16 1
+show 0 1 13 2 48 16 true true
+end
+turn 87
+turret 0 4 2
+turret 1 4 2
+move 1 2 32 17 2250
+move 0 2 32 17 2250
+move 1 5 43 10 750
+move 0 5 43 10 750
+turret 1 5 5
+turret 0 5 5
+turret 1 8 0
+turret 0 8 0
+boom 0 42 9 25
+boom 1 42 9 25
+hit 0 5 25 12 true true true
+hit 1 5 25 12 true true true
+coins 0 2
+end
+turn 88
+move 0 4 41 9 750
+hide 0 2
+show 0 1 6 4 49 17 true true
+move 1 4 41 9 750
+fire 1 8 7
+fire 0 8 7
+boom 0 25 11 5
+boom 1 25 11 5
+hit 0 7 70 61 true true true
+hit 1 7 70 61 true true true
+move 1 10 37 16 1250
+move 0 10 37 16 1250
+move 1 11 44 22 1250
+move 1 13 47 16 1250
+move 0 13 47 16 1250
+coins 1 1
+end
+turn 89
+turret 0 7 1
+turret 1 7 1
+move 0 12 4 12 1250
+end
+turn 90
+move 0 4 42 9 750
+move 1 4 42 9 750
+turret 0 4 3
+turret 1 4 3
+turret 0 7 2
+turret 1 7 2
+turret 1 5 6
+turret 0 5 6
+fire 1 8 7
+fire 0 8 7
+boom 0 25 11 5
+boom 1 25 11 5
+hit 0 7 70 58 true true true
+hit 1 7 70 58 true true true
+coins 1 2
+end
+turn 91
+fire 0 4 5
+fire 1 4 5
+boom 0 43 10 5
+boom 1 43 10 5
+hit 0 5 25 8 true true true
+hit 1 5 25 8 true true true
+turret 0 7 3
+turret 1 7 3
+move 1 10 36 16 1250
+move 0 10 36 16 1250
+turret 1 10 1
+turret 0 10 1
+move 1 11 43 23 1250
+move 1 13 46 16 1250
+move 0 13 46 16 1250
+end
+turn 92
+turret 0 7 4
+turret 1 7 4
+move 0 12 5 11 1250
+move 1 2 31 17 2250
+move 1 5 42 11 750
+move 0 5 42 11 750
+fire 1 8 7
+fire 0 8 7
+boom 0 25 11 5
+boom 1 25 11 5
+hit 0 7 70 54 true true true
+hit 1 7 70 54 true true true
+fire 1 10 4
+fire 0 10 4
+turret 1 13 7
+turret 0 13 7
+coins 0 3
+end
+turn 93
+fire 0 7 8
+fire 1 7 8
+boom 0 25 12 10
+boom 1 25 12 10
+hit 0 7 70 52 true true true
+hit 1 7 70 52 true true true
+hit 0 8 25 0 false false false
+hit 1 8 25 0 false false false
+fire 1 13 4
+fire 0 13 4
+coins 1 3
+capture 0 3 1 9
+capture 1 3 1 9
+end
+turn 94
+turret 1 5 7
+turret 0 5 7
+move 1 10 35 16 1250
+move 0 10 35 16 1250
+move 1 11 42 24 1250
+move 1 13 45 16 1250
+move 0 13 45 16 1250
+boom 0 43 8 10
+boom 1 43 8 10
+capture 0 3 1 8
+capture 1 3 1 8
+end
+turn 95
+turret 0 4 4
+turret 1 4 4
+move 0 12 6 10 1250
+turret 1 5 0
+turret 0 5 0
+boom 0 42 10 10
+boom 1 42 10 10
+hit 0 4 25 15 true true true
+hit 1 4 25 15 true true true
+hit 0 5 25 6 true true true
+hit 1 5 25 6 true true true
+capture 0 3 1 7
+capture 1 3 1 7
+coins 1 4
+end
+turn 96
+fire 1 10 4
+fire 0 10 4
+capture 0 3 1 6
+capture 1 3 1 6
+end
+turn 97
+move 0 4 43 10 750
+move 1 4 43 10 750
+move 1 2 30 17 2250
+move 1 5 42 12 750
+move 0 5 42 12 750
+move 1 10 34 16 1250
+move 0 10 34 16 1250
+move 1 11 41 25 1250
+move 1 13 44 16 1250
+move 0 13 44 16 1250
+coins 0 4
+capture 0 3 1 5
+capture 1 3 1 5
+end
+turn 98
+move 0 12 7 9 1250
+turret 1 13 0
+turret 0 13 0
+boom 0 42 9 10
+boom 1 42 9 10
+coins 1 5
+capture 0 3 1 4
+capture 1 3 1 4
+end
+turn 99
+move 0 4 44 11 750
+move 1 4 44 11 750
+turret 0 4 5
+turret 1 4 5
+turret 1 5 1
+turret 0 5 1
+fire 1 13 4
+fire 0 13 4
+boom 0 43 10 10
+boom 1 43 10 10
+capture 0 3 1 3
+capture 1 3 1 3
+end
+turn 100
+fire 0 4 5
+fire 1 4 5
+boom 0 42 12 5
+boom 1 42 12 5
+hit 0 5 25 2 false true true
+hit 1 5 25 2 false true true
+turret 1 6 7
+turret 0 6 7
+move 1 10 33 16 1250
+hide 1 10
+move 1 11 40 26 1250
+move 1 13 43 16 1250
+move 0 13 43 16 1250
+capture 0 3 1 2
+capture 1 3 1 2
+coins 1 6
+capture 0 6 1 1
+capture 1 6 1 1
+end
+turn 101
+move 0 4 45 12 750
+move 1 4 45 12 750
+move 1 5 43 12 750
+move 0 5 43 12 750
+fire 1 6 4
+fire 0 6 4
+boom 0 45 12 7
+boom 1 45 12 7
+hit 0 4 25 10 true true true
+hit 1 4 25 10 true true true
+capture 0 3 1 1
+capture 1 3 1 1
+capture 0 6 1 2
+capture 1 6 1 2
+coins 1 0
+create 14 attack 48 16 1
+show 0 1 14 2 48 16 true true
+end
+turn 102
+turret 0 4 6
+turret 1 4 6
+move 1 2 29 17 2250
+coins 0 5
+capture 0 3 1 0
+capture 1 3 1 0
+capture 0 6 1 3
+capture 1 6 1 3
+end
+turn 103
+fire 0 4 5
+fire 1 4 5
+boom 0 43 12 5
+boom 1 43 12 5
+hit 0 5 25 0 false false false
+hit 1 5 25 0 false false false
+move 1 10 32 16 1250
+move 1 13 42 16 1250
+move 0 13 42 16 1250
+move 1 14 48 17 1250
+move 0 14 48 17 1250
+coins 1 1
+capture 0 3 0 1
+capture 1 3 0 1
+capture 0 6 1 4
+capture 1 6 1 4
+end
+turn 104
+fire 1 6 4
+fire 0 6 4
+boom 0 44 13 7
+boom 1 44 13 7
+turret 1 13 1
+turret 0 13 1
+capture 0 3 0 2
+capture 1 3 0 2
+capture 0 6 1 5
+capture 1 6 1 5
+coins 1 2
+end
+turn 105
+fire 1 13 4
+fire 0 13 4
+boom 0 45 12 10
+boom 1 45 12 10
+hit 0 4 25 4 true true true
+hit 1 4 25 4 true true true
+capture 0 3 0 3
+capture 1 3 0 3
+coins 0 6
+capture 0 6 1 6
+capture 1 6 1 6
+end
+turn 106
+move 1 10 31 16 1250
+move 1 13 41 16 1250
+move 0 13 41 16 1250
+move 1 14 48 18 1250
+move 0 14 48 18 1250
+turret 1 14 7
+turret 0 14 7
+capture 0 3 0 4
+capture 1 3 0 4
+capture 0 6 1 7
+capture 1 6 1 7
+coins 0 0
+create 15 attack 0 16 0
+end
+turn 107
+move 0 4 46 12 750
+move 1 4 46 12 750
+move 1 2 28 17 2250
+show 0 1 2 3 28 17 true true
+move 0 2 28 17 2250
+fire 1 6 4
+fire 0 6 4
+boom 0 45 13 7
+boom 1 45 13 7
+coins 0 1
+capture 0 3 0 5
+capture 1 3 0 5
+capture 0 6 1 8
+capture 1 6 1 8
+end
+turn 108
+move 0 15 1 16 1250
+coins 1 3
+capture 0 3 0 6
+capture 1 3 0 6
+capture 0 6 1 9
+capture 1 6 1 9
+end
+turn 109
+move 0 4 47 12 750
+move 1 4 47 12 750
+turret 1 6 0
+turret 0 6 0
+move 1 10 30 16 1250
+move 1 13 40 16 1250
+move 0 13 40 16 1250
+fire 1 13 4
+fire 0 13 4
+move 1 14 47 19 1250
+move 0 14 47 19 1250
+capture 0 3 0 7
+capture 1 3 0 7
+capture 0 6 1 10
+capture 1 6 1 10
+coins 1 4
+end
+turn 110
+fire 1 6 4
+fire 0 6 4
+boom 0 47 12 7
+boom 1 47 12 7
+hide 0 6
+hide 0 13
+hide 0 14
+hit 0 4 25 0 false false false
+hit 1 4 25 0 false false false
+capture 0 3 0 8
+capture 1 3 0 8
+coins 0 2
+end
+turn 111
+move 0 15 1 17 1250
+boom 0 48 12 10
+boom 1 48 12 10
+capture 0 3 0 9
+capture 1 3 0 9
+end
+turn 112
+move 1 2 27 17 2250
+move 0 2 27 17 2250
+move 1 10 29 16 1250
+show 0 1 10 2 29 16 true true
+move 0 10 29 16 1250
+move 1 13 39 17 1250
+move 1 14 46 20 1250
+coins 0 3
+capture 0 3 0 10
+capture 1 3 0 10
+end
+turn 113
+coins 1 5
+end
+turn 114
+move 0 15 2 17 1250
+coins 1 6
+end
+turn 115
+move 1 10 28 16 1250
+move 0 10 28 16 1250
+move 1 13 38 17 1250
+move 1 14 45 21 1250
+coins 0 4
+coins 1 0
+create 16 attack 48 16 1
+end
+turn 116
+turret 1 10 0
+turret 0 10 0
+end
+turn 117
+move 0 15 3 17 1250
+move 1 16 47 17 1250
+move 1 2 26 17 2250
+move 0 2 26 17 2250
+turret 1 10 7
+turret 0 10 7
+coins 0 5
+end
+turn 118
+move 1 10 27 16 1250
+move 0 10 27 16 1250
+move 1 13 37 17 1250
+move 1 14 44 22 1250
+coins 1 1
+end
+turn 119
+turret 1 2 0
+turret 0 2 0
+coins 1 2
+end
+turn 120
+move 0 15 4 17 1250
+move 1 16 46 18 1250
+fire 1 2 7
+fire 0 2 7
+boom 0 25 11 25
+boom 1 25 11 25
+hit 0 7 70 37 true true true
+hit 1 7 70 37 true true true
+coins 0 6
+end
+turn 121
+move 1 10 26 16 1250
+move 0 10 26 16 1250
+turret 1 10 0
+turret 0 10 0
+move 1 13 36 17 1250
+move 1 14 43 23 1250
+coins 0 0
+create 17 attack 0 16 0
+end
+turn 122
+move 1 2 25 17 2250
+move 0 2 25 17 2250
+fire 1 10 7
+fire 0 10 7
+boom 0 24 10 10
+boom 1 24 10 10
+coins 0 1
+end
+turn 123
+move 0 17 0 15 1250
+move 0 15 5 17 1250
+move 1 16 45 19 1250
+coins 1 3
+end
+turn 124
+move 1 10 25 16 1250
+move 0 10 25 16 1250
+move 1 13 35 17 1250
+move 1 14 42 24 1250
+coins 1 4
+end
+turn 125
+coins 0 2
+end
+turn 126
+move 0 17 0 14 1250
+move 0 15 6 17 1250
+move 1 16 44 20 1250
+fire 1 10 7
+fire 0 10 7
+boom 0 25 11 10
+boom 1 25 11 10
+hit 0 7 70 30 true true true
+hit 1 7 70 30 true true true
+end
+turn 127
+move 1 2 24 17 2250
+move 0 2 24 17 2250
+move 1 10 24 16 1250
+move 0 10 24 16 1250
+move 1 13 34 18 1250
+move 1 14 41 25 1250
+coins 0 3
+end
+turn 128
+fire 1 2 7
+fire 0 2 7
+boom 0 27 12 25
+boom 1 27 12 25
+coins 1 5
+end
+turn 129
+move 0 17 1 13 1250
+move 0 15 7 17 1250
+move 1 16 44 21 1250
+coins 1 6
+end
+turn 130
+move 1 10 23 16 1250
+move 0 10 23 16 1250
+move 1 13 33 18 1250
+coins 0 4
+coins 1 0
+create 18 attack 48 16 1
+end
+turn 131
+end
+turn 132
+move 0 17 2 12 1250
+move 0 15 8 17 1250
+move 1 16 44 22 1250
+move 1 2 23 17 2250
+move 0 2 23 17 2250
+move 1 18 47 16 1250
+coins 0 5
+end
+turn 133
+move 1 10 22 16 1250
+move 0 10 22 16 1250
+turret 1 10 1
+turret 0 10 1
+move 1 13 32 18 1250
+coins 1 1
+end
+turn 134
+fire 1 10 7
+fire 0 10 7
+boom 0 24 10 10
+boom 1 24 10 10
+coins 1 2
+end
+turn 135
+move 0 17 3 11 1250
+move 0 15 9 17 1250
+move 1 16 43 23 1250
+move 1 18 46 16 1250
+coins 0 6
+end
+turn 136
+fire 1 2 7
+fire 0 2 7
+boom 0 24 12 25
+boom 1 24 12 25
+hit 0 7 70 28 true true true
+hit 1 7 70 28 true true true
+move 1 10 21 16 1250
+move 0 10 21 16 1250
+move 1 13 31 18 1250
+coins 0 0
+create 19 attack 0 16 0
+end
+turn 137
+move 1 2 22 17 2250
+move 0 2 22 17 2250
+coins 0 1
+end
+turn 138
+move 0 17 4 10 1250
+move 0 19 1 15 1250
+move 0 15 10 17 1250
+move 1 16 42 24 1250
+move 1 18 45 16 1250
+fire 1 10 7
+fire 0 10 7
+boom 0 24 12 10
+boom 1 24 12 10
+coins 1 3
+end
+turn 139
+move 1 10 20 16 1250
+hide 1 10
+move 1 13 30 18 1250
+coins 1 4
+end
+turn 140
+coins 0 2
+end
+turn 141
+move 0 17 5 9 1250
+move 0 19 2 14 1250
+move 0 15 11 17 1250
+move 1 18 44 16 1250
+end
+turn 142
+move 1 2 21 17 2250
+hide 1 2
+move 1 10 19 16 1250
+move 1 13 29 18 1250
+coins 0 3
+end
+turn 143
+coins 1 5
+end
+turn 144
+move 0 17 6 8 1250
+move 0 19 3 13 1250
+move 0 15 12 17 1250
+move 1 16 42 25 1250
+move 1 18 43 16 1250
+coins 1 6
+end
+turn 145
+move 1 10 18 16 1250
+show 1 0 15 2 12 17 true true
+show 0 1 10 2 18 16 true true
+move 0 10 18 16 1250
+move 1 13 28 18 1250
+coins 0 4
+coins 1 0
+create 20 attack 48 16 1
+end
+turn 146
+end
+turn 147
+move 0 17 7 8 1250
+move 0 19 4 12 1250
+move 0 15 13 17 1250
+move 1 15 13 17 1250
+move 1 16 42 26 1250
+move 1 2 20 17 2250
+move 1 18 42 16 1250
+move 1 20 47 17 1250
+coins 0 5
+end
+turn 148
+move 1 10 17 16 1250
+move 0 10 17 16 1250
+move 1 13 27 18 1250
+coins 1 1
+end
+turn 149
+turret 1 10 0
+turret 0 10 0
+coins 1 2
+end
+turn 150
+move 0 19 4 11 1250
+move 0 15 14 17 1250
+show 0 1 2 3 20 17 true true
+move 1 15 14 17 1250
+turret 0 15 1
+turret 1 15 1
+move 1 16 41 26 1250
+move 1 18 41 16 1250
+move 1 20 46 18 1250
+turret 1 10 7
+turret 0 10 7
+coins 0 6
+end
+turn 151
+turret 0 15 2
+turret 1 15 2
+move 1 10 16 16 1250
+move 0 10 16 16 1250
+move 1 13 26 18 1250
+coins 0 0
+create 21 attack 0 16 0
+end
+turn 152
+move 1 2 19 16 2250
+move 0 2 19 16 2250
+coins 0 1
+end
+turn 153
+move 0 19 4 10 1250
+move 0 21 1 16 1250
+move 0 15 15 17 1250
+move 1 15 15 17 1250
+move 1 18 40 16 1250
+move 1 20 45 19 1250
+coins 1 3
+end
+turn 154
+move 1 10 15 15 1250
+move 0 10 15 15 1250
+move 1 13 25 18 1250
+coins 1 4
+end
+turn 155
+coins 0 2
+end
+turn 156
+move 0 19 5 9 1250
+move 0 21 2 15 1250
+move 0 15 16 17 1250
+move 1 15 16 17 1250
+move 1 18 39 16 1250
+move 1 20 44 20 1250
+end
+turn 157
+move 1 2 18 15 2250
+move 0 2 18 15 2250
+move 1 10 14 14 1250
+move 0 10 14 14 1250
+move 1 13 24 18 1250
+coins 0 3
+end
+turn 158
+coins 1 5
+end
+turn 159
+move 0 19 6 8 1250
+move 0 21 3 14 1250
+move 0 15 17 17 1250
+move 1 15 17 17 1250
+turret 0 15 1
+turret 1 15 1
+move 1 18 38 16 1250
+move 1 20 43 21 1250
+turret 1 10 6
+turret 0 10 6
+coins 1 6
+end
+turn 160
+turret 0 15 0
+turret 1 15 0
+move 1 10 13 13 1250
+show 1 0 1 1 10 7 true true
+move 0 10 13 13 1250
+turret 1 10 5
+turret 0 10 5
+move 1 13 23 18 1250
+show 0 1 13 2 23 18 true true
+move 0 13 23 18 1250
+coins 0 4
+coins 1 0
+create 22 attack 48 16 1
+end
+turn 161
+turret 0 15 7
+turret 1 15 7
+turret 1 10 4
+turret 0 10 4
+end
+turn 162
+move 0 21 4 13 1250
+move 0 15 18 17 1250
+move 1 15 18 17 1250
+fire 0 15 10
+fire 1 15 10
+boom 0 13 14 10
+boom 1 13 14 10
+hit 0 10 70 68 true true true
+hit 1 10 70 68 true true true
+move 1 2 17 14 2250
+move 0 2 17 14 2250
+move 1 18 37 16 1250
+move 1 20 42 22 1250
+move 1 22 48 17 1250
+turret 1 10 3
+turret 0 10 3
+coins 0 5
+end
+turn 163
+move 1 10 12 12 1250
+show 1 0 17 2 7 8 true true
+show 1 0 9 2 8 8 true true
+show 1 0 12 2 7 9 true true
+move 0 10 12 12 1250
+move 1 13 22 18 1250
+move 0 13 22 18 1250
+coins 1 1
+end
+turn 164
+coins 1 2
+end
+turn 165
+move 0 19 6 7 1250
+move 0 21 5 12 1250
+move 0 15 19 17 1250
+move 1 15 19 17 1250
+turret 1 2 7
+turret 0 2 7
+move 1 18 36 16 1250
+move 1 20 41 23 1250
+move 1 22 48 18 1250
+turret 1 13 0
+turret 0 13 0
+coins 0 6
+end
+turn 166
+turret 0 1 1
+turret 1 1 1
+fire 0 15 2
+fire 1 15 2
+boom 0 17 14 10
+boom 1 17 14 10
+hit 0 2 50 41 true true true
+hit 1 2 50 41 true true true
+fire 1 2 1
+fire 0 2 1
+move 1 10 11 11 1250
+show 1 0 19 2 6 7 true true
+show 1 0 21 2 5 12 true true
+move 0 10 11 11 1250
+move 1 13 21 18 1250
+move 0 13 21 18 1250
+coins 0 0
+create 23 attack 0 16 0
+end
+turn 167
+turret 0 17 1
+turret 1 17 1
+turret 0 1 2
+turret 1 1 2
+turret 0 9 1
+turret 1 9 1
+turret 0 12 1
+turret 1 12 1
+move 1 2 16 13 2250
+move 0 2 16 13 2250
+turret 1 10 2
+turret 0 10 2
+coins 0 1
+end
+turn 168
+turret 0 17 2
+turret 1 17 2
+turret 0 1 3
+turret 1 1 3
+move 0 19 7 7 1250
+move 1 19 7 7 1250
+move 0 21 6 11 1250
+move 1 21 6 11 1250
+move 0 23 1 16 1250
+turret 0 9 2
+turret 1 9 2
+turret 0 12 2
+turret 1 12 2
+move 0 15 20 17 1250
+move 1 15 20 17 1250
+move 1 18 35 16 1250
+move 1 20 40 24 1250
+move 1 22 47 19 1250
+turret 1 10 1
+turret 0 10 1
+boom 0 12 6 25
+boom 1 12 6 25
+coins 1 3
+end
+turn 169
+turret 0 17 3
+turret 1 17 3
+turret 0 1 4
+turret 1 1 4
+turret 0 9 3
+turret 1 9 3
+turret 0 12 3
+turret 1 12 3
+move 1 10 10 10 1250
+move 0 10 10 10 1250
+turret 1 10 0
+turret 0 10 0
+move 1 13 20 18 1250
+move 0 13 20 18 1250
+fire 1 13 15
+fire 0 13 15
+boom 0 20 17 10
+boom 1 20 17 10
+hit 0 15 70 60 true true true
+hit 1 15 70 60 true true true
+hit 0 13 70 68 true true true
+hit 1 13 70 68 true true true
+coins 1 4
+end
+turn 170
+fire 0 17 10
+fire 1 17 10
+boom 0 11 10 10
+boom 1 11 10 10
+hit 0 10 70 66 true true true
+hit 1 10 70 66 true true true
+fire 0 1 10
+fire 1 1 10
+boom 0 10 10 5
+boom 1 10 10 5
+hit 0 10 70 62 true true true
+hit 1 10 70 62 true true true
+fire 0 9 10
+fire 1 9 10
+boom 0 10 10 10
+boom 1 10 10 10
+hit 0 10 70 56 true true true
+hit 1 10 70 56 true true true
+fire 1 10 1
+fire 0 10 1
+boom 0 10 7 10
+boom 1 10 7 10
+hit 0 1 25 17 true true true
+hit 1 1 25 17 true true true
+coins 0 2
+end
+turn 171
+move 0 19 8 7 1250
+move 1 19 8 7 1250
+turret 0 19 1
+turret 1 19 1
+move 0 21 7 11 1250
+move 1 21 7 11 1250
+turret 0 21 1
+turret 1 21 1
+move 0 23 2 16 1250
+move 0 15 21 17 1250
+move 1 15 21 17 1250
+move 1 18 34 16 1250
+move 1 20 40 25 1250
+move 1 22 46 20 1250
+end
+turn 172
+move 0 1 10 8 750
+move 1 1 10 8 750
+fire 0 1 10
+fire 1 1 10
+boom 0 10 10 5
+boom 1 10 10 5
+hit 0 10 70 52 true true true
+hit 1 10 70 52 true true true
+turret 0 19 2
+turret 1 19 2
+turret 0 21 2
+turret 1 21 2
+move 1 2 15 12 2250
+move 0 2 15 12 2250
+move 1 10 9 9 1250
+move 0 10 9 9 1250
+move 1 13 19 18 1250
+move 0 13 19 18 1250
+coins 0 3
+end
+turn 173
+turret 0 19 3
+turret 1 19 3
+coins 1 5
+end
+turn 174
+fire 0 17 10
+fire 1 17 10
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 10 70 44 true true true
+hit 1 10 70 44 true true true
+move 0 1 10 9 750
+move 1 1 10 9 750
+fire 0 19 10
+fire 1 19 10
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 10 70 38 true true true
+hit 1 10 70 38 true true true
+hit 0 1 25 15 true true true
+hit 1 1 25 15 true true true
+move 0 21 8 10 1250
+move 1 21 8 10 1250
+move 0 23 3 16 1250
+fire 0 9 10
+fire 1 9 10
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 10 70 28 true true true
+hit 1 10 70 28 true true true
+hit 0 1 25 13 true true true
+hit 1 1 25 13 true true true
+turret 0 12 2
+turret 1 12 2
+move 0 15 22 17 1250
+move 1 15 22 17 1250
+fire 1 2 1
+fire 0 2 1
+boom 0 11 9 25
+boom 1 11 9 25
+hit 0 1 25 9 true false true
+hit 1 1 25 9 true false true
+move 1 18 33 16 1250
+move 1 22 45 21 1250
+coins 1 6
+end
+turn 175
+turret 0 1 5
+turret 1 1 5
+fire 0 12 10
+fire 1 12 10
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 10 70 20 true true true
+hit 1 10 70 20 true true true
+hit 0 1 25 7 true false true
+hit 1 1 25 7 true false true
+move 1 13 18 18 1250
+move 0 13 18 18 1250
+coins 0 4
+coins 1 0
+create 24 attack 48 16 1
+end
+turn 176
+turret 0 21 1
+turret 1 21 1
+turret 0 15 6
+turret 1 15 6
+turret 1 10 1
+turret 0 10 1
+turret 1 13 1
+turret 0 13 1
+end
+turn 177
+move 0 21 8 9 1250
+move 1 21 8 9 1250
+move 0 23 4 16 1250
+move 0 15 23 17 1250
+move 1 15 23 17 1250
+fire 0 15 13
+fire 1 15 13
+boom 0 18 18 10
+boom 1 18 18 10
+hit 0 13 70 59 true true true
+hit 1 13 70 59 true true true
+move 1 2 14 11 2250
+move 0 2 14 11 2250
+move 1 18 32 16 1250
+move 1 22 44 22 1250
+move 1 24 47 16 1250
+turret 1 10 2
+turret 0 10 2
+turret 1 13 2
+turret 0 13 2
+coins 0 5
+end
+turn 178
+fire 0 17 10
+fire 1 17 10
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 68 true true true
+hit 1 21 70 68 true true true
+hit 0 10 70 11 true true true
+hit 1 10 70 11 true true true
+hit 0 1 25 5 true false true
+hit 1 1 25 5 true false true
+fire 0 19 10
+fire 1 19 10
+boom 0 10 10 10
+boom 1 10 10 10
+hit 0 1 25 3 true false true
+hit 1 1 25 3 true false true
+fire 0 9 10
+fire 1 9 10
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 66 true true true
+hit 1 21 70 66 true true true
+hit 0 10 70 4 true true true
+hit 1 10 70 4 true true true
+hit 0 1 25 1 true false true
+hit 1 1 25 1 true false true
+fire 1 10 1
+fire 0 10 1
+boom 0 10 9 10
+boom 1 10 9 10
+hit 0 10 70 2 true true true
+hit 1 10 70 2 true true true
+hit 0 1 25 0 false false false
+hit 1 1 25 0 false false false
+move 1 13 17 17 1250
+move 0 13 17 17 1250
+fire 1 13 15
+fire 0 13 15
+boom 0 23 18 10
+boom 1 23 18 10
+hit 0 15 70 58 true true true
+hit 1 15 70 58 true true true
+coins 1 1
+end
+turn 179
+fire 0 12 10
+fire 1 12 10
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 64 true true true
+hit 1 21 70 64 true true true
+hide 1 17
+hide 1 19
+hide 1 21
+hide 1 9
+hide 1 12
+hit 0 10 70 0 false false false
+hit 1 10 70 0 false false false
+coins 1 2
+end
+turn 180
+move 0 23 5 16 1250
+move 0 15 24 17 1250
+hide 0 13
+hide 0 15
+move 1 18 31 16 1250
+move 1 22 43 22 1250
+move 1 24 46 16 1250
+coins 0 6
+end
+turn 181
+move 1 13 16 16 1250
+coins 0 0
+create 25 attack 0 16 0
+end
+turn 182
+move 1 2 13 10 2250
+move 0 2 13 10 2250
+coins 0 1
+end
+turn 183
+move 0 23 6 16 1250
+move 0 25 1 16 1250
+move 0 15 25 17 1250
+show 0 1 18 2 31 16 true true
+show 1 0 15 2 25 17 true true
+move 1 15 25 17 1250
+move 1 18 30 16 1250
+move 0 18 30 16 1250
+move 1 22 42 22 1250
+move 1 24 45 16 1250
+coins 1 3
+end
+turn 184
+move 1 13 15 15 1250
+coins 1 4
+end
+turn 185
+coins 0 2
+end
+turn 186
+move 0 23 7 16 1250
+move 0 25 2 15 1250
+move 0 15 26 17 1250
+move 1 15 26 17 1250
+move 1 18 29 16 1250
+move 0 18 29 16 1250
+move 1 22 41 23 1250
+move 1 24 44 16 1250
+end
+turn 187
+turret 0 15 5
+turret 1 15 5
+move 1 2 12 9 2250
+show 1 0 19 2 8 7 true true
+show 1 0 21 2 8 9 true true
+show 1 0 9 2 8 8 true true
+move 0 2 12 9 2250
+turret 1 18 7
+turret 0 18 7
+move 1 13 14 14 1250
+coins 0 3
+end
+turn 188
+turret 0 15 4
+turret 1 15 4
+turret 1 2 6
+turret 0 2 6
+turret 1 18 6
+turret 0 18 6
+coins 1 5
+end
+turn 189
+fire 0 19 2
+fire 1 19 2
+boom 0 13 10 10
+boom 1 13 10 10
+move 0 23 8 16 1250
+show 0 1 13 2 14 14 true true
+show 1 0 23 2 8 16 true true
+move 1 23 8 16 1250
+move 0 25 3 14 1250
+move 0 15 27 17 1250
+move 1 15 27 17 1250
+fire 1 2 21
+fire 0 2 21
+boom 0 8 9 25
+boom 1 8 9 25
+hit 0 17 70 68 true true true
+hit 1 17 70 68 true true true
+hit 0 12 70 66 true true true
+hit 1 12 70 66 true true true
+hit 0 9 70 65 true true true
+hit 1 9 70 65 true true true
+hit 0 21 70 41 true true true
+hit 1 21 70 41 true true true
+move 1 18 28 16 1250
+move 0 18 28 16 1250
+move 1 22 40 24 1250
+move 1 24 43 16 1250
+coins 1 6
+end
+turn 190
+move 1 13 13 13 1250
+move 0 13 13 13 1250
+coins 0 4
+coins 1 0
+create 26 attack 48 16 1
+end
+turn 191
+end
+turn 192
+turret 0 21 2
+turret 1 21 2
+move 0 23 9 16 1250
+move 1 23 9 16 1250
+move 0 25 4 13 1250
+turret 0 9 2
+turret 1 9 2
+move 0 15 28 18 1250
+move 1 15 28 18 1250
+move 1 2 11 8 2250
+show 1 0 17 2 7 8 true true
+show 1 0 12 2 7 9 true true
+move 0 2 11 8 2250
+move 1 18 27 16 1250
+move 0 18 27 16 1250
+move 1 24 42 16 1250
+move 1 26 47 16 1250
+coins 0 5
+end
+turn 193
+fire 0 21 2
+fire 1 21 2
+boom 0 10 9 10
+boom 1 10 9 10
+fire 0 9 2
+fire 1 9 2
+boom 0 11 8 10
+boom 1 11 8 10
+hit 0 2 50 31 true true true
+hit 1 2 50 31 true true true
+move 1 13 12 12 1250
+move 0 13 12 12 1250
+turret 1 13 3
+turret 0 13 3
+coins 1 1
+end
+turn 194
+turret 0 23 1
+turret 1 23 1
+fire 0 12 2
+fire 1 12 2
+boom 0 12 8 10
+boom 1 12 8 10
+hit 0 2 50 29 true true true
+hit 1 2 50 29 true true true
+turret 1 13 4
+turret 0 13 4
+coins 1 2
+end
+turn 195
+move 0 23 10 16 1250
+move 1 23 10 16 1250
+fire 0 23 13
+fire 1 23 13
+boom 0 13 13 10
+boom 1 13 13 10
+move 0 25 5 12 1250
+move 0 15 29 18 1250
+move 1 15 29 18 1250
+move 1 18 26 16 1250
+move 0 18 26 16 1250
+turret 1 18 5
+turret 0 18 5
+move 1 22 39 24 1250
+move 1 24 41 16 1250
+move 1 26 46 16 1250
+turret 1 13 5
+turret 0 13 5
+coins 0 6
+end
+turn 196
+turret 0 19 2
+turret 1 19 2
+turret 0 15 5
+turret 1 15 5
+turret 1 18 4
+turret 0 18 4
+move 1 13 11 11 1250
+show 1 0 25 2 5 12 true true
+move 0 13 11 11 1250
+coins 0 0
+create 27 attack 0 16 0
+end
+turn 197
+turret 0 17 2
+turret 1 17 2
+fire 0 19 2
+fire 1 19 2
+boom 0 12 9 10
+boom 1 12 9 10
+fire 0 21 2
+fire 1 21 2
+boom 0 11 8 10
+boom 1 11 8 10
+hit 0 2 50 22 true true true
+hit 1 2 50 22 true true true
+fire 0 9 2
+fire 1 9 2
+boom 0 11 8 10
+boom 1 11 8 10
+hit 0 2 50 14 false true true
+hit 1 2 50 14 false true true
+turret 0 15 6
+turret 1 15 6
+move 1 2 10 7 2250
+move 0 2 10 7 2250
+turret 1 18 3
+turret 0 18 3
+coins 0 1
+end
+turn 198
+fire 0 17 2
+fire 1 17 2
+boom 0 11 8 10
+boom 1 11 8 10
+move 0 23 11 16 1250
+move 1 23 11 16 1250
+move 0 25 6 11 1250
+move 1 25 6 11 1250
+move 0 27 0 15 1250
+move 0 15 30 18 1250
+move 1 15 30 18 1250
+turret 0 15 7
+turret 1 15 7
+move 1 18 25 16 1250
+move 0 18 25 16 1250
+fire 1 18 15
+fire 0 18 15
+boom 0 30 18 10
+boom 1 30 18 10
+hit 0 15 70 52 true true true
+hit 1 15 70 52 true true true
+move 1 22 39 25 1250
+move 1 24 40 16 1250
+move 1 26 45 17 1250
+coins 1 3
+end
+turn 199
+fire 0 15 18
+fire 1 15 18
+boom 0 25 17 10
+boom 1 25 17 10
+hit 0 18 70 68 true true true
+hit 1 18 70 68 true true true
+move 1 13 10 10 1250
+move 0 13 10 10 1250
+turret 1 13 4
+turret 0 13 4
+coins 1 4
+end
+turn 200
+turret 0 23 0
+turret 1 23 0
+fire 1 13 23
+fire 0 13 23
+boom 0 12 17 10
+boom 1 12 17 10
+coins 0 2
+end
+turn 201
+fire 0 19 2
+fire 1 19 2
+boom 0 10 7 10
+boom 1 10 7 10
+hit 0 2 50 8 false true true
+hit 1 2 50 8 false true true
+turret 0 21 1
+turret 1 21 1
+move 0 23 12 16 1250
+move 1 23 12 16 1250
+fire 0 23 13
+fire 1 23 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 39 true true true
+hit 1 21 70 39 true true true
+move 0 25 7 11 1250
+move 1 25 7 11 1250
+turret 0 25 1
+turret 1 25 1
+turret 0 9 1
+turret 1 9 1
+move 0 27 1 14 1250
+turret 0 12 1
+turret 1 12 1
+move 0 15 31 18 1250
+move 1 15 31 18 1250
+move 1 18 24 15 1250
+hide 1 15
+move 0 18 24 15 1250
+move 1 22 39 26 1250
+move 1 24 39 16 1250
+move 1 26 44 18 1250
+end
+turn 202
+fire 0 17 2
+fire 1 17 2
+boom 0 10 6 10
+boom 1 10 6 10
+hit 0 2 50 6 false true true
+hit 1 2 50 6 false true true
+fire 0 21 2
+fire 1 21 2
+boom 0 9 6 10
+boom 1 9 6 10
+turret 0 25 2
+turret 1 25 2
+fire 0 9 2
+fire 1 9 2
+boom 0 11 7 10
+boom 1 11 7 10
+hit 0 2 50 4 false true true
+hit 1 2 50 4 false true true
+fire 0 12 2
+fire 1 12 2
+boom 0 10 8 10
+boom 1 10 8 10
+hit 0 2 50 2 false true true
+hit 1 2 50 2 false true true
+move 1 13 9 9 1250
+hide 1 23
+move 0 13 9 9 1250
+coins 0 3
+end
+turn 203
+coins 1 5
+end
+turn 204
+move 0 23 13 16 1250
+move 0 25 8 11 1250
+move 1 25 8 11 1250
+move 0 27 2 13 1250
+move 0 15 32 18 1250
+move 1 18 23 15 1250
+move 0 18 23 15 1250
+move 1 24 38 16 1250
+show 1 0 15 2 32 18 true true
+show 0 1 24 2 38 16 true true
+move 0 24 38 16 1250
+move 1 26 43 19 1250
+coins 1 6
+end
+turn 205
+fire 0 19 2
+fire 1 19 2
+boom 0 10 7 10
+boom 1 10 7 10
+hit 0 2 50 0 false false false
+hit 1 2 50 0 false false false
+coins 0 4
+coins 1 0
+create 28 attack 48 16 1
+end
+turn 206
+turret 0 25 1
+turret 1 25 1
+end
+turn 207
+move 0 23 14 16 1250
+move 0 25 9 10 1250
+move 1 25 9 10 1250
+move 0 27 3 12 1250
+show 1 0 27 2 3 12 true true
+move 1 27 3 12 1250
+move 0 15 33 19 1250
+move 1 15 33 19 1250
+move 1 18 22 15 1250
+move 0 18 22 15 1250
+turret 1 18 2
+turret 0 18 2
+move 1 24 37 16 1250
+move 0 24 37 16 1250
+move 1 26 42 20 1250
+move 1 28 48 17 1250
+turret 1 13 5
+turret 0 13 5
+coins 0 5
+end
+turn 208
+turret 1 18 1
+turret 0 18 1
+turret 1 13 6
+turret 0 13 6
+coins 1 1
+end
+turn 209
+fire 1 18 7
+fire 0 18 7
+boom 0 25 11 10
+boom 1 25 11 10
+hit 0 7 70 18 true true true
+hit 1 7 70 18 true true true
+fire 1 13 21
+fire 0 13 21
+boom 0 8 9 10
+boom 1 8 9 10
+hit 0 12 70 64 true true true
+hit 1 12 70 64 true true true
+hit 0 9 70 63 true true true
+hit 1 9 70 63 true true true
+hit 0 21 70 30 false true true
+hit 1 21 70 30 false true true
+hit 0 13 70 57 true true true
+hit 1 13 70 57 true true true
+coins 1 2
+end
+turn 210
+turret 0 21 2
+turret 1 21 2
+move 0 23 15 16 1250
+turret 0 25 0
+turret 1 25 0
+turret 0 9 2
+turret 1 9 2
+move 0 27 4 11 1250
+move 1 27 4 11 1250
+turret 0 12 2
+turret 1 12 2
+move 0 15 34 20 1250
+move 1 15 34 20 1250
+turret 0 15 0
+turret 1 15 0
+move 1 18 21 15 1250
+show 1 0 23 2 15 16 true true
+move 0 18 21 15 1250
+move 1 24 36 16 1250
+move 0 24 36 16 1250
+turret 1 24 7
+turret 0 24 7
+move 1 26 41 21 1250
+move 1 28 48 18 1250
+coins 0 6
+end
+turn 211
+turret 0 17 3
+turret 1 17 3
+turret 0 19 3
+turret 1 19 3
+fire 0 25 13
+fire 1 25 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 28 false true true
+hit 1 21 70 28 false true true
+hit 0 13 70 51 true true true
+hit 1 13 70 51 true true true
+hit 0 25 70 68 true true true
+hit 1 25 70 68 true true true
+turret 0 9 3
+turret 1 9 3
+fire 0 12 13
+fire 1 12 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 26 false true true
+hit 1 21 70 26 false true true
+hit 0 13 70 44 true true true
+hit 1 13 70 44 true true true
+hit 0 25 70 66 true true true
+hit 1 25 70 66 true true true
+turret 0 15 1
+turret 1 15 1
+turret 1 24 6
+turret 0 24 6
+coins 0 0
+create 29 attack 0 16 0
+end
+turn 212
+fire 0 17 13
+fire 1 17 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 24 false true true
+hit 1 21 70 24 false true true
+hit 0 13 70 34 false true true
+hit 1 13 70 34 false true true
+hit 0 25 70 64 true true true
+hit 1 25 70 64 true true true
+fire 0 19 13
+fire 1 19 13
+boom 0 8 10 10
+boom 1 8 10 10
+hit 0 21 70 22 false true true
+hit 1 21 70 22 false true true
+hit 0 25 70 62 true true true
+hit 1 25 70 62 true true true
+fire 0 9 13
+fire 1 9 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 20 false true true
+hit 1 21 70 20 false true true
+hit 0 13 70 27 false true true
+hit 1 13 70 27 false true true
+hit 0 25 70 60 true true true
+hit 1 25 70 60 true true true
+turret 0 27 1
+turret 1 27 1
+fire 0 15 24
+fire 1 15 24
+boom 0 36 16 10
+boom 1 36 16 10
+hit 0 24 70 60 true true true
+hit 1 24 70 60 true true true
+turret 1 24 5
+turret 0 24 5
+coins 0 1
+end
+turn 213
+move 0 23 16 16 1250
+move 1 23 16 16 1250
+move 0 25 10 10 1250
+move 1 25 10 10 1250
+move 0 27 5 11 1250
+move 1 27 5 11 1250
+fire 0 27 13
+fire 1 27 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 18 false true true
+hit 1 21 70 18 false true true
+hit 0 13 70 18 false true true
+hit 1 13 70 18 false true true
+move 0 29 1 16 1250
+move 0 15 35 21 1250
+show 0 1 20 2 40 25 true true
+show 0 1 22 2 39 26 true true
+show 0 1 26 2 41 21 true true
+move 1 15 35 21 1250
+move 1 18 20 15 1250
+move 0 18 20 15 1250
+fire 1 18 7
+fire 0 18 7
+boom 0 25 11 10
+boom 1 25 11 10
+hit 0 7 70 9 true true true
+hit 1 7 70 9 true true true
+move 1 24 35 16 1250
+move 0 24 35 16 1250
+move 1 26 40 22 1250
+move 0 26 40 22 1250
+move 1 28 48 19 1250
+coins 1 3
+end
+turn 214
+coins 1 4
+end
+turn 215
+fire 0 12 13
+fire 1 12 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 16 false true true
+hit 1 21 70 16 false true true
+hit 0 13 70 12 false true true
+hit 1 13 70 12 false true true
+coins 0 2
+end
+turn 216
+fire 0 17 13
+fire 1 17 13
+boom 0 10 8 10
+boom 1 10 8 10
+fire 0 19 13
+fire 1 19 13
+boom 0 10 10 10
+boom 1 10 10 10
+hit 0 25 70 54 true true true
+hit 1 25 70 54 true true true
+move 0 23 17 16 1250
+move 1 23 17 16 1250
+turret 0 23 1
+turret 1 23 1
+move 0 25 10 9 1250
+move 1 25 10 9 1250
+fire 0 9 13
+fire 1 9 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 14 false true true
+hit 1 21 70 14 false true true
+hit 0 13 70 2 false true true
+hit 1 13 70 2 false true true
+hit 0 25 70 52 true true true
+hit 1 25 70 52 true true true
+move 0 27 6 11 1250
+move 1 27 6 11 1250
+move 0 29 2 16 1250
+move 0 15 36 22 1250
+show 0 1 16 2 41 26 true true
+show 0 1 11 2 40 26 true true
+show 0 1 14 2 41 25 true true
+move 1 15 36 22 1250
+turret 0 15 0
+turret 1 15 0
+move 1 18 19 15 1250
+move 0 18 19 15 1250
+move 1 24 34 17 1250
+move 0 24 34 17 1250
+turret 1 24 4
+turret 0 24 4
+move 1 26 39 23 1250
+move 0 26 39 23 1250
+move 1 28 48 20 1250
+end
+turn 217
+fire 0 23 18
+fire 1 23 18
+boom 0 19 15 10
+boom 1 19 15 10
+hit 0 18 70 61 true true true
+hit 1 18 70 61 true true true
+fire 0 27 13
+fire 1 27 13
+boom 0 8 10 10
+boom 1 8 10 10
+hit 0 21 70 12 false true true
+hit 1 21 70 12 false true true
+fire 0 15 24
+fire 1 15 24
+boom 0 33 18 10
+boom 1 33 18 10
+turret 1 20 7
+turret 0 20 7
+turret 1 22 7
+turret 0 22 7
+fire 1 24 15
+fire 0 24 15
+boom 0 37 23 10
+boom 1 37 23 10
+turret 1 26 7
+turret 0 26 7
+fire 1 14 15
+fire 0 14 15
+boom 0 36 23 10
+boom 1 36 23 10
+hit 0 15 70 50 true true true
+hit 1 15 70 50 true true true
+coins 0 3
+end
+turn 218
+fire 1 20 15
+fire 0 20 15
+boom 0 36 22 10
+boom 1 36 22 10
+hit 0 15 70 41 true true true
+hit 1 15 70 41 true true true
+fire 1 22 15
+fire 0 22 15
+boom 0 37 22 10
+boom 1 37 22 10
+hit 0 15 70 39 true true true
+hit 1 15 70 39 true true true
+turret 1 26 6
+turret 0 26 6
+coins 1 5
+end
+turn 219
+move 0 23 18 16 1250
+move 1 23 18 16 1250
+move 0 25 10 8 1250
+move 1 25 10 8 1250
+move 0 27 7 11 1250
+move 1 27 7 11 1250
+move 0 29 3 16 1250
+fire 0 12 13
+fire 1 12 13
+boom 0 9 9 10
+boom 1 9 9 10
+hit 0 21 70 10 false true true
+hit 1 21 70 10 false true true
+hide 1 17
+hide 1 19
+hide 1 21
+hide 1 25
+hide 1 9
+hide 1 27
+hide 1 12
+hit 0 13 70 0 false false false
+hit 1 13 70 0 false false false
+move 0 15 37 23 1250
+move 1 15 37 23 1250
+move 1 18 18 15 1250
+move 0 18 18 15 1250
+move 1 24 33 17 1250
+hide 1 24
+move 1 26 39 24 1250
+move 0 26 39 24 1250
+move 1 28 48 21 1250
+coins 1 6
+end
+turn 220
+turret 1 16 7
+turret 0 16 7
+turret 1 11 7
+turret 0 11 7
+coins 0 4
+coins 1 0
+create 30 attack 48 16 1
+end
+turn 221
+fire 1 16 15
+fire 0 16 15
+boom 0 37 23 10
+boom 1 37 23 10
+hit 0 15 70 31 true true true
+hit 1 15 70 31 true true true
+fire 1 11 15
+fire 0 11 15
+boom 0 37 23 10
+boom 1 37 23 10
+hit 0 15 70 23 true true true
+hit 1 15 70 23 true true true
+fire 1 14 15
+fire 0 14 15
+boom 0 37 23 10
+boom 1 37 23 10
+hit 0 15 70 15 false true true
+hit 1 15 70 15 false true true
+end
+turn 222
+move 0 23 19 16 1250
+move 1 23 19 16 1250
+move 0 25 9 8 1250
+move 0 27 8 11 1250
+move 0 29 4 16 1250
+move 0 15 38 24 1250
+move 1 15 38 24 1250
+move 1 18 17 15 1250
+move 0 18 17 15 1250
+fire 1 20 15
+fire 0 20 15
+boom 0 38 24 10
+boom 1 38 24 10
+hit 0 15 70 7 false true true
+hit 1 15 70 7 false true true
+hit 0 26 70 68 true true true
+hit 1 26 70 68 true true true
+fire 1 22 15
+fire 0 22 15
+boom 0 38 24 10
+boom 1 38 24 10
+hide 0 16
+hide 0 20
+hide 0 22
+hide 0 26
+hide 0 11
+hide 0 14
+hit 0 15 70 0 false false false
+hit 1 15 70 0 false false false
+hit 0 26 70 66 true true true
+hit 1 26 70 66 true true true
+move 1 24 32 17 1250
+move 1 26 39 25 1250
+move 1 28 47 22 1250
+move 1 30 47 16 1250
+coins 0 5
+end
+turn 223
+coins 1 1
+end
+turn 224
+coins 1 2
+end
+turn 225
+move 0 23 20 16 1250
+move 1 23 20 16 1250
+move 0 27 9 10 1250
+move 0 29 5 16 1250
+move 1 18 16 15 1250
+move 0 18 16 15 1250
+move 1 24 31 17 1250
+move 1 28 46 23 1250
+move 1 30 46 16 1250
+coins 0 6
+end
+turn 226
+coins 0 0
+create 31 attack 0 16 0
+end
+turn 227
+coins 0 1
+end
+turn 228
+move 0 23 21 16 1250
+move 1 23 21 16 1250
+turret 0 23 0
+turret 1 23 0
+move 0 27 9 9 1250
+move 0 29 6 16 1250
+move 1 18 15 15 1250
+move 0 18 15 15 1250
+turret 1 18 2
+turret 0 18 2
+move 1 24 30 17 1250
+move 1 28 45 24 1250
+move 1 30 45 16 1250
+coins 1 3
+end
+turn 229
+turret 0 23 7
+turret 1 23 7
+fire 1 18 23
+fire 0 18 23
+boom 0 21 16 10
+boom 1 21 16 10
+hit 0 23 70 63 true true true
+hit 1 23 70 63 true true true
+coins 1 4
+end
+turn 230
+turret 0 23 6
+turret 1 23 6
+coins 0 2
+end
+turn 231
+move 0 23 22 16 1250
+hide 0 18
+hide 0 23
+move 0 29 7 16 1250
+move 1 18 14 14 1250
+move 1 24 29 17 1250
+move 1 28 44 25 1250
+move 1 30 44 16 1250
+end
+turn 232
+coins 0 3
+end
+turn 233
+coins 1 5
+end
+turn 234
+move 0 23 23 16 1250
+show 0 1 24 2 29 17 true true
+show 1 0 23 2 23 16 true true
+move 1 23 23 16 1250
+move 0 29 8 16 1250
+show 0 1 18 2 14 14 true true
+show 1 0 29 2 8 16 true true
+move 1 29 8 16 1250
+move 1 18 13 13 1250
+show 1 0 21 2 8 9 false true
+show 1 0 25 2 9 8 true true
+show 1 0 27 2 9 9 true true
+move 0 18 13 13 1250
+move 1 24 28 17 1250
+move 0 24 28 17 1250
+move 1 28 43 26 1250
+move 1 30 43 16 1250
+coins 1 6
+end
+turn 235
+coins 0 4
+coins 1 0
+create 32 attack 48 16 1
+end
+turn 236
+end
+turn 237
+move 0 23 24 16 1250
+move 1 23 24 16 1250
+move 0 29 9 16 1250
+move 1 29 9 16 1250
+move 1 18 12 12 1250
+show 1 0 17 2 7 8 true true
+show 1 0 19 2 8 7 true true
+show 1 0 9 2 8 8 true true
+show 1 0 12 2 7 9 true true
+move 0 18 12 12 1250
+move 1 24 27 17 1250
+move 0 24 27 17 1250
+move 1 28 42 27 1250
+move 1 30 42 16 1250
+coins 0 5
+end
+turn 238
+turret 0 23 5
+turret 1 23 5
+turret 0 29 1
+turret 1 29 1
+turret 1 18 3
+turret 0 18 3
+turret 1 24 5
+turret 0 24 5
+coins 1 1
+end
+turn 239
+fire 0 17 18
+fire 1 17 18
+boom 0 12 12 10
+boom 1 12 12 10
+hit 0 18 70 54 true true true
+hit 1 18 70 54 true true true
+fire 0 19 18
+fire 1 19 18
+boom 0 12 13 10
+boom 1 12 13 10
+hit 0 18 70 52 true true true
+hit 1 18 70 52 true true true
+turret 0 23 4
+turret 1 23 4
+turret 0 25 1
+turret 1 25 1
+fire 0 9 18
+fire 1 9 18
+boom 0 11 11 10
+boom 1 11 11 10
+turret 0 27 2
+turret 1 27 2
+fire 0 29 18
+fire 1 29 18
+boom 0 12 12 10
+boom 1 12 12 10
+hit 0 18 70 44 true true true
+hit 1 18 70 44 true true true
+turret 1 18 4
+turret 0 18 4
+turret 1 24 6
+turret 0 24 6
+coins 1 2
+end
+turn 240
+move 0 23 25 16 1250
+move 1 23 25 16 1250
+turret 0 25 2
+turret 1 25 2
+turret 0 27 3
+turret 1 27 3
+move 0 29 10 16 1250
+move 1 29 10 16 1250
+move 1 18 11 11 1250
+move 0 18 11 11 1250
+fire 1 18 29
+fire 0 18 29
+boom 0 11 15 10
+boom 1 11 15 10
+move 1 24 26 17 1250
+move 0 24 26 17 1250
+move 1 28 41 27 1250
+move 1 30 41 16 1250
+coins 0 6
+end
+turn 241
+turret 0 25 3
+turret 1 25 3
+fire 0 27 18
+fire 1 27 18
+boom 0 10 12 10
+boom 1 10 12 10
+coins 0 0
+create 33 attack 0 18 0
+end
+turn 242
+turret 0 12 3
+turret 1 12 3
+turret 0 23 3
+turret 1 23 3
+fire 0 25 18
+fire 1 25 18
+boom 0 10 12 10
+boom 1 10 12 10
+turret 1 24 7
+turret 0 24 7
+coins 0 1
+end
+turn 243
+move 0 33 1 18 1250
+fire 0 9 18
+fire 1 9 18
+boom 0 10 12 10
+boom 1 10 12 10
+fire 0 12 18
+fire 1 12 18
+boom 0 12 12 10
+boom 1 12 12 10
+fire 0 17 18
+fire 1 17 18
+boom 0 11 11 10
+boom 1 11 11 10
+hit 0 18 70 34 true true true
+hit 1 18 70 34 true true true
+fire 0 19 18
+fire 1 19 18
+boom 0 12 11 10
+boom 1 12 11 10
+hit 0 18 70 32 true true true
+hit 1 18 70 32 true true true
+move 0 23 26 16 1250
+move 1 23 26 16 1250
+move 0 29 11 16 1250
+move 1 29 11 16 1250
+move 1 18 10 10 1250
+move 0 18 10 10 1250
+move 1 24 25 17 1250
+move 0 24 25 17 1250
+move 1 28 40 27 1250
+move 1 30 40 16 1250
+coins 1 3
+end
+turn 244
+turret 0 29 0
+turret 1 29 0
+fire 1 18 29
+fire 0 18 29
+boom 0 11 16 10
+boom 1 11 16 10
+hit 0 29 70 62 true true true
+hit 1 29 70 62 true true true
+coins 1 4
+end
+turn 245
+fire 0 27 18
+fire 1 27 18
+boom 0 10 10 10
+boom 1 10 10 10
+hit 0 18 70 26 true true true
+hit 1 18 70 26 true true true
+fire 0 29 18
+fire 1 29 18
+boom 0 11 9 10
+boom 1 11 9 10
+coins 0 2
+end
+turn 246
+move 0 33 2 18 1250
+move 0 23 27 16 1250
+move 1 23 27 16 1250
+fire 0 25 18
+fire 1 25 18
+boom 0 10 10 10
+boom 1 10 10 10
+hit 0 18 70 16 true true true
+hit 1 18 70 16 true true true
+move 0 29 12 16 1250
+move 1 29 12 16 1250
+move 1 24 24 17 1250
+move 0 24 24 17 1250
+move 1 30 39 16 1250
+end
+turn 247
+fire 0 9 18
+fire 1 9 18
+boom 0 10 10 10
+boom 1 10 10 10
+hit 0 18 70 8 true true true
+hit 1 18 70 8 true true true
+turret 0 12 2
+turret 1 12 2
+fire 0 17 18
+fire 1 17 18
+boom 0 11 9 10
+boom 1 11 9 10
+fire 0 19 18
+fire 1 19 18
+boom 0 9 11 10
+boom 1 9 11 10
+coins 0 3
+end
+turn 248
+fire 0 12 18
+fire 1 12 18
+boom 0 11 9 10
+boom 1 11 9 10
+fire 1 18 29
+fire 0 18 29
+boom 0 12 16 10
+boom 1 12 16 10
+hit 0 29 70 55 true true true
+hit 1 29 70 55 true true true
+coins 1 5
+end
+turn 249
+move 0 33 3 18 1250
+move 0 23 28 16 1250
+move 1 23 28 16 1250
+fire 0 27 18
+fire 1 27 18
+boom 0 10 10 10
+boom 1 10 10 10
+hide 1 9
+hide 1 12
+hide 1 17
+hide 1 19
+hide 1 21
+hide 1 25
+hide 1 27
+hide 1 29
+hit 0 18 70 0 false false false
+hit 1 18 70 0 false false false
+move 0 29 13 16 1250
+move 1 24 23 16 1250
+move 0 24 23 16 1250
+move 1 30 38 16 1250
+coins 1 6
+end
+turn 250
+turret 0 23 4
+turret 1 23 4
+turret 1 24 0
+turret 0 24 0
+coins 0 4
+coins 1 0
+create 34 attack 48 17 1
+end
+turn 251
+turret 0 23 5
+turret 1 23 5
+turret 1 24 1
+turret 0 24 1
+end
+turn 252
+move 0 33 4 18 1250
+move 0 23 29 16 1250
+move 1 23 29 16 1250
+turret 0 23 6
+turret 1 23 6
+move 0 29 14 17 1250
+move 1 24 22 16 1250
+hide 1 23
+move 0 24 22 16 1250
+move 1 30 37 16 1250
+coins 0 5
+end
+turn 253
+coins 1 1
+end
+turn 254
+fire 1 24 7
+fire 0 24 7
+boom 0 25 11 10
+boom 1 25 11 10
+hit 0 7 70 2 true true true
+hit 1 7 70 2 true true true
+coins 1 2
+end
+turn 255
+move 0 33 5 18 1250
+move 0 23 30 16 1250
+move 0 29 15 17 1250
+move 1 24 21 16 1250
+show 1 0 29 2 15 17 true true
+move 0 24 21 16 1250
+move 1 30 36 16 1250
+show 1 0 23 2 30 16 true true
+show 0 1 30 2 36 16 true true
+move 0 30 36 16 1250
+coins 0 6
+end
+turn 256
+coins 0 0
+create 35 attack 0 18 0
+end
+turn 257
+coins 0 1
+end
+turn 258
+move 0 33 6 18 1250
+move 0 23 31 17 1250
+move 1 23 31 17 1250
+move 0 29 16 17 1250
+move 1 29 16 17 1250
+move 1 24 20 15 1250
+move 0 24 20 15 1250
+fire 1 24 7
+fire 0 24 7
+boom 0 24 10 10
+boom 1 24 10 10
+move 1 30 35 16 1250
+move 0 30 35 16 1250
+coins 1 3
+end
+turn 259
+turret 1 30 7
+turret 0 30 7
+coins 1 4
+end
+turn 260
+turret 0 23 5
+turret 1 23 5
+turret 1 30 6
+turret 0 30 6
+coins 0 2
+end
+turn 261
+move 0 33 7 18 1250
+move 0 23 32 18 1250
+move 1 23 32 18 1250
+move 0 29 17 17 1250
+move 1 29 17 17 1250
+move 1 24 19 14 1250
+move 0 24 19 14 1250
+move 1 30 34 16 1250
+move 0 30 34 16 1250
+end
+turn 262
+turret 0 29 1
+turret 1 29 1
+fire 1 24 7
+fire 0 24 7
+boom 0 24 12 10
+boom 1 24 12 10
+coins 0 3
+end
+turn 263
+fire 0 29 24
+fire 1 29 24
+boom 0 19 14 10
+boom 1 19 14 10
+hit 0 24 70 53 true true true
+hit 1 24 70 53 true true true
+coins 1 5
+end
+turn 264
+move 0 33 8 18 1250
+move 0 23 33 19 1250
+move 1 23 33 19 1250
+move 0 29 18 17 1250
+move 1 29 18 17 1250
+move 1 24 18 13 1250
+move 0 24 18 13 1250
+move 1 30 33 16 1250
+move 0 30 33 16 1250
+coins 1 6
+end
+turn 265
+coins 0 4
+coins 1 0
+create 36 attack 48 18 1
+end
+turn 266
+turret 0 23 6
+turret 1 23 6
+turret 0 29 0
+turret 1 29 0
+end
+turn 267
+move 0 33 9 18 1250
+move 0 23 34 20 1250
+move 1 23 34 20 1250
+turret 0 23 7
+turret 1 23 7
+move 0 29 19 17 1250
+move 1 29 19 17 1250
+fire 0 29 24
+fire 1 29 24
+boom 0 17 13 10
+boom 1 17 13 10
+hit 0 24 70 51 true true true
+hit 1 24 70 51 true true true
+move 1 24 17 12 1250
+move 0 24 17 12 1250
+move 1 30 32 16 1250
+move 0 30 32 16 1250
+coins 0 5
+end
+turn 268
+fire 0 23 30
+fire 1 23 30
+boom 0 31 15 10
+boom 1 31 15 10
+coins 1 1
+end
+turn 269
+turret 1 24 2
+turret 0 24 2
+coins 1 2
+end
+turn 270
+move 0 33 10 18 1250
+move 0 23 35 21 1250
+show 0 1 20 2 40 25 true true
+show 0 1 22 2 39 26 true true
+show 0 1 26 2 39 25 true true
+move 1 23 35 21 1250
+move 0 29 20 17 1250
+move 1 29 20 17 1250
+move 1 24 16 11 1250
+hide 1 29
+hide 1 24
+move 1 30 31 16 1250
+move 0 30 31 16 1250
+turret 1 30 5
+turret 0 30 5
+coins 0 6
+end
+turn 271
+fire 1 20 23
+fire 0 20 23
+boom 0 35 21 10
+boom 1 35 21 10
+hit 0 23 70 54 true true true
+hit 1 23 70 54 true true true
+fire 1 22 23
+fire 0 22 23
+boom 0 34 20 10
+boom 1 34 20 10
+turret 1 30 4
+turret 0 30 4
+coins 0 0
+create 37 attack 1 16 0
+end
+turn 272
+fire 0 23 30
+fire 1 23 30
+boom 0 32 15 10
+boom 1 32 15 10
+turret 1 30 3
+turret 0 30 3
+coins 0 1
+end
+turn 273
+move 0 33 11 18 1250
+move 0 23 36 22 1250
+show 0 1 11 2 40 26 true true
+show 0 1 14 2 41 25 true true
+show 0 1 16 2 41 26 true true
+show 0 1 28 2 40 27 true true
+hide 0 30
+move 1 23 36 22 1250
+move 0 29 21 17 1250
+move 1 24 15 11 1250
+show 1 0 25 2 9 8 true true
+show 1 0 27 2 9 9 true true
+show 0 1 24 2 15 11 true true
+move 0 24 15 11 1250
+move 1 30 30 16 1250
+coins 1 3
+end
+turn 274
+fire 1 11 23
+fire 0 11 23
+boom 0 36 22 10
+boom 1 36 22 10
+hit 0 23 70 45 true true true
+hit 1 23 70 45 true true true
+fire 1 14 23
+fire 0 14 23
+boom 0 36 23 10
+boom 1 36 23 10
+hit 0 23 70 43 true true true
+hit 1 23 70 43 true true true
+fire 1 16 23
+fire 0 16 23
+boom 0 36 22 10
+boom 1 36 22 10
+hit 0 23 70 34 true true true
+hit 1 23 70 34 true true true
+turret 1 26 7
+turret 0 26 7
+coins 1 4
+end
+turn 275
+fire 0 25 24
+fire 1 25 24
+boom 0 16 11 10
+boom 1 16 11 10
+hit 0 24 70 49 true true true
+hit 1 24 70 49 true true true
+fire 1 20 23
+fire 0 20 23
+boom 0 36 22 10
+boom 1 36 22 10
+hit 0 23 70 24 true true true
+hit 1 23 70 24 true true true
+fire 1 22 23
+fire 0 22 23
+boom 0 36 23 10
+boom 1 36 23 10
+hit 0 23 70 22 true false true
+hit 1 23 70 22 true false true
+fire 1 26 23
+fire 0 26 23
+boom 0 36 22 10
+boom 1 36 22 10
+hit 0 23 70 14 true false true
+hit 1 23 70 14 true false true
+coins 0 2
+end
+turn 276
+move 0 33 12 18 1250
+move 0 29 22 17 1250
+move 1 24 14 11 1250
+show 1 0 9 2 8 8 true true
+show 1 0 21 2 8 9 false true
+move 0 24 14 11 1250
+move 1 30 29 16 1250
+show 0 1 30 2 29 16 true true
+move 0 30 29 16 1250
+end
+turn 277
+fire 0 27 24
+fire 1 27 24
+boom 0 14 11 10
+boom 1 14 11 10
+hit 0 24 70 42 true true true
+hit 1 24 70 42 true true true
+coins 0 3
+end
+turn 278
+fire 0 9 24
+fire 1 9 24
+boom 0 15 12 10
+boom 1 15 12 10
+turret 0 23 6
+turret 1 23 6
+fire 1 11 23
+fire 0 11 23
+boom 0 37 21 10
+boom 1 37 21 10
+fire 1 14 23
+fire 0 14 23
+boom 0 36 22 10
+boom 1 36 22 10
+hit 0 23 70 5 true false true
+hit 1 23 70 5 true false true
+fire 1 16 23
+fire 0 16 23
+boom 0 36 23 10
+boom 1 36 23 10
+hit 0 23 70 3 true false true
+hit 1 23 70 3 true false true
+turret 1 24 1
+turret 0 24 1
+turret 1 28 7
+turret 0 28 7
+coins 1 5
+end
+turn 279
+move 0 33 13 18 1250
+turret 0 23 5
+turret 1 23 5
+fire 0 25 24
+fire 1 25 24
+boom 0 14 11 10
+boom 1 14 11 10
+hit 0 24 70 34 true true true
+hit 1 24 70 34 true true true
+move 0 29 23 17 1250
+show 1 0 29 2 23 17 true true
+move 1 29 23 17 1250
+fire 1 20 23
+fire 0 20 23
+boom 0 36 21 10
+boom 1 36 21 10
+hit 0 23 70 1 true false true
+hit 1 23 70 1 true false true
+fire 1 22 23
+fire 0 22 23
+boom 0 35 23 10
+boom 1 35 23 10
+move 1 24 13 10 1250
+show 1 0 12 2 7 9 true true
+show 1 0 17 2 7 8 true true
+show 1 0 19 2 8 7 true true
+move 0 24 13 10 1250
+turret 1 24 0
+turret 0 24 0
+fire 1 26 23
+fire 0 26 23
+boom 0 36 21 10
+boom 1 36 21 10
+hide 0 11
+hide 0 14
+hide 0 16
+hide 0 20
+hide 0 22
+hide 0 26
+hide 0 28
+hit 0 23 70 0 false false false
+hit 1 23 70 0 false false false
+move 1 30 28 16 1250
+move 0 30 28 16 1250
+coins 1 6
+end
+turn 280
+turret 1 24 7
+turret 0 24 7
+turret 1 30 4
+turret 0 30 4
+coins 0 4
+coins 1 0
+create 38 attack 49 16 1
+end
+turn 281
+fire 0 12 24
+fire 1 12 24
+boom 0 13 10 10
+boom 1 13 10 10
+hit 0 24 70 26 false true true
+hit 1 24 70 26 false true true
+fire 0 19 24
+fire 1 19 24
+boom 0 13 11 10
+boom 1 13 11 10
+hit 0 24 70 24 false true true
+hit 1 24 70 24 false true true
+turret 1 30 5
+turret 0 30 5
+end
+turn 282
+move 0 33 14 18 1250
+fire 0 9 24
+fire 1 9 24
+boom 0 12 11 10
+boom 1 12 11 10
+move 0 29 24 17 1250
+move 1 29 24 17 1250
+move 1 24 12 9 1250
+move 0 24 12 9 1250
+move 1 30 27 16 1250
+move 0 30 27 16 1250
+coins 0 5
+end
+turn 283
+turret 0 27 2
+turret 1 27 2
+turret 0 29 1
+turret 1 29 1
+coins 1 1
+end
+turn 284
+turret 0 17 2
+turret 1 17 2
+fire 0 27 24
+fire 1 27 24
+boom 0 12 9 10
+boom 1 12 9 10
+hit 0 24 70 17 false true true
+hit 1 24 70 17 false true true
+turret 0 29 2
+turret 1 29 2
+coins 1 2
+end
+turn 285
+move 0 33 15 18 1250
+fire 0 12 24
+fire 1 12 24
+boom 0 11 9 10
+boom 1 11 9 10
+hit 0 24 70 15 false true true
+hit 1 24 70 15 false true true
+fire 0 17 24
+fire 1 17 24
+boom 0 11 10 10
+boom 1 11 10 10
+fire 0 19 24
+fire 1 19 24
+boom 0 12 9 10
+boom 1 12 9 10
+hit 0 24 70 5 false true true
+hit 1 24 70 5 false true true
+move 0 29 25 17 1250
+move 1 29 25 17 1250
+move 1 24 11 8 1250
+move 0 24 11 8 1250
+turret 1 24 6
+turret 0 24 6
+move 1 30 26 16 1250
+move 0 30 26 16 1250
+turret 1 30 6
+turret 0 30 6
+coins 0 6
+end
+turn 286
+turret 0 9 2
+turret 1 9 2
+turret 0 25 2
+turret 1 25 2
+turret 1 30 7
+turret 0 30 7
+coins 0 0
+create 39 attack 1 17 0
+end
+turn 287
+fire 0 9 24
+fire 1 9 24
+boom 0 11 8 10
+boom 1 11 8 10
+hide 1 9
+hide 1 12
+hide 1 17
+hide 1 19
+hide 1 21
+hide 1 25
+hide 1 27
+hit 0 24 70 0 false false false
+hit 1 24 70 0 false false false
+turret 1 30 0
+turret 0 30 0
+coins 0 1
+end
+turn 288
+move 0 33 16 18 1250
+move 0 29 26 17 1250
+move 1 29 26 17 1250
+move 1 30 25 16 1250
+move 0 30 25 16 1250
+fire 1 30 7
+fire 0 30 7
+boom 0 25 10 10
+boom 1 25 10 10
+hit 0 7 70 0 false false false
+hit 1 7 70 0 false false false
+coins 1 3
+end
+turn 289
+coins 1 4
+end
+turn 290
+coins 0 2
+end
+turn 291
+move 0 33 17 18 1250
+move 0 29 27 17 1250
+move 1 29 27 17 1250
+move 1 30 24 16 1250
+move 0 30 24 16 1250
+end
+turn 292
+coins 0 3
+end
+turn 293
+coins 1 5
+end
+turn 294
+move 0 33 18 18 1250
+show 1 0 33 2 18 18 true true
+move 1 33 18 18 1250
+move 0 29 28 18 1250
+move 1 29 28 18 1250
+move 1 30 23 16 1250
+move 0 30 23 16 1250
+coins 1 6
+end
+turn 295
+coins 0 4
+coins 1 0
+create 40 attack 49 18 1
+end
+turn 296
+end
+turn 297
+move 0 33 19 18 1250
+move 1 33 19 18 1250
+move 0 29 29 19 1250
+move 1 29 29 19 1250
+turret 0 29 1
+turret 1 29 1
+move 1 30 22 16 1250
+hide 1 29
+move 0 30 22 16 1250
+coins 0 5
+end
+turn 298
+coins 1 1
+end
+turn 299
+coins 1 2
+end

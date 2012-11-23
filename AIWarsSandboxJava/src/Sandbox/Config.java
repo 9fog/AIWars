@@ -1,9 +1,9 @@
 package Sandbox;
 public class Config
 {
-   public static final String[] BOTS = { "MyBot1", "MyBot2" };
+   public static final String[] BOTS = { "MyBot1", "MyBot1" };
    public static final String MAP_NAME = "";  //Leave empty to use default map 
-   public static final int COMBAT_MAX_TICKS = 50;
+   public static final int COMBAT_MAX_TICKS = 300;
    
    //Do not change this section
    //Local settings   

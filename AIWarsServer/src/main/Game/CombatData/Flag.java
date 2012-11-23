@@ -1,16 +1,18 @@
 package main.Game.CombatData;
 
 import main.Game.Combat;
+import main.Game.CombatData.Events.EventCoins;
 import main.Game.CombatData.Events.EventFlag;
 import core.*;
 
 public class Flag extends MapObject {
-	private final int PERIOD = 500, STATE_MAX = 10;  
+	private final int PERIOD = 500, STATE_MAX = 10, COINS_PERIOD = 4; 
 	private Combat _combat;
 	private int _id;
 	private int _side, _state;
 	private int[] _sidesPower;
 	private Timer _timer;
+	private int _coinsTicker = 0;
 	
 	public Flag(Combat c, int id, int x, int y) {
 		_combat = c;
@@ -65,6 +67,20 @@ public class Flag extends MapObject {
 					//	incState(dominateSide, -delta);						
 					//}
 				}			
+			}		
+			
+			if (_side>=0) { //Если флаг кем-то контролируется 
+				if (_coinsTicker>=COINS_PERIOD) { //Если настало время выдать монетку
+					CombatSide cs = _combat.getSides().get(_side);
+					if (cs.isAlive) { //Если сторона еще не мертва - выдаем монетку
+						cs.coins++;
+						_combat.addEvent(_side, new EventCoins(cs.coins), "coins "+_side+" "+cs.coins);
+					}
+					
+					_coinsTicker = 0;
+				} else {
+					_coinsTicker++;
+				}
 			}
 			
 			_timer.setEndTime(timePoint + PERIOD);

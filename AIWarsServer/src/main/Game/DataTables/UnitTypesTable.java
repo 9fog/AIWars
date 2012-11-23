@@ -17,15 +17,21 @@ import core.*;
 public class UnitTypesTable {
     private static UnitTypesTable _instance;
 	private final HashMap<Integer, UnitType> _data;
+	private final HashMap<String, UnitType> _dataByRoles;
 
 	public UnitTypesTable() {
 		_data = new HashMap<Integer, UnitType>();
+		_dataByRoles = new HashMap<String, UnitType>();
 		
-		_data.put(1, new UnitType(1,"recon",750,300,750,1,5,12,0,6,25,1));
-		_data.put(2, new UnitType(2,"attack",1250,600,2000,1,10,7,0,10,70,3));
-		_data.put(3, new UnitType(3,"artillery",2250,1500,4000,2,25,5,4,20,50,2));
+		_data.put(1, new UnitType(1,"recon",750,300,750,1,5,12,0,6,25,2));
+		_data.put(2, new UnitType(2,"attack",1250,600,2000,1,10,7,0,10,70,6));
+		_data.put(3, new UnitType(3,"artillery",2250,1500,4000,2,25,5,4,20,50,4));
 		
 		_data.put(4, new UnitType(4,"base",0,0,1500,1,7,7,0,9,150,0));
+		
+		for (UnitType ut : _data.values()) {
+			_dataByRoles.put(ut.role(), ut);
+		}
 		
 		Utils.log("   UnitsTable: "+_data.size()+" items loaded");
 	}
@@ -45,6 +51,14 @@ public class UnitTypesTable {
 		}
 	}
 	
+	public UnitType getTypeByRole(String role) {
+		if (_dataByRoles.containsKey(role)) {
+			return _dataByRoles.get(role);
+		}else {			
+			return null;
+		}
+	}
+		
 	public HashMap<Integer, UnitType> getAll(){
 		return _data;
 	}

@@ -3,6 +3,8 @@ package MyBot1;
 import java.util.ArrayList;
 
 import Sandbox.AbstractBot;
+import Sandbox.EventCoins;
+import Sandbox.EventUnitBuild;
 import Sandbox.EventUnitMove;
 import Sandbox.ObjectFlag;
 import Sandbox.ObjectRock;
@@ -40,6 +42,25 @@ public class MyBot extends AbstractBot {
 		for (Object eventObject : events) {
 			if (eventObject instanceof EventUnitMove) {
 				//TODO::...
+			} else
+			
+			if (eventObject instanceof EventCoins) { //Есть бабло
+				int coins = ((EventCoins)eventObject).coins;
+				if (coins>=6) {
+					_sim.sendOrderBuild(this, "attack");
+				}
+			} else
+				
+			if (eventObject instanceof EventUnitBuild) { //Построили новый юнит - в бой его!
+				EventUnitBuild e = (EventUnitBuild)eventObject;
+				ObjectFlag f = _flags.get(0);
+				//Random seed imitation :)
+				int delta = -1;
+				if (events.indexOf(eventObject)%2==0) {
+					delta = 1;
+					f = _flags.get(_flags.size()-1);
+				}
+				_sim.sendOrderMove(this, e.unitId, f.x+delta, f.y-delta);
 			}
 		}
 		

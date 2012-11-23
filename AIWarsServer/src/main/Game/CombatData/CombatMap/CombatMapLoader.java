@@ -39,6 +39,7 @@ public class CombatMapLoader {
 	public int sizeY;
 	public int playersCount;
 	public ArrayList<ObjectPointer> objects;
+	public int unitIdFactory = 1;
 	
 	public CombatMapLoader(String mapName) throws Exception {
 		FileReader input = new FileReader("maps/"+mapName);
@@ -149,6 +150,7 @@ public class CombatMapLoader {
 			}
 		}	
 		
+		unitIdFactory = unitsCount;		
 		sizeY = lineNumber;
 		
 		/*

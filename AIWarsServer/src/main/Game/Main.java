@@ -156,6 +156,11 @@ public class Main extends TCombat {
 		return null;
 	}	
 	
+	public JSONObject process_orderBuild(CommandContext ctx) throws Exception {
+		_combatsList.get(ctx.channel.getId()).processOrderBuild(Integer.parseInt(ctx.cmd.get("_side")+""), ctx.cmd.get("unitType")+"");
+		return null;
+	}	
+	
 	//======================== CHEATS ===========================================================
 
 	

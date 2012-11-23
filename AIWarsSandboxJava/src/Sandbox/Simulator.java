@@ -67,12 +67,23 @@ public class Simulator
 	  _connector.send(cmd.toJSONString());
   }  
   
+  public void sendOrderBuild(AbstractBot b, String type) {
+	  int side = _sides.indexOf(b);
+	  
+	  JSONObject cmd = new JSONObject();
+	  cmd.put("_op", "orderBuild");
+	  cmd.put("_side", side);
+	  cmd.put("unitType", type);
+	  
+	  _connector.send(cmd.toJSONString());	  
+  }
+  
   private void sendReady(int side) {
 	  JSONObject cmd = new JSONObject();
 	  cmd.put("_op", "Ready");
 	  cmd.put("_side", side);
 	  _connector.send(cmd.toJSONString());
-  }
+  }  
   //==========================================================================
   
 
@@ -168,7 +179,15 @@ public class Simulator
 			  
 		  if (event.equals(EventFlag.EVENT)) {	    	  
 			  events.add(new EventFlag(Integer.parseInt(jo.get("id")+""), Integer.parseInt(jo.get("side")+""), Integer.parseInt(jo.get("state")+"")));			  
-		  }			  
+		  } else
+		  
+		  if (event.equals(EventCoins.EVENT)) {	    	  
+			  events.add(new EventCoins(Integer.parseInt(jo.get("coins")+"")));			  
+		  } else
+			  
+		  if (event.equals(EventUnitBuild.EVENT)) {	    	  
+			  events.add(new EventUnitBuild(Integer.parseInt(jo.get("unitId")+""), jo.get("type")+"", Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));			  
+		  }		  
 	  }
 	  
 	  _sides.get(side).processTick(events);
