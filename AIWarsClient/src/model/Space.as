@@ -6,6 +6,7 @@ package model
 	import flash.events.EventDispatcher;
 	
 	import model.vo.AItemVO;
+	import model.vo.BoomVO;
 	import model.vo.FlagVO;
 	import model.vo.MapVO;
 	import model.vo.UnitVO;
@@ -99,7 +100,39 @@ package model
 			return getByType(FlagVO);
 		}
 		
+		/**
+		 * boom
+		 */		
 		
+		public function getBoomById(id:int):BoomVO
+		{
+			return find(id, BoomVO) as BoomVO;
+		}
+		
+		public function removeBoom(x:int,y:int):void
+		{
+			var out:Vector.<AItemVO> = new Vector.<AItemVO>()
+			for each(var item:AItemVO in all)
+			{
+				if (!(item is BoomVO && item.x == x && item.y == y))
+				{
+					out.push(item);
+				}
+			}
+			all = out;
+		}
+		
+		private var _currentBoomId:int = 1;
+		
+		public function get nextBoomId():int
+		{
+			return _currentBoomId = _currentBoomId + 1;
+		}
+		
+		public function get booms():Array
+		{
+			return getByType(BoomVO);
+		}
 		
 		/**
 		 * find items

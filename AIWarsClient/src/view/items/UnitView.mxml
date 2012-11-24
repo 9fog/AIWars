@@ -19,7 +19,7 @@
 			{
 				super.vo = value;
 				
-				trace((vo as UnitVO).type.typeId);
+				//trace((vo as UnitVO).type.typeId);
 				switch((vo as UnitVO).type.typeId)
 				{
 					case 1:
@@ -71,7 +71,7 @@
 			{
 				_vo = value;
 				var item:UnitVO = vo as UnitVO;
-				trace("cr-",item.id, rotation, item.cannonRotation);
+				//trace("cr-",item.id, rotation, item.cannonRotation);
 				
 				unit.mc_cannon.rotation = item.fire? item.cannonRotation-rotation:0;
 				if (item.fire)

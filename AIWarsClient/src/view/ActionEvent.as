@@ -8,6 +8,7 @@ package view
 		public static var PLAY:String = "PLAY";
 		public static var RESTART:String = "RESTART";
 		public static var PAUSE:String = "PAUSE";
+		public static var SLIDE:String = "SLIDE";
 		
 		public var data:String;
 		

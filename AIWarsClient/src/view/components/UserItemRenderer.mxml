@@ -21,6 +21,7 @@
 				txtName.text = (data as UserVO).name;
 				txtId.text = (data as UserVO).id.toString();
 				bgColor.setStyle("backgroundColor",(data as UserVO).color);
+				txtCoins.text = (data as UserVO).coins.toString();
 			}
 		]]>
 	</fx:Script>
@@ -49,12 +50,20 @@
 		
 		<s:Label 
 			id="txtName" 
-			width="100%" 
 			height="25" 
 			text="name" 
 			textAlign="left" 
 			verticalAlign="middle"
 			/>	
+		<s:Label text=" coins:"/>
+		<s:Label 
+			id="txtCoins" 
+			width="100%" 
+			height="25" 
+			text="0" 
+			textAlign="left" 
+			verticalAlign="middle"
+			/>
 	</s:HGroup>
 	
 	

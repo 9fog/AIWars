@@ -74,7 +74,7 @@ package model.parser
 			var arr:Array = data.split("\n");
 			
 			turn.turnId = int((arr[0] as String).replace(TURN+" ",""));
-			trace(turn.turnId);
+			//trace(turn.turnId);
 			for(var i:int = 1; i < arr.length; i++)
 			{
 				var command:PC = CommandFactory.getCommand(arr[i]);

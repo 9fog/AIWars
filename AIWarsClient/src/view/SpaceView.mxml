@@ -11,6 +11,7 @@
 	<fx:Script>
 		<![CDATA[
 			import mx.events.ResizeEvent;
+			import mx.events.SliderEvent;
 			protected function pause(event:MouseEvent):void
 			{
 				dispatchEvent(new ActionEvent(ActionEvent.PAUSE));
@@ -56,6 +57,32 @@
 				conteiner.removeAllElements();
 				hc.scaleX = hc.scaleY = 1;
 				playerPanel.update(null);
+			}
+			
+			public function set stepNumber(value:int):void
+			{
+				slider.maximum = value;
+			}
+			
+			public function set step(value:int):void
+			{
+				slider.value = value;
+			}
+			
+			public function get step():int
+			{
+				return slider.value;
+			}
+		
+			protected function startDrug(event:MouseEvent):void
+			{
+				pause(null);
+			}
+			
+			protected function endDrug(event:MouseEvent):void
+			{
+				dispatchEvent(new ActionEvent(ActionEvent.SLIDE));
+				play(null);
 			}
 			
 		]]>
@@ -109,6 +136,17 @@
 					click="restart(event)"
 					/>
 				<s:Label text="use scroll to zoom it"/>
+				<s:HSlider 
+					id="slider"
+					width="100%" 
+					height="100%" 
+					maximum="100" 
+					minimum="0"
+					mouseDown="startDrug(event)"
+					mouseUp="endDrug(event)"
+					/>
+					
+				
 			</s:HGroup>
 		</s:BorderContainer>
 		

@@ -11,6 +11,7 @@ package view
 	import flash.events.Event;
 	
 	import model.Space;
+	import model.vo.BoomVO;
 	import model.vo.FlagVO;
 	import model.vo.MapVO;
 	import model.vo.UnitVO;
@@ -22,6 +23,7 @@ package view
 	import spark.components.BorderContainer;
 	
 	import view.items.AView;
+	import view.items.BoomView;
 	import view.items.FlagView;
 	import view.items.MapCellView;
 	import view.items.UnitView;
@@ -48,6 +50,7 @@ package view
 			_view.addEventListener(ActionEvent.ACTION, onAction);
 			_controller.addEventListener(EngineEvent.UPDATE, updateView);
 			_controller.addEventListener(EngineEvent.END, onEnd);
+			_view.stepNumber = _controller.steps.length;
 			
 		}
 		
@@ -71,19 +74,27 @@ package view
 					_controller.restart();
 					break;
 				}
+					
+				case ActionEvent.SLIDE:
+				{
+					_controller.currentStep = _view.step;
+					break;
+				}
 			}
 		}
 		
 		private function updateView(e:EngineEvent):void
 		{
-			trace("update",e.space.turnId);
+		//	trace("update",e.space.turnId);
 			var space:Space = e.space;
 			
 			_view.txtLog.text = space.log;
+			_view.step = space.turnId;
 			
 			if (space.turnId == 0)
 				createMap(space);
 			
+			//flags
 			for each (var flag:FlagVO in space.flags)
 			{
 				if (findFlag(flag.id))
@@ -96,6 +107,7 @@ package view
 				}
 			}
 			
+			//uniits
 			for each (var unit:UnitVO in space.units)
 			{
 				if (findUnit(unit.id))
@@ -108,7 +120,21 @@ package view
 				}
 			}
 			
-			checkRemoveUnits(space);
+			removeDeadUnits(space);
+			
+			//booms
+			for each (var boom:BoomVO in space.booms)
+			{
+				if (!findBoom(boom.id))
+				{
+					createBoom(boom);
+				}
+			}
+			
+			removeDeadBooms(space);
+			
+			
+			//player
 			_view.playerPanel.update(space.users);
 		}
 		
@@ -159,6 +185,41 @@ package view
 		}
 		
 		/**
+		 * createBoom
+		 */
+		
+		public function createBoom(item:BoomVO):void
+		{
+			var len:Number = SIZE;
+			var cell:BoomView  = new BoomView();
+			cell.width = len;
+			cell.height = len;
+			cell.x = item.x * len+len/2;
+			cell.y = item.y * len+len/2;
+			cell.vo = item.clone;
+			var lastIndex:int = _view.conteiner.numElements; 
+			_view.conteiner.addElementAt(cell,0);
+			cell.play();
+		}
+		
+		/**
+		 * remove boom
+		 */ 
+		public function removeDeadBooms(space:Space):void
+		{
+			var conteiner:BorderContainer = _view.conteiner;
+			for(var i:int = 0; i < conteiner.numElements; i++)
+			{
+				var unit:* = conteiner.getElementAt(i);
+				if (unit is BoomView)
+				{
+					if (space.getBoomById((unit as AView).vo.id) == null) 
+						_view.conteiner.removeElement(unit);	
+				}
+			}
+		}
+		
+		/**
 		 * createUnit
 		 */
 		
@@ -196,6 +257,23 @@ package view
 		}
 		
 		/**
+		 * remove unit
+		 */ 
+		public function removeDeadUnits(space:Space):void
+		{
+			var conteiner:BorderContainer = _view.conteiner;
+			for(var i:int = 0; i < conteiner.numElements; i++)
+			{
+				var unit:* = conteiner.getElementAt(i);
+				if (unit is UnitView)
+				{
+					if (space.getUnitById((unit as AView).vo.id) == null) 
+						_view.conteiner.removeElement(unit);	
+				}
+			}
+		}
+		
+		/**
 		 * update flag
 		 */ 
 		public function updateFlag(item:FlagVO):void
@@ -216,6 +294,11 @@ package view
 		/**
 		 * find
 		 */ 
+		public function findBoom(boomId:int):BoomView
+		{
+			return find(BoomView, boomId) as BoomView;
+		}
+		
 		public function findUnit(unitId:int):UnitView
 		{
 			return find(UnitView, unitId) as UnitView;
@@ -241,20 +324,9 @@ package view
 			return null;
 		}
 		
-		public function checkRemoveUnits(space:Space):void
-		{
-			var conteiner:BorderContainer = _view.conteiner;
-			for(var i:int = 0; i < conteiner.numElements; i++)
-			{
-				var unit:* = conteiner.getElementAt(i);
-				if (unit is UnitView)
-				{
-					if (space.getUnitById((unit as AView).vo.id) == null) 
-						_view.conteiner.removeElement(unit);	
-				}
-			}
-		}
+
 		
+			
 		public function scroll(delta:int):void
 		{
 			_view.scaling(delta);

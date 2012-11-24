@@ -18,5 +18,7 @@ package model.vo
 		
 		public function calculateStep():void
 		{}
+		
+		
 	}
 }

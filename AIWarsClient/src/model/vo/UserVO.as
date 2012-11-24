@@ -10,6 +10,7 @@ package model.vo
 		public var name:String;
 		
 		public var color:int;
+		public var coins:int;
 		
 		public function setColor():int
 		{
@@ -46,6 +47,7 @@ package model.vo
 			item.y = y;
 			item.name = name;
 			item.color = color;
+			item.coins = coins;
 			return item;
 		}
 	}
