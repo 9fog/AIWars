@@ -21,6 +21,7 @@ import main.Game.CombatData.Events.EventCoins;
 import main.Game.CombatData.Events.EventUnitBuild;
 import main.Game.CombatData.Events.EventUnitHide;
 import main.Game.CombatData.Events.EventUnitShow;
+import main.Game.CombatData.Events.EventWinner;
 import main.Game.CombatData.Orders.OrderBuild;
 import main.Game.CombatData.Orders.OrderMove;
 import main.Game.DataTables.UnitTypesTable;
@@ -183,9 +184,25 @@ public class Combat {
 		_deadUnits.add(u);
 		_map.placeObject(null, u.getX(), u.getY());
 		
-		//TODO:: Не уничтожена ли база одного из противников?
-		//Условия завершения игры
-		//......
+		//Не уничтожена ли база одного из противников?
+		if (u.getType().role().equals(Unit.ROLE_BASE)) {
+			_sides.get(u.getSide()).isAlive = false;
+			
+			int aliveCount = 0;
+			int aliveId = -1;
+			for (int i=0; i<_sidesCount; i++) {
+				if (_sides.get(i).isAlive) {
+					aliveCount++;
+					aliveId = i;
+				}
+			}
+			
+			if (aliveCount==1) {  //ПОБЕДА!!!
+				for (int i=0; i<_sidesCount; i++) {
+					addEvent(i, new EventWinner(aliveId), "winner "+aliveId);
+				}					
+			}
+		}
 	}
 		
 	public String getStartInfo(int side) {

@@ -10,6 +10,11 @@ import main.Game.CombatData.Orders.OrderMove;
 import core.*;
 
 public class Unit extends MapObject {
+	public static final String ROLE_RECON     = "recon";
+	public static final String ROLE_ATTACK    = "attack";
+	public static final String ROLE_ARTILLERY = "artillery";
+	public static final String ROLE_BASE      = "base";
+	
 	private int _id, _side;
 	private UnitType _type;
 	private Combat _combat;
