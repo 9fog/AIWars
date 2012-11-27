@@ -1,7 +1,8 @@
 <serverConfig>
 	<server>
-		<userport>23001</userport>                
-              <debug>1</debug>
-	       <logDir>logs/</logDir>  
+   	   <userport>23001</userport>                
+           <debug>1</debug>
+           <logUrl>http://aiwars.9fog.com/log_player/view.html?url=</logUrl>
+	   <logDir>logs/</logDir>  
 	</server>
 </serverConfig>

@@ -67,6 +67,13 @@ public class Main extends TCombat {
 		_combatsList.remove(id);
 	}
 	
+	public void reportFinish(Combat c) {
+		_combatsList.remove(c);
+		
+		log("combatsList.size="+_combatsList.size());
+	}
+	
+	
 	@Override
 	public String processCommand(Object context) {
 		NetContext nCtx = (NetContext)context;

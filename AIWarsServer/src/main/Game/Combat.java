@@ -70,7 +70,7 @@ public class Combat {
 	//public final String[] DEFAULT_MAPS = {"testMap1x1.map", "testMap2x2.map"};
 	public final String[] DEFAULT_MAPS = {"testMap1x1.map", "testMap2x2.map"};
 	
-	public final String LOG_URL = "http://aiwars.9fog.com/log_player/view.html?url=";
+	public final String LOG_URL = coreConfig.getInstance().get("logUrl");//"http://aiwars.9fog.com/log_player/view.html?url=";
 	public final String LOG_DIR = coreConfig.getInstance().get("logDir");
 	
 	
@@ -200,7 +200,7 @@ public class Combat {
 			if (aliveCount==1) {  //ПОБЕДА!!!
 				for (int i=0; i<_sidesCount; i++) {
 					addEvent(i, new EventWinner(aliveId), "winner "+aliveId);
-				}					
+				}									
 			}
 		}
 	}
@@ -281,6 +281,7 @@ public class Combat {
 				cmd.put("_side", i);
 				sendToChannel(_channel, cmd.toJSONString());
 				_log.close();
+				_parent.reportFinish(this);
 			}			
 			return;
 		}	
@@ -480,6 +481,6 @@ public class Combat {
 	}	
 	
 	public void stop() {
-		
+		_log.close();
 	}
 }
