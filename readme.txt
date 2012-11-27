@@ -4,7 +4,7 @@
 * AIWarsServer - Sources of main game server
 
 ** Information about sandbox making **
-* Soon...
+* https://github.com/9fog/AIWars/wiki/TCP-Client-server-protocol-specification
 
 ** Making and debugging bots tutorial **
 * Soon...
