@@ -1,0 +1,9 @@
+<data>
+	<log_file_url>data</log_file_url>
+	<units>
+		<unit type="1" look_range="12" shot_range_min="0" shot_range_max="6" >recon</unit>
+		<unit type="2" look_range="7" shot_range_min="0" shot_range_max="10" >attack</unit>
+		<unit type="3" look_range="5" shot_range_min="4" shot_range_max="20" >artillery</unit>
+		<unit type="4" look_range="7" shot_range_min="0" shot_range_max="9" >base</unit>
+	</units>
+</data>
