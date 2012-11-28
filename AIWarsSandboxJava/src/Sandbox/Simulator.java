@@ -14,6 +14,7 @@ public class Simulator
 {
   private Connector _connector;
   private ArrayList<AbstractBot> _sides;
+  private String _logUrl;
 
   public Simulator(Connector c)
   {
@@ -134,6 +135,8 @@ public class Simulator
 	  
 	  _sides.get(side).processInit(this, Integer.parseInt(cmd.get("mapSizeX")+""), Integer.parseInt(cmd.get("mapSizeY")+""), rocks, flags, units);
 	  
+	  _logUrl = cmd.get("logUrl")+"";
+	  
 	  sendReady(side);
   }
   
@@ -187,7 +190,7 @@ public class Simulator
 			  
 		  if (event.equals(EventUnitBuild.EVENT)) {	    	  
 			  events.add(new EventUnitBuild(Integer.parseInt(jo.get("unitId")+""), jo.get("type")+"", Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));			  
-		  }		  
+		  } 
 	  }
 	  
 	  _sides.get(side).processTick(events);
@@ -196,6 +199,7 @@ public class Simulator
   }
   
   public void process_finish(JSONObject cmd) {
-	  
+	  System.out.println("=== Simulation finished");	  
+	  System.out.println("=== Check log at "+_logUrl);	  
   }
 }

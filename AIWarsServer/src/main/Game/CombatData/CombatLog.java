@@ -5,15 +5,17 @@ import java.io.FileWriter;
 
 public class CombatLog {	
 	private String _log;
+	private String _filePath;
 	private String _fileName;
 	private FileWriter _wrt;
 	
-	public CombatLog(String fileName) {
+	public CombatLog(String filePath, String fileName) {
 		_log = "";
+		_filePath = filePath;
 		_fileName = fileName;
 		
 		try {
-			File flt = new File(fileName);
+			File flt = new File(filePath+fileName);
 			flt.createNewFile();
 			//FileWriter wrt = new FileWriter(flt);
 			_wrt = new FileWriter(flt);

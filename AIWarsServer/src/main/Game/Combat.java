@@ -149,7 +149,7 @@ public class Combat {
 		}		
 				
 		//Проинициализировать COMBAT LOG
-		_log = new CombatLog(LOG_DIR+Utils.getTimeStamp()+".clog");
+		_log = new CombatLog(LOG_DIR, Utils.getTimeStamp()+".clog");
 		for (int i=0; i<_sidesCount; i++) {
 			_log.append("player "+i+" "+botNames.get(i));
 			for (Unit u : _squads.get(i).values()) {
