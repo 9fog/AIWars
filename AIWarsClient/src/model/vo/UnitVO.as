@@ -47,20 +47,36 @@ package model.vo
 			return item;
 		}
 		
+		private var eps:Number = 0.5;
 		
 		override public function calculateStep():void
 		{
 			if (vx !=0 )
-			if (x != xf)
-				x = x + vx;
-			else
-				vx = 0;
+			{
+				if (Math.abs(x - xf)<eps)
+				{
+					vx = 0;
+					x = xf;
+				}
+				else
+				{
+					x = x + vx;
+				}	
+			}
 			
 			if (vy!=0)
-			if (y != yf)
-				y = y + vy;
-			else
-				vy = 0;
+			{
+				if (Math.abs(y - yf)<eps)
+				{
+					vy = 0;
+					y = yf;
+				}
+				else
+				{
+					y = y + vy;
+				}
+			}
+			
 		}
 		
 	}

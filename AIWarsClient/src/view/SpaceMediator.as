@@ -77,18 +77,32 @@ package view
 					
 				case ActionEvent.SLIDE:
 				{
+					_view.txtLog.text = "";
 					_controller.currentStep = _view.step;
 					break;
 				}
 			}
 		}
 		
+		private function getLog(turnId:int):String
+		{
+			var out:String = "";
+			for each(var space:Space in _controller.spaces)
+			{
+				out = space.log + out;
+				if (space.turnId == turnId)
+					return out;
+			}
+			return out;
+		}
+		
 		private function updateView(e:EngineEvent):void
 		{
 		//	trace("update",e.space.turnId);
 			var space:Space = e.space;
-			
-			_view.txtLog.text = space.log;
+			if (_view.txtLog.text.length>1000)
+				_view.txtLog.text = "";
+			_view.txtLog.text = space.log + _view.txtLog.text;
 			_view.step = space.turnId;
 			
 			if (space.turnId == 0)
@@ -158,8 +172,12 @@ package view
 					cell.height = len;
 					cell.x = i * len;
 					cell.y = j * len;
-					cell.empty = space.map.array[j][i] == MapVO.EMPTY;
-					conteiner.addElement(cell);
+					
+					if(space.map.array[j][i] != MapVO.EMPTY)
+					{
+						cell.empty = space.map.array[j][i] == MapVO.EMPTY;
+						conteiner.addElement(cell);
+					}
 				}
 				conteiner.width = space.map.width * len+2;
 				conteiner.height = space.map.height * len+2;

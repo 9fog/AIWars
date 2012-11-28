@@ -26,13 +26,15 @@ package model.vo
 		
 		private function step(currentSpace:Space):Space
 		{
+			trace("->",currentSpace.turnId);
 			var log:String = "-------------------\n"+"step "+turnId+"\n-------------------\n";
 			for each(var command:PC in commands)
 			{
+				//command.parse(currentSpace);
 				log = command.parse(currentSpace) + log;
 			}
 			currentSpace.turnId = turnId;
-			currentSpace.log = log + currentSpace.log; 
+			currentSpace.log = log; 
 			return currentSpace;
 		}
 	}

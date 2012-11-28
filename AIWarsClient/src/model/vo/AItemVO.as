@@ -8,8 +8,8 @@ package model.vo
 		}
 		
 		public var id:int;
-		public var x:int;
-		public var y:int;
+		public var x:Number;
+		public var y:Number;
 		
 		public function get clone():AItemVO
 		{

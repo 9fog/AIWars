@@ -20,18 +20,23 @@ package model.parser.commands
 			
 			var recieverID:int = temp[0];
 			var item:UnitVO = space.getUnitById(temp[1]);
-			item.hpMax = temp[2];
-			item.hp = temp[3];
-			item.isArmed = toBool(temp[4]);
-			item.isMobile = toBool(temp[5]);
-			item.isAlive = toBool(temp[6]);
-			
-			item.hit = true;
+			if (item)
+			{
+				item.hpMax = temp[2];
+				item.hp = temp[3];
+				item.isArmed = toBool(temp[4]);
+				item.isMobile = toBool(temp[5]);
+				item.isAlive = toBool(temp[6]);
+				
+				item.hit = true;
+				if(!item.isAlive)
+					space.removeUnitById(item.id);
+			}
 			return data;
 		}
 		public function toBool(s:String):Boolean
 		{
-			return s == "true"; 
+			return s.indexOf("true")>=0
 		}
 	}
 }

@@ -53,19 +53,19 @@ package model
 		 */ 
 		private function onLoadComplete(e:Event):void
 		{
-			try
-			{
+//			try
+//			{
 				loader.removeEventListener(Event.COMPLETE, onLoadComplete);
 				data = e.target.data.toString();
 				loader.close();
 
 				if (_callBackHandler != null)
 					_callBackHandler(data);
-			}
-			catch(e:*)
-			{
-				showError(e);
-			}
+//			}
+//			catch(e:*)
+//			{
+//				showError(e);
+//			}
 		}
 		
 		/**

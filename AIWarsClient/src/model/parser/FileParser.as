@@ -11,7 +11,6 @@ package model.parser
 	import model.parser.commands.CMap;
 	import model.parser.commands.CMove;
 	import model.parser.commands.CPlayer;
-	import model.parser.commands.CRemove;
 	import model.parser.commands.CFire;
 	import model.parser.commands.CommandFactory;
 	

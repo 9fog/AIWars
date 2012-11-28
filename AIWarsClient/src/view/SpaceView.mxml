@@ -176,11 +176,10 @@
 						verticalAlign="middle"
 						id="hc"
 						>
-						<s:BorderContainer 
-							width="100%" 
-							height="100%"
-							id="conteiner"
-							>
+						<s:BorderContainer id="conteiner" width="100%" height="100%"
+										   backgroundAlpha.play="0.5"
+										   backgroundAlpha.pause="0.6"
+										   backgroundColor="#1E4E1E">
 						</s:BorderContainer>
 					</s:HGroup>
 				</s:Scroller>

@@ -86,8 +86,8 @@
 			private function set lookRange(value:int):void
 			{
 				var c:MovieClip = new MovieClip();
-				c.graphics.lineStyle(1,_color,0.25,true,"normal",null,null,1);
-				c.graphics.drawCircle(0,0,value * SpaceMediator.SIZE);
+				c.graphics.lineStyle(1,_color,0.1,true,"normal",null,null,1);
+				c.graphics.drawCircle(0,0,2 * value * SpaceMediator.SIZE);
 				unit.addChild(c);
 			}
 		]]>

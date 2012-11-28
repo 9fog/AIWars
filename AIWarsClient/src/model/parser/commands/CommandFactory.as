@@ -17,7 +17,6 @@ package model.parser.commands
 				CMap, 
 				CMove, 
 				CPlayer, 
-				CRemove, 
 				CFire,
 				CHide,
 				CShow,
