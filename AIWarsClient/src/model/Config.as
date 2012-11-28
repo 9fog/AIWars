@@ -3,7 +3,8 @@ package model
 	public class Config
 	{
 		private var conf:XML;
-			
+		public  var logFileUrl:String;	
+		
 		private static var _instanse:Config;
 		public static function get instanse():Config
 		{
@@ -35,6 +36,7 @@ package model
 		public function init(s:String):void
 		{
 			conf = new XML(s);
+			 logFileUrl = conf.log_file_url.toString();
 		}
 	}
 }

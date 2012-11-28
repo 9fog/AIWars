@@ -27,7 +27,8 @@
 			import view.SpaceMediator;
 			
 			public var conf_url:String = "data/conf.xml";
-			public var data_url:String = "data/data.clog";
+			public var data_url:String = "data.clog";
+			private var mediator:SpaceMediator;
 			
 			protected function init(event:FlexEvent):void
 			{
@@ -53,9 +54,9 @@
 			{
 				Config.instanse.init(data);
 				var loader:FileLoader = new FileLoader();
-				loader.loadData(data_url, onLogLoad);
+				loader.loadData(Config.instanse.logFileUrl+"/"+data_url, onLogLoad);
 			}
-			private var mediator:SpaceMediator;
+			
 			private function onLogLoad(data:String):void
 			{
 				var p:FileParser = new FileParser();
