@@ -200,7 +200,8 @@ public class Combat {
 			if (aliveCount==1) {  //ПОБЕДА!!!
 				for (int i=0; i<_sidesCount; i++) {
 					addEvent(i, new EventWinner(aliveId), "winner "+aliveId);
-				}									
+				}
+				_tickNumber = _maxTicks;
 			}
 		}
 	}
@@ -400,7 +401,7 @@ public class Combat {
 			_allUnits.put(u.getId(), u);
 			_squads.get(u.getSide()).put(u.getId(), u);
 			
-			addEvent(u.getSide(), new EventUnitBuild(u.getId(), u.getType().role(), x, y), "create "+u.getId()+" "+u.getType().role()+" "+x+" "+y+" "+side.sideId);
+			addEvent(u.getSide(), new EventUnitBuild(u.getId(), u.getType().role(), x, y), "create "+u.getId()+" "+u.getType().id()+" "+x+" "+y+" "+side.sideId);
 			
 			updateVisibility(u);			
 		} else {

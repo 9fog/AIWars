@@ -136,7 +136,7 @@ public class Connector {
                         }
 
                         try {
-                            sleep(100);
+                            sleep(10);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -144,7 +144,7 @@ public class Connector {
 
                     while (qStartPoint == qStopPoint) {
                         try {
-                            sleep(100);
+                            sleep(50);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

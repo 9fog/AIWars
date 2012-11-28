@@ -6,7 +6,7 @@ import main.Game.CombatData.Events.EventFlag;
 import core.*;
 
 public class Flag extends MapObject {
-	private final int PERIOD = 500, STATE_MAX = 10, COINS_PERIOD = 4; 
+	private final int PERIOD = 500, STATE_MAX = 10, COINS_PERIOD = 12; 
 	private Combat _combat;
 	private int _id;
 	private int _side, _state;
