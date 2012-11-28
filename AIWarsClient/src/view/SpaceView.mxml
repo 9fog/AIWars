@@ -179,6 +179,7 @@
 						<s:BorderContainer id="conteiner" width="100%" height="100%"
 										   backgroundAlpha.play="0.5"
 										   backgroundAlpha.pause="0.6"
+										   backgroundAlpha.end="0.6"
 										   backgroundColor="#1E4E1E">
 						</s:BorderContainer>
 					</s:HGroup>
