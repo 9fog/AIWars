@@ -13,8 +13,10 @@ import net.minidev.json.JSONValue;
 public class Simulator
 {
   private Connector _connector;
-  private ArrayList<AbstractBot> _sides;
+  protected ArrayList<AbstractBot> _sides;
   private String _logUrl;
+  
+  public Simulator() {}
 
   public Simulator(Connector c)
   {

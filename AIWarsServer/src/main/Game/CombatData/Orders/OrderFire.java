@@ -5,7 +5,6 @@ import main.Game.CombatData.Boom;
 import main.Game.CombatData.Unit;
 import main.Game.CombatData.Events.EventUnitFire;
 import main.Game.CombatData.Events.EventUnitMove;
-import main.Game.Net.Protocol;
 
 public class OrderFire extends Order {
 	private final Unit _unit;

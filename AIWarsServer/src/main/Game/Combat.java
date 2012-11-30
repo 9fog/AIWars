@@ -25,6 +25,7 @@ import main.Game.CombatData.Events.EventWinner;
 import main.Game.CombatData.Orders.OrderBuild;
 import main.Game.CombatData.Orders.OrderMove;
 import main.Game.DataTables.UnitTypesTable;
+import main.Game.Simulator.CombatSimulator;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 
@@ -35,9 +36,12 @@ import core.Utils;
 import core.coreConfig;
 
 public class Combat {
-	private final Main _parent;
+	public static final String LOG_URL = coreConfig.getInstance().get("logUrl");//"http://aiwars.9fog.com/log_player/view.html?url=";
+	public static final String LOG_DIR = coreConfig.getInstance().get("logDir");
 	
-	private final Channel _channel;
+	private final CombatSimulator _parent;
+	
+	//private final Channel _channel;
 	private final int     _sidesCount;
 	
 	private CombatMap _map;
@@ -65,19 +69,16 @@ public class Combat {
 		                                      {6, 0, 2},
 		                                      {5, 4, 3}};
 	
-	public final int[] SQUADS_PRESET = {1, 1, 2, 2, 2, 2, 3, 3};
+	//public final int[] SQUADS_PRESET = {1, 1, 2, 2, 2, 2, 3, 3};
 	
 	//public final String[] DEFAULT_MAPS = {"testMap1x1.map", "testMap2x2.map"};
 	public final String[] DEFAULT_MAPS = {"testMap1x1.map", "testMap2x2.map"};
-	
-	public final String LOG_URL = coreConfig.getInstance().get("logUrl");//"http://aiwars.9fog.com/log_player/view.html?url=";
-	public final String LOG_DIR = coreConfig.getInstance().get("logDir");
-	
-	
-	public Combat(Main parent, Channel channel, ArrayList<String> botNames, int maxTicks, String mapName) throws Exception{
+		
+//	public Combat(Main parent, Channel channel, ArrayList<String> botNames, int maxTicks, String mapName) throws Exception{
+	public Combat(CombatSimulator parent, ArrayList<String> botNames, int maxTicks, String mapName) throws Exception{
 		_parent = parent;
 		
-		_channel = channel;
+		//_channel = channel;
 		_sidesCount = botNames.size();		
 		_maxTicks = maxTicks;
 		
@@ -160,14 +161,19 @@ public class Combat {
 		for (Flag f : _flags) {
 			_log.append("flag "+f.getId()+" "+f.getX()+" "+f.getY());
 		}		
-		_log.append("end");
-		
+		_log.append("end");		
+	}
+	
+	public void startCombat() {
 		//Отправить клентам стартовые состояния
 		//Дамп карты, расположение флагов, 
 		//расположение своих юнитов		
 		for (int i=0; i<_sidesCount; i++) {
-			sendToChannel(_channel, getStartInfo(i));
+			_parent.send(getStartInfo(i));
+			//sendToChannel(_channel, getStartInfo(i));
 		}
+		
+		new readyChecker().start();		
 	}
 	
 	public int getSidesCount() {return _sidesCount;}
@@ -206,7 +212,8 @@ public class Combat {
 		}
 	}
 		
-	public String getStartInfo(int side) {
+	//public String getStartInfo(int side) {
+	public JSONObject getStartInfo(int side) {
 		JSONObject res = new JSONObject();
 		
 		res.put("_op", "init");		
@@ -237,15 +244,17 @@ public class Combat {
 		}
 		res.put("units", units);
 		
-		return res.toJSONString();
+		//return res.toJSONString();
+		return res;
 	}
 	
 	public void processReady(int side) {
 		_readyList[side] = true;
-		
+		/*
 		if (allReady()) {
 			nextTick();
 		}
+		*/
 	}
 	
 	public void processOrderMove(int side, int unitId, int toX, int toY) {
@@ -254,6 +263,9 @@ public class Combat {
 			u.setOrder(new OrderMove(u, toX, toY));
 		}
 	}
+
+	public void processOrderAttack(int side, int unitId, int targetId) {
+	}	
 	
 	public void processOrderBuild(int side, String unitRole) {
 		_buildOrders.add(new OrderBuild(side, unitRole));
@@ -280,9 +292,13 @@ public class Combat {
 				JSONObject cmd = new JSONObject();
 				cmd.put("_op", "finish");
 				cmd.put("_side", i);
-				sendToChannel(_channel, cmd.toJSONString());
-				_log.close();
-				_parent.reportFinish(this);
+				_parent.send(cmd);
+				//sendToChannel(_channel, cmd.toJSONString());
+				_log.close();				
+				if (_parent!=null) {
+					_parent.reportFinish();
+				}				
+				_tickNumber = _maxTicks+5; //Это для readyChecker :)
 			}			
 			return;
 		}	
@@ -345,7 +361,8 @@ public class Combat {
 			}
 			cmd.put("events", events);
 			
-			sendToChannel(_channel, cmd.toJSONString());
+			_parent.send(cmd);
+			//sendToChannel(_channel, cmd.toJSONString());
 		}
 		
 		_tickNumber++;
@@ -481,7 +498,26 @@ public class Combat {
 		ch.write(data+"\0");
 	}	
 	
+    private class readyChecker extends Thread {
+        public void run() {
+        	while (_tickNumber<_maxTicks) {
+        		try {
+        			sleep(25);
+
+        			if (allReady()) {
+        				nextTick();
+        			}
+        		} catch (Exception e) {
+        			e.printStackTrace();
+        		}
+        	}
+        	
+        	nextTick();
+        }
+    }		
+	
 	public void stop() {
 		_log.close();
+		_tickNumber = _maxTicks+1;
 	}
 }

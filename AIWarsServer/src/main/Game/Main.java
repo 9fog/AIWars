@@ -2,14 +2,19 @@ package main.Game;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.jboss.netty.channel.Channel;
 
+import com.sun.net.httpserver.HttpServer;
+
 import main.Game.DataTables.UnitTypesTable;
 import main.Game.Net.CommandContext;
+import main.Game.Net.HttpController;
 import main.Game.Net.JSONCommand;
+import main.Game.Simulator.CombatSimulatorRemote;
 import main.Stats.StatVars;
 
 import net.minidev.json.JSONArray;
@@ -22,7 +27,7 @@ import core.attributeException;
 import core.NettyServer.NetContext;
 
 public class Main extends TCombat {
-	private HashMap<Integer, Combat> _combatsList;
+	private HashMap<Integer, CombatSimulatorRemote> _combatsList;
 
 	public Main(String pack, String cType) {
 		super(pack, cType);
@@ -30,17 +35,9 @@ public class Main extends TCombat {
 		//Config.getInstance();
 		UnitTypesTable.getInstance();
 		
-		/*
-		try {
-			new Combat(null, 2, "");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		*/
-		
 		PlayersList.getInstance();
 		
-		_combatsList = new HashMap<Integer, Combat>();
+		_combatsList = new HashMap<Integer, CombatSimulatorRemote>();
 							
 		Thread _shotDownHook = new Thread() {
             public void run() {
@@ -51,7 +48,19 @@ public class Main extends TCombat {
             }
         };
         _shotDownHook.setName("shotDownHook");		
-        Runtime.getRuntime().addShutdownHook(_shotDownHook);		
+        Runtime.getRuntime().addShutdownHook(_shotDownHook);
+        
+        try {
+        	int port = 8765;            	
+        	HttpServer server = HttpServer.create(new InetSocketAddress(port), port);
+        	HttpController http = new HttpController();
+        	server.createContext("/control", http);
+        	server.setExecutor(null); // creates a default executor
+        	server.start();
+        	Utils.log("HttpController started on "+port);
+        }catch (Exception e){
+        	e.printStackTrace();
+        }                 
 	}	
 	
 	@Override 
@@ -61,13 +70,13 @@ public class Main extends TCombat {
 		//PlayersList.getInstance().removePlayer(p.getUid());
 		int id = ((Channel)ch).getId();
 		if (_combatsList.containsKey(id)) {
-			Combat c = _combatsList.get(id);
-			c.stop();
+			CombatSimulatorRemote c = _combatsList.get(id);
+			c.stopCombat();
 		}
 		_combatsList.remove(id);
 	}
 	
-	public void reportFinish(Combat c) {
+	public void reportFinish(CombatSimulatorRemote c) {
 		_combatsList.remove(c);
 		
 		log("combatsList.size="+_combatsList.size());
@@ -147,24 +156,30 @@ public class Main extends TCombat {
 			botNames.add(jo+"");
 		}
 		
-		Combat c = new Combat(this, ctx.channel, botNames, Integer.parseInt(ctx.cmd.get("maxTicks")+""), ctx.cmd.get("mapName")+"");	
-		_combatsList.put(ctx.channel.getId(), c);
+		CombatSimulatorRemote csr = new CombatSimulatorRemote(this, ctx.channel, botNames, Integer.parseInt(ctx.cmd.get("maxTicks")+""), ctx.cmd.get("mapName")+"");
+		//Combat c = new Combat(this, ctx.channel, botNames, Integer.parseInt(ctx.cmd.get("maxTicks")+""), ctx.cmd.get("mapName")+"");	
+		_combatsList.put(ctx.channel.getId(), csr);
 		
 		return null;
 	}
 
 	public JSONObject process_Ready(CommandContext ctx) throws Exception {
-		_combatsList.get(ctx.channel.getId()).processReady(Integer.parseInt(ctx.cmd.get("_side")+""));
+		_combatsList.get(ctx.channel.getId()).getCombat().processReady(Integer.parseInt(ctx.cmd.get("_side")+""));
 		return null;
 	}	
 	
 	public JSONObject process_orderMove(CommandContext ctx) throws Exception {
-		_combatsList.get(ctx.channel.getId()).processOrderMove(Integer.parseInt(ctx.cmd.get("_side")+""), Integer.parseInt(ctx.cmd.get("unitId")+""), Integer.parseInt(ctx.cmd.get("toX")+""), Integer.parseInt(ctx.cmd.get("toY")+""));
+		_combatsList.get(ctx.channel.getId()).getCombat().processOrderMove(Integer.parseInt(ctx.cmd.get("_side")+""), Integer.parseInt(ctx.cmd.get("unitId")+""), Integer.parseInt(ctx.cmd.get("toX")+""), Integer.parseInt(ctx.cmd.get("toY")+""));
 		return null;
 	}	
 	
+	public JSONObject process_orderAttack(CommandContext ctx) throws Exception {
+		_combatsList.get(ctx.channel.getId()).getCombat().processOrderAttack(Integer.parseInt(ctx.cmd.get("_side")+""), Integer.parseInt(ctx.cmd.get("unitId")+""), Integer.parseInt(ctx.cmd.get("targetId")+""));
+		return null;
+	}		
+	
 	public JSONObject process_orderBuild(CommandContext ctx) throws Exception {
-		_combatsList.get(ctx.channel.getId()).processOrderBuild(Integer.parseInt(ctx.cmd.get("_side")+""), ctx.cmd.get("unitType")+"");
+		_combatsList.get(ctx.channel.getId()).getCombat().processOrderBuild(Integer.parseInt(ctx.cmd.get("_side")+""), ctx.cmd.get("unitType")+"");
 		return null;
 	}	
 	

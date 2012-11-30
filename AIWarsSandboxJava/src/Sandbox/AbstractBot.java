@@ -3,6 +3,12 @@ package Sandbox;
 import java.util.ArrayList;
 
 public abstract class AbstractBot {
+	public String name;
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
     public abstract void processInit(Simulator sim,
                                      int mapSizeX,
                                      int mapSizeY,

@@ -1,18 +1,13 @@
 package main.Game.CombatData.Orders;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import net.minidev.json.JSONObject;
-
-import core.Utils;
 
 import main.Game.Combat;
 import main.Game.CombatData.Timer;
 import main.Game.CombatData.Unit;
 import main.Game.CombatData.CombatMap.ObjectPointer;
 import main.Game.CombatData.Events.EventUnitMove;
-import main.Game.Net.Protocol;
 
 public class OrderMove extends Order {
 	private final Unit _unit; 

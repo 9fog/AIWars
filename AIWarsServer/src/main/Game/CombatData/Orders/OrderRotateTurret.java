@@ -3,7 +3,6 @@ package main.Game.CombatData.Orders;
 import main.Game.CombatData.Unit;
 import main.Game.CombatData.Events.EventUnitMove;
 import main.Game.CombatData.Events.EventUnitRotateTurret;
-import main.Game.Net.Protocol;
 import core.Timer;
 import core.Utils;
 

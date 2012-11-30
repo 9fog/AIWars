@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import core.*;
 import main.Game.CombatData.Unit;
 import main.Game.CombatData.CombatMap.ObjectPointer;
-import main.Game.Net.Protocol;
 
 
 public class OrderFollow extends Order {
@@ -79,7 +78,7 @@ public class OrderFollow extends Order {
 			//!!! _unit.setGearLook(Combat.DIRECTIONS[nextY - _unit.getY() + 1][nextX - _unit.getX() + 1]);
 			_unit.setXY(nextX, nextY);
 		
-			String send = Protocol.snd_Combat_UnitMoving(_unit.getId(), nextX, nextY, _unit.getGearLook(), _timer.getState());
+			//String send = Protocol.snd_Combat_UnitMoving(_unit.getId(), nextX, nextY, _unit.getGearLook(), _timer.getState());
 			//!!!  _unit.getPlayer().send(send);
 			
 			_unit.getCombat().updateVisibility(_unit);
