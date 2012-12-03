@@ -23,7 +23,6 @@ package model.parser.commands
 			var target:UnitVO = space.getUnitById(temp[2]);
 			
 			item.cannonRotation = 180 * Math.atan2(target.y-item.y, target.x-item.x) / Math.PI;
-			//if (item.cannonRotation < 0) item.cannonRotation = 270 - item.cannonRotation;
 			item.fire = true; 
 			return data;
 		}

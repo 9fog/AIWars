@@ -40,7 +40,7 @@ package model.parser.commands
 		}
 		
 		private static function findCommand(name:String, data:String):PC
-		{
+		{trace(data);
 			for each(var c:Class in COMMAND_CLASSES)
 			{
 				var command:PC = new c(data);

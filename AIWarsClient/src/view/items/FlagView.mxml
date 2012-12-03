@@ -31,7 +31,6 @@
 					unit.mc_progress_mask.gotoAndStop(flag.progress);
 					//TweenLite.to(unit.mc_progress_mask,1,{frame:flag.progress, ease:Linear.easeNone});
 				}
-				
 			}
 			
 		]]>

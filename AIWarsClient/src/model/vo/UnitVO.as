@@ -15,13 +15,14 @@ package model.vo
 		public var vx:Number;
 		public var vy:Number;
 		public var fire:Boolean;
+		public var initTurrt:Boolean;
 		public var cannonRotation:Number;
 		public var hit:Boolean;
 		public var hp:int;
 		public var hpMax:int;
-		public var isArmed:Boolean;
-		public var isMobile:Boolean;
-		public var isAlive:Boolean;
+		public var isArmed:Boolean=true;
+		public var isMobile:Boolean=true;
+		public var isAlive:Boolean=true;
 		
 		
 		override public function get clone():AItemVO
@@ -44,6 +45,7 @@ package model.vo
 			item.isArmed = isArmed;
 			item.isMobile = isMobile;
 			item.isAlive = isAlive;
+			item.initTurrt = initTurrt;
 			return item;
 		}
 		
