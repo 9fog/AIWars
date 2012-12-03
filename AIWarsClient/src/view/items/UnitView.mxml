@@ -83,7 +83,9 @@
 				}
 				(unit.mc_cannon as MovieClip).visible = item.isArmed;
 				if (unit.mc_mobile)
-					(unit.mc_mobile as MovieClip).visible = item.isMobile;
+				{
+					(unit.mc_mobile as MovieClip).gotoAndStop(item.isMobile?1:2);
+				}
 			}
 			
 			private function set lookRange(value:int):void
