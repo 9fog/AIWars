@@ -6,8 +6,6 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 
-import core.Utils;
-
 import main.Game.Combat;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
