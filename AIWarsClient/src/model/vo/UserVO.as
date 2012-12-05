@@ -1,5 +1,7 @@
 package model.vo
 {
+	import model.Space;
+
 	public class UserVO extends AItemVO
 	{
 		public function UserVO()
@@ -11,6 +13,10 @@ package model.vo
 		
 		public var color:int;
 		public var coins:int;
+		
+		public var recons:int; 
+		public var attacks:int;
+		public var artillerys:int;
 		
 		public function setColor():int
 		{
@@ -49,6 +55,36 @@ package model.vo
 			item.color = color;
 			item.coins = coins;
 			return item;
+		}
+		
+		override public function calculateStep(space:Space):void
+		{
+			for each(var unit:UnitVO in space.units)
+			{
+				if (unit.userId == id)
+				{
+					switch(unit.type.typeId)
+					{
+						case 1:
+						{
+							recons+=1;
+							break;
+						}
+						case 2:
+						{
+							attacks+=1;
+							break;
+						}
+						case 3:
+						{
+							artillerys+=1;
+							break;
+						}
+						
+					}
+				}
+			}
+			
 		}
 	}
 }

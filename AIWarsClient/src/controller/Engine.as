@@ -10,6 +10,7 @@ package controller
 	import model.parser.PC;
 	import model.vo.AItemVO;
 	import model.vo.TurnVO;
+	import model.vo.UserVO;
 	
 	public class Engine extends EventDispatcher
 	{
@@ -44,7 +45,12 @@ package controller
 				
 				for each (var item:AItemVO in currentSpace.all)
 				{
-					item.calculateStep();
+					item.calculateStep(currentSpace);
+				}
+				
+				for each (var user:UserVO in currentSpace.users)
+				{
+					user.calculateStep(currentSpace);
 				}
 			}
 		}

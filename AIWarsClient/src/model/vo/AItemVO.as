@@ -1,5 +1,7 @@
 package model.vo
 {
+	import model.Space;
+
 	public class AItemVO extends Object
 	{
 		public function AItemVO()
@@ -16,7 +18,7 @@ package model.vo
 			return null;
 		}
 		
-		public function calculateStep():void
+		public function calculateStep(space:Space):void
 		{}
 		
 		

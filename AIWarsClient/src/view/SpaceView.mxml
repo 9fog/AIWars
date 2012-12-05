@@ -77,10 +77,25 @@
 			protected function startDrug(event:MouseEvent):void
 			{
 				pause(null);
+				stage.addEventListener(MouseEvent.MOUSE_UP,endDrug);
 			}
 			
 			protected function endDrug(event:MouseEvent):void
 			{
+				stage.removeEventListener(MouseEvent.MOUSE_UP,endDrug);
+				dispatchEvent(new ActionEvent(ActionEvent.SLIDE));
+				play(null);
+			}
+			
+			protected function setStep(event:MouseEvent):void
+			{
+				pause(null);
+				slider.addEventListener(SliderEvent.CHANGE, onChangeComplete);
+			}
+			
+			protected function onChangeComplete(event:SliderEvent):void
+			{
+				slider.removeEventListener(SliderEvent.CHANGE, onChangeComplete);
 				dispatchEvent(new ActionEvent(ActionEvent.SLIDE));
 				play(null);
 			}
@@ -136,14 +151,20 @@
 					click="restart(event)"
 					/>
 				<s:Label text="use scroll to zoom it"/>
-				<s:HSlider 
+				<mx:HSlider 
 					id="slider"
 					width="100%" 
-					height="100%" 
+					height="15" 
 					maximum="100" 
 					minimum="0"
 					mouseDown="startDrug(event)"
-					mouseUp="endDrug(event)"
+					click="setStep(event)"
+					
+					dataTipPlacement="top" 
+					tickColor="0x323232"
+					snapInterval="1" 
+					tickInterval="10" 
+					
 					/>
 					
 				
@@ -189,6 +210,15 @@
 				width="50%" 
 				height="100%"
 				>
+				<s:VGroup
+					paddingLeft="3"
+					paddingTop="3"
+					paddingRight="3"
+					paddingBottom="3"
+					>
+					<s:CheckBox label="show distance" />
+					
+				</s:VGroup>
 				<components:PlayerPanel
 					id="playerPanel"
 					height="30%"

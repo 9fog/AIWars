@@ -77,6 +77,7 @@ package view
 					
 				case ActionEvent.SLIDE:
 				{
+					removeView();
 					_view.txtLog.text = "";
 					_controller.currentStep = _view.step;
 					break;
@@ -226,7 +227,7 @@ package view
 		public function removeDeadBooms(space:Space):void
 		{
 			var conteiner:BorderContainer = _view.conteiner;
-			for(var i:int = 0; i < conteiner.numElements; i++)
+			for(var i:int = conteiner.numElements-1; i >= 0; i--)
 			{
 				var unit:* = conteiner.getElementAt(i);
 				if (unit is BoomView)
@@ -267,9 +268,12 @@ package view
 			{
 				var x:Number = item.x * len+len/2;
 				var y:Number = item.y * len+len/2;
-				cell.update(item);
-				if ((int(y)-int(cell.y)) != 0 || (int(x)-int(cell.x)) != 0)
+				
+				//if ((int(y)-int(cell.y)) != 0 || (int(x)-int(cell.x)) != 0)
 					cell.rotation = 180 * Math.atan2(y-cell.y, x-cell.x) / Math.PI;
+				
+				cell.update(item);
+				
 				TweenLite.to(cell,1,{x:x, y:y, ease:Linear.easeNone});
 			}
 		}
@@ -280,7 +284,7 @@ package view
 		public function removeDeadUnits(space:Space):void
 		{
 			var conteiner:BorderContainer = _view.conteiner;
-			for(var i:int = 0; i < conteiner.numElements; i++)
+			for(var i:int = conteiner.numElements-1; i >= 0; i--)
 			{
 				var unit:* = conteiner.getElementAt(i);
 				if (unit is UnitView)
@@ -330,7 +334,7 @@ package view
 		public function find(c:Class, unitId:int):AView
 		{
 			var conteiner:BorderContainer = _view.conteiner;
-			for(var i:int = 0; i < conteiner.numElements; i++)
+			for(var i:int = conteiner.numElements-1; i >= 0; i--)
 			{
 				var unit:* = conteiner.getElementAt(i);
 				if (unit is c)
@@ -348,6 +352,19 @@ package view
 		public function scroll(delta:int):void
 		{
 			_view.scaling(delta);
+		}
+		
+		public function removeView():void
+		{
+			var conteiner:BorderContainer = _view.conteiner;
+			for(var i:int = conteiner.numElements - 1; i >= 0 ; i--)
+			{
+				var unit:* = conteiner.getElementAt(i);
+				if (unit is UnitView || unit is BoomView)
+				{
+						_view.conteiner.removeElement(unit);	
+				}
+			}
 		}
 		
 	}

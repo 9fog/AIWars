@@ -28,16 +28,22 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:List 
-		id="list"
+	
+	<mx:DataGrid 
+		id="dg"
 		width="100%"
 		height="100%"
-		dataProvider="{_users}"
-		itemRenderer="view.components.UserItemRenderer"
-		left="3"
-		right="3"
-		top="3"
-		bottom="3"
-		borderAlpha="0.3"
-		/>
+		color="0x323232" 
+		dataProvider="{_users}">
+		<mx:columns>
+			<mx:DataGridColumn width="35" dataField="color" headerText="color" itemRenderer="view.components.DGUserIR"/>
+			<mx:DataGridColumn width="35" dataField="id" headerText="id"/>
+			<mx:DataGridColumn dataField="name" headerText="name"/>
+			<mx:DataGridColumn dataField="coins" headerText="coins"/>
+			<mx:DataGridColumn dataField="recons" headerText="recons"/>
+			<mx:DataGridColumn dataField="attacks" headerText="attacks"/>
+			<mx:DataGridColumn dataField="artillerys" headerText="artillerys"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
 </s:BorderContainer>

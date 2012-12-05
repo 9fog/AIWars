@@ -24,6 +24,7 @@ package model.parser.commands
 			
 			item.cannonRotation = 180 * Math.atan2(target.y-item.y, target.x-item.x) / Math.PI;
 			item.fire = true; 
+			item.initTurrt = true;
 			return data;
 		}
 	}

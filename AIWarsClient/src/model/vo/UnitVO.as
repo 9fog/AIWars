@@ -1,5 +1,7 @@
 package model.vo
 {
+	import model.Space;
+
 	public class UnitVO extends AItemVO
 	{
 		public function UnitVO()
@@ -51,7 +53,7 @@ package model.vo
 		
 		private var eps:Number = 0.5;
 		
-		override public function calculateStep():void
+		override public function calculateStep(space:Space):void
 		{
 			if (vx !=0 )
 			{
