@@ -41,7 +41,7 @@ public class main {
 
             Utils.log("main: Running services...");
             
-            if (props.get("dbUrl")!="") {
+            if (props.get("dbUrl")!=null) {
             	Sql sql = Sql.getInstance();
             	sql.Init((String) props.get("dbURL"), (String) props.get("dbUser"),
             			(String) props.get("dbPass"), (String) props.get("dbMaxConnections"),

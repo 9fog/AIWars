@@ -51,7 +51,7 @@ public class OrderFire extends Order {
 				tY = 0;
 			}
 			
-			int flyTime = 10*(int)range2;
+			int flyTime = 3*(int)range2;
 			
 			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitFire(_unit.getId()), "fire "+_unit.getSide()+" "+_unit.getId()+" "+_target.getId());
 			
