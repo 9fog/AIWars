@@ -6,7 +6,11 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 
+import core.Utils;
+
+import main.Game.BotData;
 import main.Game.Combat;
+import main.Game.DataTables.UsersTable;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import Sandbox.AbstractBot;
@@ -30,33 +34,55 @@ import Sandbox.Simulator;
 public class CombatSimulator extends Simulator{
 	public Combat _combat;
 	
-	public void startCombat(ArrayList<String> botNames, int maxTicks, String mapName) {				
+	public String startCombat(ArrayList<String> botIds, int maxTicks, String mapName) {				
 		_sides = new ArrayList<AbstractBot>();
 		
-		for (String botName : botNames) {
-			Connector.log("Creating bot [" + botName + "]");
-			File jarFile = new File("bots/"+botName+".jar");
+		ArrayList<String> botNames = new ArrayList<String>();
+		
+		for (String botId : botIds) {
+			//Utils.log("Loading botData for [" + botId + "]");
+			
+			BotData botData = null;
+			try {
+				botData = UsersTable.getBotData(botId);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "Error1: "+e.getMessage();
+			}
+			
+			if (botData==null) {
+				return "Error2: bot not found";
+			}
+			
+			Utils.log("Creating bot [" + botData.botName + "]");
+			File jarFile = new File("bots/user"+botId+"/"+botData.jarName);
 
 			try {
 				URL jarURL = jarFile.toURI().toURL();
 				URLClassLoader classLoader = new URLClassLoader(new URL[] { jarURL });
 				
-				Class pl = classLoader.loadClass(botName+".MyBot");
+				Class pl = classLoader.loadClass(botData.jarName.replaceAll(".jar", "")+".MyBot");
 				AbstractBot b = (AbstractBot)pl.getConstructor(new Class[0]).newInstance(new Object[0]);
 
 				_sides.add(b);
 			} catch (Exception e) {
 				e.printStackTrace();
+				return "Error3: "+e.getMessage();
 			}
+			
+			botNames.add(botData.botName);
+			//Utils.log("Added bot "+botData.botName);
 		}
 		
 		try {
 			_combat = new Combat(this, botNames, maxTicks, mapName);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "Error4: "+e.getMessage();
 		}		
 		
 		_combat.startCombat();
+		return "";
 	}
 	
 	public String getLogUrl() {

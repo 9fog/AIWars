@@ -8,6 +8,7 @@ package main;
  * Copyright MetroDezDG (c) 2008
  */
 import core.NettyServer.NettyServer;
+import core.Sql;
 import core.Utils;
 import core.coreConfig;
 import main.Game.Main;
@@ -39,33 +40,13 @@ public class main {
             Utils.log("Server is starting...");
 
             Utils.log("main: Running services...");
-
-            /*
-    Sql sql = Sql.getInstance();
-    sql.Init((String) props.get("dbURL"), (String) props.get("dbUser"),
-            (String) props.get("dbPass"), (String) props.get("dbMaxConnections"),
-            (String) props.get("dbDriver"));
-            */
-
-            /*
-            if (coreConfig.getInstance().get("useRedis").equalsIgnoreCase("1")) {
-                Redis redis = Redis.getInstance();
-                redis.Init((String) props.get("redisUrl"), Integer.parseInt(props.get("redisPort")), Integer.parseInt(props.get("redisConnections")), 0);
+            
+            if (props.get("dbUrl")!="") {
+            	Sql sql = Sql.getInstance();
+            	sql.Init((String) props.get("dbURL"), (String) props.get("dbUser"),
+            			(String) props.get("dbPass"), (String) props.get("dbMaxConnections"),
+            			(String) props.get("dbDriver"));           
             }
-
-            if (coreConfig.getInstance().get("useMongo").equalsIgnoreCase("1")) {
-                myMongo.getInstance().init((String)props.get("mongoIP"), Integer.parseInt(props.get("mongoPort")), (String)props.get("mongoDB"), 10);
-            }
-            */
-            //myMongo.getInstance().init("localhost", 27017, "testbase", 10);
-
-            /*
-            combatServer.getInstance();
-            Router router = new Router(props.get("defaultPackage"), props.get("defaultRoom"));
-            router.setDefaultCombat(new Main("Defender", "Main"));
-            Router.init(router);
-            */
-
             new NettyServer(Integer.parseInt(props.get("userport")), new Main("Game", "Main"), 16);
 
             //Utils.log("Local ip is "+coreConfig.getInstance().get("localIp"));
