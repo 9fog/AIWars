@@ -25,8 +25,7 @@ public class OrderAttack extends Order {
 			_unit.setOrder3(null);
 			return;
 		}
-		
-		/*
+				
 		Long range2 = _unit.getRange2(_target); 
 		if (_unit.getShotRangeMin2()>range2) { //Противник слишком близко
 			_unit.setOrder(null);
@@ -81,7 +80,6 @@ public class OrderAttack extends Order {
 						_unit.setOrder3(new OrderFire(_unit, _target));
 					}					
 				break;
-		}
-		*/		
+		}			
 	}
 }

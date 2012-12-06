@@ -22,6 +22,7 @@ import main.Game.CombatData.Events.EventUnitBuild;
 import main.Game.CombatData.Events.EventUnitHide;
 import main.Game.CombatData.Events.EventUnitShow;
 import main.Game.CombatData.Events.EventWinner;
+import main.Game.CombatData.Orders.OrderAttack;
 import main.Game.CombatData.Orders.OrderBuild;
 import main.Game.CombatData.Orders.OrderMove;
 import main.Game.DataTables.UnitTypesTable;
@@ -259,12 +260,29 @@ public class Combat {
 	
 	public void processOrderMove(int side, int unitId, int toX, int toY) {
 		Unit u = _squads.get(side).get(unitId);
+		
+		if ((u==null)||(side!=u.getSide())) {
+			return;
+		}
+		
 		if (u.isMobile()) {
 			u.setOrder(new OrderMove(u, toX, toY));
 		}
 	}
 
 	public void processOrderAttack(int side, int unitId, int targetId) {
+		Unit u = _squads.get(side).get(unitId);
+				
+		if ((u==null)||(side!=u.getSide())) {
+			return;
+		}
+		
+		Unit target = _allUnits.get(targetId);
+		if (target==null) return;
+		
+		if (u.isArmed()) {
+			u.setOrder2(new OrderAttack(u, target));
+		}		
 	}	
 	
 	public void processOrderBuild(int side, String unitRole) {
@@ -493,6 +511,10 @@ public class Combat {
 		}		
 	}
 
+	public HashMap<Integer, Unit> getMyVisibility(int side) {
+		return _visibility.get(side);
+	}
+	
 	public void sendToChannel(Channel ch, String data) {
 		Utils.log("SRV > "+data);
 		ch.write(data+"\0");

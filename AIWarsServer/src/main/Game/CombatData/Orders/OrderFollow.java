@@ -3,8 +3,10 @@ package main.Game.CombatData.Orders;
 import java.util.ArrayList;
 
 import core.*;
+import main.Game.Combat;
 import main.Game.CombatData.Unit;
 import main.Game.CombatData.CombatMap.ObjectPointer;
+import main.Game.CombatData.Events.EventUnitMove;
 
 
 public class OrderFollow extends Order {
@@ -75,18 +77,28 @@ public class OrderFollow extends Order {
 		if (!_unit.getCombat().getMap().isObject(nextX, nextY)) {
 			_unit.getCombat().getMap().moveObject(_unit, nextX, nextY);
 			
-			//!!! _unit.setGearLook(Combat.DIRECTIONS[nextY - _unit.getY() + 1][nextX - _unit.getX() + 1]);
+			_unit.setGearLook(Combat.DIRECTIONS[nextY - _unit.getY() + 1][nextX - _unit.getX() + 1]);
+			
+			//!!! OLD _unit.setGearLook(Combat.DIRECTIONS[nextY - _unit.getY() + 1][nextX - _unit.getX() + 1]);
 			_unit.setXY(nextX, nextY);
 		
-			//String send = Protocol.snd_Combat_UnitMoving(_unit.getId(), nextX, nextY, _unit.getGearLook(), _timer.getState());
-			//!!!  _unit.getPlayer().send(send);
+			//old String send = Protocol.snd_Combat_UnitMoving(_unit.getId(), nextX, nextY, _unit.getGearLook(), _timer.getState());
+			//!!! old  _unit.getPlayer().send(send);
+			
+			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitMove(_unit.getId(), nextX, nextY), "move "+_unit.getSide()+" "+_unit.getId()+" "+nextX+" "+nextY+" "+_unit.getMovingSpeed());
 			
 			_unit.getCombat().updateVisibility(_unit);
 			
 			//Оповестить противника, если он видит
-			//if (_unit.getLookingSize()>0) {
-				//!!! _unit.getLookingUnit().getPlayer().send(send);
-			//}
+			if (_unit.getLookingUnits().size()>0) {
+				for (int i=0; i<_unit.getCombat().getSidesCount(); i++) {
+					if (i!=_unit.getSide()) {
+						if (_unit.getLookingSize(i)>0) {
+							_unit.getCombat().addEvent(i, new EventUnitMove(_unit.getId(), nextX, nextY), "move "+i+" "+_unit.getId()+" "+nextX+" "+nextY+" "+_unit.getMovingSpeed());							
+						}
+					}
+				}
+			}
 		} else {
 			prepare();
 		}
