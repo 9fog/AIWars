@@ -10,6 +10,7 @@ public abstract class AbstractBot {
 	}
 	
     public abstract void processInit(Simulator sim,
+    								 int mySide,
                                      int mapSizeX,
                                      int mapSizeY,
                                      ArrayList<ObjectRock> rocks,

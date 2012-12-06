@@ -154,7 +154,7 @@ public class CombatSimulator extends Simulator{
 			units.add(new ObjectUnit(Integer.parseInt(jo.get("id")+""), jo.get("type")+"", Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));
 		}
 
-		_sides.get(side).processInit(this, Integer.parseInt(cmd.get("mapSizeX")+""), Integer.parseInt(cmd.get("mapSizeY")+""), rocks, flags, units);
+		_sides.get(side).processInit(this, side, Integer.parseInt(cmd.get("mapSizeX")+""), Integer.parseInt(cmd.get("mapSizeY")+""), rocks, flags, units);
 
 		sendReady(side);
 	}

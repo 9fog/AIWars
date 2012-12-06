@@ -27,11 +27,12 @@ public class MyBot extends AbstractBot {
 	private int enemyBaseY = -1;
 	
 	private int buildTrigger = 0;
+	private int flagIndex = 0;
 	
-	private int _tickNumber = 0;
+	private int _tickNumber = 0;	
 	
 	@Override
-	public void processInit(Simulator sim, int mapSizeX, int mapSizeY, ArrayList<ObjectRock> rocks, ArrayList<ObjectFlag> flags, ArrayList<ObjectUnit> units) {		
+	public void processInit(Simulator sim, int mySide, int mapSizeX, int mapSizeY, ArrayList<ObjectRock> rocks, ArrayList<ObjectFlag> flags, ArrayList<ObjectUnit> units) {		
 		// TODO ...
 		_sim = sim;
 		
@@ -78,12 +79,15 @@ public class MyBot extends AbstractBot {
 						toY = _mapSizeY/2 - 1 + 2*buildTrigger%2;
 						_sim.sendOrderMove(this, e.unitId, toX, toY);
 					} else {
-						ObjectFlag f = _flags.get(0);
+						ObjectFlag f = _flags.get(flagIndex);
 						//Random seed imitation :)
+						flagIndex++;
+						if (flagIndex>=_flags.size()) {
+							flagIndex = 0;
+						}
 						int delta = -1;
 						if (events.indexOf(eventObject)%2==0) {
 							delta = 1;
-							f = _flags.get(_flags.size()-1);
 						}
 						_sim.sendOrderMove(this, e.unitId, f.x+delta, f.y-delta);
 					}
@@ -119,7 +123,7 @@ public class MyBot extends AbstractBot {
 		//Test orders
 		if (_tickNumber==0) { //First tick
 			//Give orders to all units - move to flags!
-			int flagNum = 0;
+			int flagNum = 0;			
 			for (ObjectUnit u : _units) {
 				if (!u.type.equals("base")) {
 					ObjectFlag f = _flags.get(flagNum);

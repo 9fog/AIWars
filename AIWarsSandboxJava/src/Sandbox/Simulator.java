@@ -43,6 +43,8 @@ public class Simulator
   }
 
   public int getBotsCount() { return this._sides.size(); }
+  
+  public int getMySide(AbstractBot me) {return _sides.indexOf(me);}
 
   //==== Приказы от ботов =====================================================
   public void sendOrderMove(AbstractBot b, int unitId, int toX, int toY) {
@@ -135,7 +137,7 @@ public class Simulator
 		  units.add(new ObjectUnit(Integer.parseInt(jo.get("id")+""), jo.get("type")+"", Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));
 	  }
 	  
-	  _sides.get(side).processInit(this, Integer.parseInt(cmd.get("mapSizeX")+""), Integer.parseInt(cmd.get("mapSizeY")+""), rocks, flags, units);
+	  _sides.get(side).processInit(this, side, Integer.parseInt(cmd.get("mapSizeX")+""), Integer.parseInt(cmd.get("mapSizeY")+""), rocks, flags, units);
 	  
 	  _logUrl = cmd.get("logUrl")+"";
 	  
