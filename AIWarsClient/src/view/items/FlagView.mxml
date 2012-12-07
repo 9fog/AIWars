@@ -15,10 +15,12 @@
 			
 			import mx.events.FlexEvent;
 			
-			override public function update(value:AItemVO):void
+			import view.SpaceMediator;
+			
+			override public function update(value:AItemVO, spaceMediateor:SpaceMediator):void
 			{
 				var prevProgress:int = (vo as FlagVO).progress;
-				super.update(value);
+				super.update(value, spaceMediateor);
 				var flag:FlagVO = vo as FlagVO;
 				if (flag.progress != prevProgress)
 				{

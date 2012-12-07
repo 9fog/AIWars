@@ -4,6 +4,8 @@ package view.items
 	
 	import spark.components.Group;
 	
+	import view.SpaceMediator;
+	
 	public class AView extends Group
 	{
 		protected var _vo:AItemVO;
@@ -19,7 +21,7 @@ package view.items
 			_vo = value;
 		}
 		
-		public function update(value:AItemVO):void
+		public function update(value:AItemVO, spaceMediateor:SpaceMediator):void
 		{
 			_vo = value;
 		}

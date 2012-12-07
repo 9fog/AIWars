@@ -9,6 +9,7 @@ package view
 		public static var RESTART:String = "RESTART";
 		public static var PAUSE:String = "PAUSE";
 		public static var SLIDE:String = "SLIDE";
+		public static var CHANGE_VIEW:String = "CHANGE_VIEW";
 		
 		public var data:String;
 		

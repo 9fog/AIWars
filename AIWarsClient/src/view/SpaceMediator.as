@@ -35,13 +35,19 @@ package view
 		public var _view:SpaceView;
 		public var _controller:Engine;
 		
-		/*
-		public function get space():Space
+		public function get showViewDistanceCircle():Boolean
 		{
-			return Space.instance;
+			if (_view)
+				return _view.cbView.selected;
+			return false;
 		}
-		*/
 		
+		public function get showFireDistanceCircle():Boolean
+		{
+			if (_view)
+				return _view.cbFire.selected;
+			return false;
+		}
 		
 		public function SpaceMediator(view:SpaceView, controller:Engine)
 		{
@@ -80,6 +86,13 @@ package view
 					removeView();
 					_view.txtLog.text = "";
 					_controller.currentStep = _view.step;
+					break;
+				}
+					
+				case ActionEvent.CHANGE_VIEW:
+				{
+					
+					
 					break;
 				}
 			}
@@ -272,7 +285,7 @@ package view
 				//if ((int(y)-int(cell.y)) != 0 || (int(x)-int(cell.x)) != 0)
 					cell.rotation = 180 * Math.atan2(y-cell.y, x-cell.x) / Math.PI;
 				
-				cell.update(item);
+				cell.update(item, this);
 				
 				TweenLite.to(cell,1,{x:x, y:y, ease:Linear.easeNone});
 			}
@@ -301,7 +314,7 @@ package view
 		public function updateFlag(item:FlagVO):void
 		{
 			var cell:FlagView  = findFlag(item.id);
-			cell.update(item);
+			cell.update(item, this);
 		}
 				
 		/**

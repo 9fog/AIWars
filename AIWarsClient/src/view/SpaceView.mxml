@@ -100,6 +100,11 @@
 				play(null);
 			}
 			
+			protected function changeView(event:Event):void
+			{
+				dispatchEvent(new ActionEvent(ActionEvent.CHANGE_VIEW));
+			}
+			
 		]]>
 	</fx:Script>
 	
@@ -210,15 +215,16 @@
 				width="50%" 
 				height="100%"
 				>
-				<s:VGroup
+				<s:HGroup
 					paddingLeft="3"
 					paddingTop="3"
 					paddingRight="3"
 					paddingBottom="3"
 					>
-					<s:CheckBox label="show distance" />
+					<s:CheckBox id="cbView" label="view distance" selected="false" change="changeView(event)"/>
+					<s:CheckBox id="cbFire" label="fire distance" selected="false" change="changeView(event)"/>
 					
-				</s:VGroup>
+				</s:HGroup>
 				<components:PlayerPanel
 					id="playerPanel"
 					height="30%"
