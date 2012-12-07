@@ -19,6 +19,10 @@ public class OrderFire extends Order {
 	}
 	
 	
+	public Unit getTarget() {
+		return _target;
+	}
+	
 	public void processTick(long timePoint) {
 		if (!_target.isAlive()) {						
 			return;
@@ -27,7 +31,7 @@ public class OrderFire extends Order {
 			return;
 		}
 		
-		if (_unit.getReloadTimer().getState(timePoint)==0) {
+		if (_unit.getReloadTimer().getState(timePoint)==0) {		
 			long range2 = Utils.getRange2(_unit.getX(), _unit.getY(), _target.getX(), _target.getY());
 			if ((range2>_unit.getFireDisperce()*_unit.getFireDisperce()*4)&&(Utils.runProb(70))) {
 				tX = _target.getX() - _unit.getFireDisperce() + Utils.getRand(_unit.getFireDisperce()*2+1)-1;
@@ -51,7 +55,7 @@ public class OrderFire extends Order {
 				tY = 0;
 			}
 			
-			int flyTime = 3*(int)range2;
+			int flyTime = (int)range2;
 			
 			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitFire(_unit.getId()), "fire "+_unit.getSide()+" "+_unit.getId()+" "+_target.getId());
 			
@@ -64,7 +68,7 @@ public class OrderFire extends Order {
 						}
 					}
 				}
-			}
+			}			
 			
 			//log("fromX="+_unit.getX()+"; fromY="+_unit.getY()+"; tX="+tX+"; tY="+tY+"; range2 = "+range2+"; flyTime="+flyTime);
 			
@@ -75,7 +79,7 @@ public class OrderFire extends Order {
 			}
 			
 			_unit.getReloadTimer().setEndTime(timePoint + _unit.getFireRate());
-		}		
+		} 
 	}
 	
 	private void log(String txt) {

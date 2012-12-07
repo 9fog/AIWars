@@ -261,7 +261,7 @@ public class Combat {
 	public void processOrderMove(int side, int unitId, int toX, int toY) {
 		Unit u = _squads.get(side).get(unitId);
 		
-		if ((u==null)||(side!=u.getSide())) {
+		if ((u==null)||(side!=u.getSide())||u.getType().role().equals("base")) {
 			return;
 		}
 		

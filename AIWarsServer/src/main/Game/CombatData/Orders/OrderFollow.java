@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import core.*;
 import main.Game.Combat;
+import main.Game.CombatData.Timer;
 import main.Game.CombatData.Unit;
 import main.Game.CombatData.CombatMap.ObjectPointer;
 import main.Game.CombatData.Events.EventUnitMove;
@@ -52,12 +53,12 @@ public class OrderFollow extends Order {
 			return;
 		}
 		if (_timer == null) {
-			setNextPoint();
+			setNextPoint(timePoint);
 		}
 				
-		if (_timer.getState()==0) { //Дошли до очередной точки
+		if (_timer.getState(timePoint)==0) { //Дошли до очередной точки
 			if ((_path.size()>0)&&(_unit.getRange2(_target)>_unit.getShotRangeMax2())) {
-				setNextPoint();
+				setNextPoint(timePoint);
 			} else {
 				_unit.setOrder(new OrderAttack(_unit, _target));
 			}
@@ -65,8 +66,8 @@ public class OrderFollow extends Order {
 	}
 	
 	
-	private void setNextPoint() {
-		_timer = new Timer("", Utils.getTimeStamp() + _unit.getMovingSpeed());
+	private void setNextPoint(long timePoint) {
+		_timer = new Timer("", timePoint + _unit.getMovingSpeed());
 		
 		_curTarget = _path.get(0);
 		_path.remove(_curTarget);
@@ -78,12 +79,7 @@ public class OrderFollow extends Order {
 			_unit.getCombat().getMap().moveObject(_unit, nextX, nextY);
 			
 			_unit.setGearLook(Combat.DIRECTIONS[nextY - _unit.getY() + 1][nextX - _unit.getX() + 1]);
-			
-			//!!! OLD _unit.setGearLook(Combat.DIRECTIONS[nextY - _unit.getY() + 1][nextX - _unit.getX() + 1]);
 			_unit.setXY(nextX, nextY);
-		
-			//old String send = Protocol.snd_Combat_UnitMoving(_unit.getId(), nextX, nextY, _unit.getGearLook(), _timer.getState());
-			//!!! old  _unit.getPlayer().send(send);
 			
 			_unit.getCombat().addEvent(_unit.getSide(), new EventUnitMove(_unit.getId(), nextX, nextY), "move "+_unit.getSide()+" "+_unit.getId()+" "+nextX+" "+nextY+" "+_unit.getMovingSpeed());
 			

@@ -60,6 +60,7 @@ public class OrderPassiveAttack extends Order {
 			case 1: //Стрельба
 					if (!(_unit.getOrder3() instanceof OrderFire)) {
 						_unit.setOrder3(new OrderFire(_unit, _enemy));
+						_unit.getOrder3().processTick(timePoint);
 					}
 				break;
 		}		

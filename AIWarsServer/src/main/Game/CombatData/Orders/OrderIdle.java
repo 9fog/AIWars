@@ -32,6 +32,7 @@ public class OrderIdle extends Order {
 			
 			if (newTarget!=null) {
 				_unit.setOrder2(new OrderPassiveAttack(_unit, newTarget));
+				_unit.getOrder2().processTick(timePoint);
 			}
 		}					
 	}

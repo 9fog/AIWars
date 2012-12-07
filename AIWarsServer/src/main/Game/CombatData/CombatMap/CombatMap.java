@@ -73,7 +73,8 @@ public class CombatMap {
 			return null;
 		}
 		
-		if ((dx<=1)&&(dy<=1)&&(_objects[toY][toX]!=null)) {
+		//if ((dx<=1)&&(dy<=1)&&(_objects[toY][toX]!=null)) {
+		if ((dx<=1)&&(dy<=1)) {
 			return null;
 		}
 		
@@ -284,7 +285,9 @@ public class CombatMap {
                 //if (pc>10) break;
             }  //While TA
 
-    		path.add(new ObjectPointer(x1-1, y1-1));
+            if ((_objects[y1-1][y1-1]==null)) {
+            	path.add(new ObjectPointer(x1-1, y1-1));
+            }
     		/*
     		HashMap<String, Integer> point = new HashMap<String, Integer>();
     		point.put("x", x1-1);

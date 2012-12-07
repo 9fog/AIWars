@@ -31,6 +31,7 @@ public class OrderAttack extends Order {
 			_unit.setOrder(null);
 			_unit.setOrder2(new OrderIdle(_unit));
 			_unit.setOrder3(null);
+			return;
 		}
 		
 		//Проверим, не ушел ли юнит из зоны видимости
@@ -46,6 +47,7 @@ public class OrderAttack extends Order {
 		if (range2>_unit.getShotRangeMax2()) { //Противник далековато. Надо сблизиться
 			if (_unit.isMobile()) {
 				_unit.setOrder(new OrderFollow(_unit, _target));
+				_unit.setOrder2(new OrderIdle(_unit));
 			} else {
 				_unit.setOrder(null);
 				_unit.setOrder2(new OrderIdle(_unit));
@@ -76,9 +78,10 @@ public class OrderAttack extends Order {
 					}
 				break;
 			case 1: //Стрельба
-					if (!(_unit.getOrder3() instanceof OrderFire)) {
+					if (!(_unit.getOrder3() instanceof OrderFire)||(((OrderFire)_unit.getOrder3()).getTarget().getId()!=_target.getId())) {
 						_unit.setOrder3(new OrderFire(_unit, _target));
-					}					
+						_unit.getOrder3().processTick(timePoint);
+					}
 				break;
 		}			
 	}

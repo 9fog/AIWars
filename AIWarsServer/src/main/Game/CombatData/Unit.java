@@ -185,7 +185,9 @@ public class Unit extends MapObject {
 	}
 	
 	public boolean isArmed() {return _isArmed;}
-	public boolean isMobile() {return _isMobile;}
+	public boolean isMobile() {
+		return _isMobile&&_type.moving_speed()>0;
+	}
 	public boolean isAlive() {return _hp>0;}
 	
 	public boolean canSee(Unit anotherUnit) {

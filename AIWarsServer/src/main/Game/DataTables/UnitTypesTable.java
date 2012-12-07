@@ -24,11 +24,11 @@ public class UnitTypesTable {
 		_data = new HashMap<Integer, UnitType>();
 		_dataByRoles = new HashMap<String, UnitType>();
 		
-		_data.put(1, new UnitType(1,Unit.ROLE_RECON,750,250,750,1,5,12,0,6,25,2));
-		_data.put(2, new UnitType(2,Unit.ROLE_ATTACK,1250,500,2000,1,10,7,0,10,70,6));
-		_data.put(3, new UnitType(3,Unit.ROLE_ARTILLERY,2250,1500,4000,2,25,5,4,20,50,4));
+		_data.put(1, new UnitType(1,Unit.ROLE_RECON,750,250,750,1,3,12,0,6,25,2));
+		_data.put(2, new UnitType(2,Unit.ROLE_ATTACK,1250,500,2000,1,10,7,0,10,80,6));
+		_data.put(3, new UnitType(3,Unit.ROLE_ARTILLERY,2250,1500,4000,2,40,5,4,20,40,4));
 		
-		_data.put(4, new UnitType(4,Unit.ROLE_BASE,0,0,1500,1,7,7,0,9,150,0));
+		_data.put(4, new UnitType(4,Unit.ROLE_BASE,0,0,1000,1,6,6,0,9,250,0));
 		
 		for (UnitType ut : _data.values()) {
 			_dataByRoles.put(ut.role(), ut);
