@@ -1,6 +1,7 @@
 package view
 {
 	import com.greensock.TweenLite;
+	import com.greensock.easing.Back;
 	import com.greensock.easing.Linear;
 	
 	import controller.Engine;
@@ -22,6 +23,7 @@ package view
 	
 	import spark.components.BorderContainer;
 	
+	import view.components.MapPanel;
 	import view.items.AView;
 	import view.items.BoomView;
 	import view.items.FlagView;
@@ -32,8 +34,9 @@ package view
 	{
 		public static const SIZE:int = 50;
 		
-		public var _view:SpaceView;
-		public var _controller:Engine;
+		private var _view:SpaceView;
+		private var _controller:Engine;
+		private var _map:MapPanel;
 		
 		public function get showViewDistanceCircle():Boolean
 		{
@@ -91,7 +94,7 @@ package view
 					
 				case ActionEvent.CHANGE_VIEW:
 				{
-					
+					_map.showGrid = _view.cbGrid.selected;
 					
 					break;
 				}
@@ -172,31 +175,14 @@ package view
 		
 		public function createMap(space:Space):void
 		{
-			var conteiner:BorderContainer = _view.conteiner;
-			var lenW:Number = conteiner.width/space.map.width;
-			var lenH:Number = conteiner.height/space.map.height;
-			var len:Number = SIZE;//Math.min(lenH, lenW);
 			
-			for (var i:int = 0; i < space.map.width;i++)
-			{
-				for (var j:int = 0; j < space.map.height;j++)
-				{
-					var cell:MapCellView = new MapCellView();
-					cell.width = len;
-					cell.height = len;
-					cell.x = i * len;
-					cell.y = j * len;
-					
-					if(space.map.array[j][i] != MapVO.EMPTY)
-					{
-						cell.empty = space.map.array[j][i] == MapVO.EMPTY;
-						conteiner.addElement(cell);
-					}
-				}
-				conteiner.width = space.map.width * len+2;
-				conteiner.height = space.map.height * len+2;
+			_map = new MapPanel(space, SIZE);
+			var conteiner:BorderContainer = _view.conteiner;
+			
+				conteiner.addElement(_map);
+				conteiner.width = space.map.width * SIZE+2;
+				conteiner.height = space.map.height * SIZE+2;
 				_view.onResize(null);
-			}
 		}
 		
 		/**

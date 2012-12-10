@@ -73,7 +73,7 @@
 			{
 				return slider.value;
 			}
-		
+			
 			protected function startDrug(event:MouseEvent):void
 			{
 				pause(null);
@@ -171,7 +171,7 @@
 					tickInterval="10" 
 					
 					/>
-					
+				
 				
 			</s:HGroup>
 		</s:BorderContainer>
@@ -207,6 +207,9 @@
 										   backgroundAlpha.pause="0.6"
 										   backgroundAlpha.end="0.6"
 										   backgroundColor="#1E4E1E">
+							<s:Image width="100%" height="100%" alpha="0.5" scaleMode="stretch"
+									 smooth="true" 
+									 source="fon.png"/>
 						</s:BorderContainer>
 					</s:HGroup>
 				</s:Scroller>
@@ -221,6 +224,8 @@
 					paddingRight="3"
 					paddingBottom="3"
 					>
+					
+					<s:CheckBox id="cbGrid" label="grid" selected="true" change="changeView(event)"/>
 					<s:CheckBox id="cbView" label="view distance" selected="false" change="changeView(event)"/>
 					<s:CheckBox id="cbFire" label="fire distance" selected="false" change="changeView(event)"/>
 					

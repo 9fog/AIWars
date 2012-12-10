@@ -2,7 +2,9 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 resize="onResize(event)"
+		 resize="onResize(event)" xmlns:local="*"
+		 width="50"
+		 height="50"
 		 >
 	<fx:Script>
 		<![CDATA[
@@ -16,8 +18,15 @@
 			[Bindable] public var color:int=0xFFFFCC; 
 			public function set empty(value:Boolean):void
 			{
-				if (!value)
-					color = 0x000000; 
+				if (!value)	
+				{
+					rock.gotoAndStop(round(rock.totalFrames * Math.random()));
+				}
+			}
+			
+			private function round(i:Number):int
+			{
+				return (int(i)-i) >= 0.5? int(i):int(i)+1;	
 			}
 			
 		]]>
@@ -27,13 +36,14 @@
 	</fx:Declarations>
 	
 	<s:Graphic>    
-		<s:Rect id="back" width="100%" height="100%" radiusX="3" radiusY="3">
+		<s:Rect id="back" width="50" height="50" radiusX="3" radiusY="3">
 			<s:fill>
-				<s:SolidColor color="{color}" alpha="0.3"/>
+				<s:SolidColor color="{color}" alpha="0.0"/>
 			</s:fill>
 			<s:stroke>
-				<s:SolidColorStroke color="0xcceecc" weight="1" alpha="0.3"/>
+				<s:SolidColorStroke color="0xcceecc" weight="1" alpha="0"/>
 			</s:stroke>
 		</s:Rect>
 	</s:Graphic>
+	<local:Rock id="rock" width="50" height="50"/>
 </s:Group>
