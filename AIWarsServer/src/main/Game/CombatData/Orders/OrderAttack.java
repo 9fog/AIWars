@@ -78,7 +78,8 @@ public class OrderAttack extends Order {
 					}
 				break;
 			case 1: //Стрельба
-					if (!(_unit.getOrder3() instanceof OrderFire)||(((OrderFire)_unit.getOrder3()).getTarget().getId()!=_target.getId())) {
+					if (!(_unit.getOrder3() instanceof OrderFire)
+							   || (((OrderFire)_unit.getOrder3()).getTarget().getId()!=_target.getId())) {
 						_unit.setOrder3(new OrderFire(_unit, _target));
 						_unit.getOrder3().processTick(timePoint);
 					}

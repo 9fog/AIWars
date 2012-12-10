@@ -471,19 +471,16 @@ public class Combat {
 					if (eu.getLookingSize(u.getSide())==0) { //Этот юнит врага я не вижу
 						if (_visibility.get(u.getSide()).containsKey(eu.getId())) { //Но до этого его видели
 							_visibility.get(u.getSide()).remove(eu.getId());
-							//TODO:: Отправить мне пакет "скрыть юнит"
-							//---------
+
 							addEvent(u.getSide(), new EventUnitHide(eu.getId()), "hide "+u.getSide()+" "+eu.getId());
 							//log("Hide unit " + eu.getId());
-							//u.getPlayer().send(Protocol.snd_Combat_HideUnit(eu));
 						}
 					} else { //Этот юнит вижу
 						if (!_visibility.get(u.getSide()).containsKey(eu.getId())) { //А раньше не видел
 							_visibility.get(u.getSide()).put(eu.getId(), eu);
-							//TODO:: Отправить мне пакет "показать юнит"
+							
 							addEvent(u.getSide(), new EventUnitShow(eu.getId(), eu.getType().role(), eu.getSide(), eu.getX(), eu.getY(), eu.isArmed(), eu.isMobile()), "show "+u.getSide()+" "+eu.getSide()+" "+eu.getId()+" "+eu.getType().id()+" "+eu.getX()+" "+eu.getY()+" "+eu.isArmed()+" "+eu.isMobile());
 							//log("Show unit " + eu.getId());							
-							//u.getPlayer().send(Protocol.snd_Combat_ShowUnit(eu));
 						}						
 					}
 				}
@@ -511,6 +508,9 @@ public class Combat {
 		}		
 	}
 
+	/*
+	 * Кого из врагов я вижу
+	 */
 	public HashMap<Integer, Unit> getMyVisibility(int side) {
 		return _visibility.get(side);
 	}

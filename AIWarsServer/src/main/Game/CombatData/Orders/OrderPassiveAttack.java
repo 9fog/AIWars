@@ -19,13 +19,16 @@ public class OrderPassiveAttack extends Order {
 	public void processTick(long timePoint) {
 		if (!_enemy.isAlive()) {
 			_unit.setOrder2(new OrderIdle(_unit));
+			_unit.getOrder2().processTick(timePoint);
 			_unit.setOrder3(null);
 			return;
 		}
 		
-		//Проверим, не ушел ли юнит из зоны видимости		
-		if (!_unit.getLookingUnits().contains(_enemy)) {
+		//Проверим, не ушел ли юнит из зоны видимости	
+		if (!_unit.getCombat().getMyVisibility(_unit.getSide()).containsKey(_enemy.getId())) {
+		//if (!_unit.getLookingUnits().contains(_enemy)) {
 			_unit.setOrder2(new OrderIdle(_unit));
+			_unit.getOrder2().processTick(timePoint);
 			_unit.setOrder3(null);
 			return;			
 		}
@@ -34,6 +37,7 @@ public class OrderPassiveAttack extends Order {
 		long range2 = _unit.getRange2(_enemy);		
 		if ((range2<_unit.getShotRangeMin2())||(range2>_unit.getShotRangeMax2())) {
 			_unit.setOrder2(new OrderIdle(_unit));
+			_unit.getOrder2().processTick(timePoint);
 			_unit.setOrder3(null);
 			return;
 		}
@@ -49,16 +53,15 @@ public class OrderPassiveAttack extends Order {
 		
 		switch (_mode) {
 			case 0: //Поворот башни
-					if (!(_unit.getOrder3() instanceof OrderRotateTurret)) {
+					if (!(_unit.getOrder3() instanceof OrderRotateTurret)
+							|| (((OrderRotateTurret)_unit.getOrder3()).getDir() != dir)) {
 						_unit.setOrder3(new OrderRotateTurret(_unit, dir));
-					} else {
-						if (((OrderRotateTurret)_unit.getOrder3()).getDir()!=dir) {
-							_unit.setOrder3(new OrderRotateTurret(_unit, dir));							
-						}
+						_unit.getOrder3().processTick(timePoint);
 					}
 				break;
 			case 1: //Стрельба
-					if (!(_unit.getOrder3() instanceof OrderFire)) {
+					if (!(_unit.getOrder3() instanceof OrderFire)
+							  || ((OrderFire)_unit.getOrder3()).getTarget().getId() != _enemy.getId()) { 
 						_unit.setOrder3(new OrderFire(_unit, _enemy));
 						_unit.getOrder3().processTick(timePoint);
 					}

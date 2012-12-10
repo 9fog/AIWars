@@ -191,11 +191,10 @@ public class Unit extends MapObject {
 	public boolean isAlive() {return _hp>0;}
 	
 	public boolean canSee(Unit anotherUnit) {
-		if (isAlive()) {
+		if (isAlive() && anotherUnit.isAlive()) {
 			return Utils.getRange2(getX(), getY(), anotherUnit.getX(), anotherUnit.getY())<_look_range2;
 		} else {
-			//У раненного юнита дальность зрения в два раза ниже
-			return Utils.getRange2(getX(), getY(), anotherUnit.getX(), anotherUnit.getY())<_look_range2/25;			
+			return false;			
 		}
 	}
 	
