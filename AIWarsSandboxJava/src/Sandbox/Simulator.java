@@ -1,4 +1,4 @@
-package Sandbox;
+package sandbox;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -147,57 +147,68 @@ public class Simulator
   public void process_tick(JSONObject cmd) {
 	  int side = Integer.parseInt(cmd.get("_side")+"");
 
-	  ArrayList<Object> events = new ArrayList<Object>();
-	  
+	  ArrayList<EventBoom> eventBoomList = new ArrayList<EventBoom>();
+	  ArrayList<EventCoins> eventCoinsList = new ArrayList<EventCoins>();
+	  ArrayList<EventFlag> eventFlagList = new ArrayList<EventFlag>();
+	  ArrayList<EventUnitBuild> eventUnitBuildList = new ArrayList<EventUnitBuild>();	
+	  ArrayList<EventUnitFire> eventUnitFireList = new ArrayList<EventUnitFire>();	
+	  ArrayList<EventUnitHide> eventUnitHideList = new ArrayList<EventUnitHide>();	
+	  ArrayList<EventUnitHit> eventUnitHitList = new ArrayList<EventUnitHit>();
+	  ArrayList<EventUnitMove> eventUnitMoveList = new ArrayList<EventUnitMove>();
+	  ArrayList<EventUnitRotateTurret> eventUnitRotateTurrerList = new ArrayList<EventUnitRotateTurret>();
+	  ArrayList<EventUnitShow> eventUnitShowList = new ArrayList<EventUnitShow>();
+	  	  
 	  JSONArray eventsJ = (JSONArray)cmd.get("events");	  
 	  for (Object o : eventsJ) {
 		  JSONObject jo = (JSONObject)o;
 		  String event = jo.get("event")+"";
 		  
 		  if (event.equals(EventUnitMove.EVENT)) {
-			  events.add(new EventUnitMove(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("toX")+""), Integer.parseInt(jo.get("toY")+"")));
+			  eventUnitMoveList.add(new EventUnitMove(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("toX")+""), Integer.parseInt(jo.get("toY")+"")));
 		  } else
 			  
 	      if (event.equals(EventUnitShow.EVENT)) {
-			  events.add(new EventUnitShow(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("side")+""), jo.get("type")+"",  
+	    	  eventUnitShowList.add(new EventUnitShow(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("side")+""), jo.get("type")+"",  
 					                      Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+""), 
 					                      Boolean.parseBoolean(jo.get("isArmed")+""), Boolean.parseBoolean(jo.get("isMobile")+"")));	      
 	      } else
 	    	  
 	      if (event.equals(EventUnitHide.EVENT)) {
-			  events.add(new EventUnitHide(Integer.parseInt(jo.get("unitId")+"")));
+	    	  eventUnitHideList.add(new EventUnitHide(Integer.parseInt(jo.get("unitId")+"")));
 	      } else
 	    	  
 		  if (event.equals(EventUnitFire.EVENT)) {
-			  events.add(new EventUnitFire(Integer.parseInt(jo.get("unitId")+"")));			  
+			  eventUnitFireList.add(new EventUnitFire(Integer.parseInt(jo.get("unitId")+"")));			  
 		  } else
 	    	  
 	      if (event.equals(EventBoom.EVENT)) {	    	  
-			  events.add(new EventBoom(Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));			  
+	    	  eventBoomList.add(new EventBoom(Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));			  
 		  } else
 			  
 		  if (event.equals(EventUnitRotateTurret.EVENT)) {	    	  
-			  events.add(new EventUnitRotateTurret(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("turretLook")+"")));			  
+			  eventUnitRotateTurrerList.add(new EventUnitRotateTurret(Integer.parseInt(jo.get("unitId")+""), Integer.parseInt(jo.get("turretLook")+"")));			  
 		  } else
 			  
 		  if (event.equals(EventUnitHit.EVENT)) {	    	  
-			  events.add(new EventUnitHit(Integer.parseInt(jo.get("unitId")+""), Boolean.parseBoolean(jo.get("isArmed")+""), Boolean.parseBoolean(jo.get("isMobile")+""), Boolean.parseBoolean(jo.get("isAlive")+"")));			  
+			  eventUnitHitList.add(new EventUnitHit(Integer.parseInt(jo.get("unitId")+""), Boolean.parseBoolean(jo.get("isArmed")+""), Boolean.parseBoolean(jo.get("isMobile")+""), Boolean.parseBoolean(jo.get("isAlive")+"")));			  
 		  } else
 			  
 		  if (event.equals(EventFlag.EVENT)) {	    	  
-			  events.add(new EventFlag(Integer.parseInt(jo.get("id")+""), Integer.parseInt(jo.get("side")+""), Integer.parseInt(jo.get("state")+"")));			  
+			  eventFlagList.add(new EventFlag(Integer.parseInt(jo.get("id")+""), Integer.parseInt(jo.get("side")+""), Integer.parseInt(jo.get("state")+"")));			  
 		  } else
 		  
 		  if (event.equals(EventCoins.EVENT)) {	    	  
-			  events.add(new EventCoins(Integer.parseInt(jo.get("coins")+"")));			  
+			  eventCoinsList.add(new EventCoins(Integer.parseInt(jo.get("coins")+"")));			  
 		  } else
 			  
 		  if (event.equals(EventUnitBuild.EVENT)) {	    	  
-			  events.add(new EventUnitBuild(Integer.parseInt(jo.get("unitId")+""), jo.get("type")+"", Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));			  
+			  eventUnitBuildList.add(new EventUnitBuild(Integer.parseInt(jo.get("unitId")+""), jo.get("type")+"", Integer.parseInt(jo.get("x")+""), Integer.parseInt(jo.get("y")+"")));			  
 		  } 
 	  }
-	  
-	  _sides.get(side).processTick(events);
+	  	  	  
+	  _sides.get(side).processTick(new WorldTick(side, eventBoomList, eventCoinsList, eventFlagList, eventUnitBuildList,
+			  										eventUnitFireList, eventUnitHideList, eventUnitHitList, eventUnitMoveList,
+			  										eventUnitRotateTurrerList, eventUnitShowList));
 	  
 	  sendReady(side);	  
   }

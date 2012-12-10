@@ -1,4 +1,4 @@
-package Sandbox;
+package sandbox;
 
 public class ObjectRock {
 	public final int x;

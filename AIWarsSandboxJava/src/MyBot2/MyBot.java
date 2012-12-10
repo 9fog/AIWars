@@ -1,12 +1,14 @@
-package MyBot2;
+package mybot2;
 
 import java.util.ArrayList;
 
-import Sandbox.AbstractBot;
-import Sandbox.ObjectFlag;
-import Sandbox.ObjectRock;
-import Sandbox.ObjectUnit;
-import Sandbox.Simulator;
+import sandbox.AbstractBot;
+import sandbox.ObjectFlag;
+import sandbox.ObjectRock;
+import sandbox.ObjectUnit;
+import sandbox.Simulator;
+import sandbox.WorldTick;
+
 
 public class MyBot extends AbstractBot {
 
@@ -17,8 +19,7 @@ public class MyBot extends AbstractBot {
 	}
 
 	@Override
-	public void processTick(ArrayList<Object> events) {
-		// TODO Auto-generated method stub
-		
+	public void processTick(WorldTick worldObject) {
+		// TODO 		
 	}
 }

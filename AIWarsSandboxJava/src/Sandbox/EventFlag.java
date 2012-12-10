@@ -1,15 +1,27 @@
-package Sandbox;
+package sandbox;
 
 public class EventFlag {
 	public static String EVENT = "Flag";
 	
-	public final int flagId;
-	public final int ownerSide;
-	public final int flagState;
+	private final int flagId;
+	private final int ownerSide;
+	private final int flagState;
 	
 	public EventFlag(int flagId, int ownerSide, int flagState) {
 		this.flagId = flagId;
 		this.ownerSide = ownerSide;
 		this.flagState = flagState;
+	}
+
+	public int getFlagId() {
+		return flagId;
+	}
+
+	public int getOwnerSide() {
+		return ownerSide;
+	}
+
+	public int getFlagState() {
+		return flagState;
 	} 		
 }

@@ -1,4 +1,4 @@
-package Sandbox;
+package sandbox;
 
 import java.util.ArrayList;
 
@@ -17,5 +17,5 @@ public abstract class AbstractBot {
                                      ArrayList<ObjectFlag> flags,
                                      ArrayList<ObjectUnit> units);
 
-    public abstract void processTick(ArrayList<Object> events);
+    public abstract void processTick(WorldTick worldObject);
 }

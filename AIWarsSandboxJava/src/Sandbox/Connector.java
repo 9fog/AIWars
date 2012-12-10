@@ -1,4 +1,4 @@
-package Sandbox;
+package sandbox;
 
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;

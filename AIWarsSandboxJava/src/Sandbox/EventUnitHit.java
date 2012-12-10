@@ -1,12 +1,12 @@
-package Sandbox;
+package sandbox;
 
 public class EventUnitHit {
 	public static String EVENT = "UnitHit";	
 	
-	public final int unitId;
-	public final boolean isArmed;
-	public final boolean isMobile;
-	public final boolean isAlive;
+	private final int unitId;
+	private final boolean isArmed;
+	private final boolean isMobile;
+	private final boolean isAlive;
 	
 	public EventUnitHit(int unitId, boolean isArmed, boolean isMobile,
 			boolean isAlive) {
@@ -14,5 +14,21 @@ public class EventUnitHit {
 		this.isArmed = isArmed;
 		this.isMobile = isMobile;
 		this.isAlive = isAlive;
-	}			
+	}
+
+	public int getUnitId() {
+		return unitId;
+	}
+
+	public boolean isArmed() {
+		return isArmed;
+	}
+
+	public boolean isMobile() {
+		return isMobile;
+	}
+
+	public boolean isAlive() {
+		return isAlive;
+	}		
 }
