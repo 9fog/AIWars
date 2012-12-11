@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 width="100%" 
+		 height="100%"
+		 horizontalAlign="center"
+		 verticalAlign="middle"
+		 >
+	<fx:Declarations>
+		<!-- Разместить невизуальные элементы (например, службы или объекты значений) -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import model.vo.UserVO;
+			
+			import view.ActionEvent;
+			override public function set data(value:Object):void
+			{
+				super.data = value;
+				
+				
+			}
+			
+			protected function box_changeHandler(event:Event):void
+			{
+				data.show = box.selected;
+				var e:ActionEvent = new ActionEvent(ActionEvent.CHANGE_DG_VIEW,true);
+				e.obj = {user:data};
+				dispatchEvent(e);
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:CheckBox id="box" change="box_changeHandler(event)" selected="{data.show}"/>
+</mx:VBox>

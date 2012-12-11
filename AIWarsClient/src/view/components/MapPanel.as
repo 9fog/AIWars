@@ -1,5 +1,7 @@
 package view.components
 {
+	import com.greensock.layout.ScaleMode;
+	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	
@@ -8,6 +10,8 @@ package view.components
 	
 	import mx.core.UIComponent;
 	
+	import spark.components.Image;
+	
 	import view.items.MapCellView;
 	
 	
@@ -15,17 +19,26 @@ package view.components
 	{
 		
 		public var _grid:Sprite = new Sprite();
-		
+		public var _image:Image = new Image();
 		
 		public function set showGrid(value:Boolean):void
 		{
 			_grid.visible = value;
 		}
 		
-		public function MapPanel(space:Space, len:Number)
+		public function MapPanel()
 		{
 			super();
-			
+		}
+		
+		public function init(space:Space, len:Number):void
+		{
+			_image.width = space.map.width *len;
+			_image.height = space.map.height *len;
+			_image.source = "fon.png";
+			_image.scaleMode = ScaleMode.STRETCH;
+			_image.smooth = true;
+			addChild(_image);
 			
 			_grid.graphics.lineStyle(1, 0xc0c0c0, 0.2);
 			for (var i:int = 0; i <= space.map.width;i++)

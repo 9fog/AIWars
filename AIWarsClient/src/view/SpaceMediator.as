@@ -36,7 +36,8 @@ package view
 		
 		private var _view:SpaceView;
 		private var _controller:Engine;
-		private var _map:MapPanel;
+		private var _maskList:Array=[];
+		
 		
 		public function get showViewDistanceCircle():Boolean
 		{
@@ -60,6 +61,7 @@ package view
 			_controller.addEventListener(EngineEvent.UPDATE, updateView);
 			_controller.addEventListener(EngineEvent.END, onEnd);
 			_view.stepNumber = _controller.steps.length;
+			
 			
 		}
 		
@@ -94,11 +96,40 @@ package view
 					
 				case ActionEvent.CHANGE_VIEW:
 				{
-					_map.showGrid = _view.cbGrid.selected;
+					_view.map.showGrid = _view.cbGrid.selected;
 					
 					break;
 				}
+					
+				case ActionEvent.CHANGE_DG_VIEW:
+				{
+					if ((event.obj.user as UserVO).show)
+						_maskList.push(event.obj.user as UserVO);
+					else
+						_maskList = removeUserFromMask(_maskList, event.obj.user as UserVO);
+					break;
+				}
 			}
+		}
+		
+		public function findUser(maskList:Array, id:int):Boolean
+		{
+			for each (var i:UserVO in maskList) 
+			{
+				if (i.id == id) return true;
+			}
+			return false;
+		}
+		
+		private function removeUserFromMask(arr:Array, user:UserVO):Array
+		{
+			var out:Array = [];
+			for each (var i:UserVO in arr) 
+			{
+				if (i.id != user.id)
+					out.push(i);
+			}
+			return out;
 		}
 		
 		private function getLog(turnId:int):String
@@ -115,15 +146,35 @@ package view
 		
 		private function updateView(e:EngineEvent):void
 		{
+			
+			
+			
 		//	trace("update",e.space.turnId);
 			var space:Space = e.space;
+			
+			if (space.turnId == 0)
+			{
+				createMap(space);
+				for each (var i:UserVO in space.users) 
+				{
+					_maskList.push(i);	
+				}
+			}
+			
+			for each (var i:UserVO in space.users) 
+			{
+				i.show = findUser(_maskList,i.id);	
+			}
+			
+			
+			_view.maskLayer.update(space, SIZE, _maskList);
+			
 			if (_view.txtLog.text.length>1000)
 				_view.txtLog.text = "";
 			_view.txtLog.text = space.log + _view.txtLog.text;
 			_view.step = space.turnId;
 			
-			if (space.turnId == 0)
-				createMap(space);
+			
 			
 			//flags
 			for each (var flag:FlagVO in space.flags)
@@ -176,10 +227,9 @@ package view
 		public function createMap(space:Space):void
 		{
 			
-			_map = new MapPanel(space, SIZE);
+			_view.map.init(space, SIZE);
 			var conteiner:BorderContainer = _view.conteiner;
 			
-				conteiner.addElement(_map);
 				conteiner.width = space.map.width * SIZE+2;
 				conteiner.height = space.map.height * SIZE+2;
 				_view.onResize(null);
@@ -199,7 +249,7 @@ package view
 			cell.y = item.y * len;
 			cell.rotation = 0;
 			cell.vo = item.clone;
-			_view.conteiner.addElement(cell);
+			_view.map.addChild(cell);
 		}
 		
 		/**
@@ -215,8 +265,8 @@ package view
 			cell.x = item.x * len+len/2;
 			cell.y = item.y * len+len/2;
 			cell.vo = item.clone;
-			var lastIndex:int = _view.conteiner.numElements; 
-			_view.conteiner.addElementAt(cell,0);
+			var lastIndex:int = _view.unitConteiner.numElements; 
+			_view.unitConteiner.addElementAt(cell,0);
 			cell.play();
 		}
 		
@@ -225,14 +275,14 @@ package view
 		 */ 
 		public function removeDeadBooms(space:Space):void
 		{
-			var conteiner:BorderContainer = _view.conteiner;
+			var conteiner:BorderContainer = _view.unitConteiner;
 			for(var i:int = conteiner.numElements-1; i >= 0; i--)
 			{
 				var unit:* = conteiner.getElementAt(i);
 				if (unit is BoomView)
 				{
 					if (space.getBoomById((unit as AView).vo.id) == null) 
-						_view.conteiner.removeElement(unit);	
+						_view.unitConteiner.removeElement(unit);	
 				}
 			}
 		}
@@ -252,7 +302,7 @@ package view
 			cell.color = player.color;
 			cell.vo = item.clone;
 			
-			_view.conteiner.addElement(cell);
+			_view.unitConteiner.addElement(cell);
 		}
 		
 		/**
@@ -282,14 +332,14 @@ package view
 		 */ 
 		public function removeDeadUnits(space:Space):void
 		{
-			var conteiner:BorderContainer = _view.conteiner;
+			var conteiner:BorderContainer = _view.unitConteiner;
 			for(var i:int = conteiner.numElements-1; i >= 0; i--)
 			{
 				var unit:* = conteiner.getElementAt(i);
 				if (unit is UnitView)
 				{
 					if (space.getUnitById((unit as AView).vo.id) == null) 
-						_view.conteiner.removeElement(unit);	
+						_view.unitConteiner.removeElement(unit);	
 				}
 			}
 		}
@@ -332,7 +382,7 @@ package view
 		
 		public function find(c:Class, unitId:int):AView
 		{
-			var conteiner:BorderContainer = _view.conteiner;
+			var conteiner:BorderContainer = _view.unitConteiner;
 			for(var i:int = conteiner.numElements-1; i >= 0; i--)
 			{
 				var unit:* = conteiner.getElementAt(i);
@@ -355,13 +405,13 @@ package view
 		
 		public function removeView():void
 		{
-			var conteiner:BorderContainer = _view.conteiner;
+			var conteiner:BorderContainer = _view.unitConteiner;
 			for(var i:int = conteiner.numElements - 1; i >= 0 ; i--)
 			{
 				var unit:* = conteiner.getElementAt(i);
 				if (unit is UnitView || unit is BoomView)
 				{
-						_view.conteiner.removeElement(unit);	
+						_view.unitConteiner.removeElement(unit);	
 				}
 			}
 		}

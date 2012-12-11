@@ -207,9 +207,10 @@
 										   backgroundAlpha.pause="0.6"
 										   backgroundAlpha.end="0.6"
 										   backgroundColor="#1E4E1E">
-							<s:Image width="100%" height="100%" alpha="0.5" scaleMode="stretch"
-									 smooth="true" 
-									 source="fon.png"/>
+							<components:MaskLayer id="maskLayer" cacheAsBitmap="true"/>
+							<s:BorderContainer id="unitConteiner" mask="{maskLayer}" cacheAsBitmap="true">
+								<components:MapPanel id="map"/>
+							</s:BorderContainer>
 						</s:BorderContainer>
 					</s:HGroup>
 				</s:Scroller>

@@ -36,8 +36,12 @@
 		color="0x323232" 
 		dataProvider="{_users}">
 		<mx:columns>
+			
+			<mx:DataGridColumn dataField="view" headerText="view" itemRenderer="view.components.DGViewUserIR"/>
+			
 			<mx:DataGridColumn width="35" dataField="color" headerText="color" itemRenderer="view.components.DGUserIR"/>
 			<mx:DataGridColumn width="35" dataField="id" headerText="id"/>
+			
 			<mx:DataGridColumn dataField="name" headerText="name"/>
 			<mx:DataGridColumn dataField="coins" headerText="coins"/>
 			<mx:DataGridColumn dataField="recons" headerText="recons"/>

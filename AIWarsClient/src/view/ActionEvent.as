@@ -10,8 +10,10 @@ package view
 		public static var PAUSE:String = "PAUSE";
 		public static var SLIDE:String = "SLIDE";
 		public static var CHANGE_VIEW:String = "CHANGE_VIEW";
+		public static var CHANGE_DG_VIEW:String = "CHANGE_DG_VIEW";
 		
 		public var data:String;
+		public var obj:Object;
 		
 		public function ActionEvent(data:String, bubbles:Boolean=false, cancelable:Boolean=false)
 		{

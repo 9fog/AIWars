@@ -18,6 +18,8 @@ package model.vo
 		public var attacks:int;
 		public var artillerys:int;
 		
+		public var show:Boolean = true;
+		
 		public function setColor():int
 		{
 			switch(id)
