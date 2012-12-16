@@ -26,12 +26,10 @@ package view.components
 			mymask.graphics.clear();
 			if (space)
 				for each (var unit:UnitVO in space.units)
-			{
-				if (find(maskList,unit.userId))
-					addCircle(unit.x * len+len/2, unit.y * len+len/2, unit.type.lookRange*len);
-			}
-			
-			
+				{
+					if (find(maskList,unit.userId))
+						addCircle(unit.x * len+len/2, unit.y * len+len/2, unit.type.lookRange*len);
+				}
 		}
 		
 		public function find(maskList:Array, id:int):Boolean

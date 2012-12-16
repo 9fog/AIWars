@@ -11,16 +11,31 @@
 			import mx.events.FlexEvent;
 			
 			[Bindable]
-			private var _users:ArrayCollection;
+			private var _users:ArrayCollection = new ArrayCollection();
 			
 			public function update(users:Vector.<UserVO>):void
 			{
-				_users = new ArrayCollection();
+				
 				for each(var user:UserVO in users)
 				{
-					_users.addItem(user);
+					var currentUser:UserVO = find(user.id);
+					if (currentUser)
+						currentUser.setData = user;
+					else
+						_users.addItem(user);
 				}
 				_users.refresh();
+				
+			}
+			
+			private function find(id:int):UserVO
+			{
+				for each(var user:UserVO in _users)
+				{
+					if (user.id == id)
+						return user;
+				}
+				return null;
 			}
 			
 		]]>

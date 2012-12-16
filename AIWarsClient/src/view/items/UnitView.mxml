@@ -67,11 +67,10 @@
 				unit.addChild(mc);
 				mc.mask = unit.mc_mask;
 				
-				updateRange(_lookCircle, (vo as UnitVO).type.lookRange,  _color, 0.2);
 				updateSector(_fireCircle, (vo as UnitVO).type.shotRangeMax, (vo as UnitVO).type.shotRangeMin, _color, 0.2);
 			}
 			
-			override public function update(value:AItemVO, spaceMediateor:SpaceMediator):void
+			override public function update(value:AItemVO):void
 			{
 				_vo = value;
 				var item:UnitVO = vo as UnitVO;
@@ -91,29 +90,22 @@
 					(unit.mc_mobile as MovieClip).gotoAndStop(item.isMobile?1:2);
 				}
 				
-				_lookCircle.visible = spaceMediateor.showViewDistanceCircle;
-				_fireCircle.visible = spaceMediateor.showFireDistanceCircle;
+				
+				
 			}
 			
-			private function updateRange(c:MovieClip, radiusMax:int, color:int, alpha:Number):void
+			public function updateCircle(value:Boolean):void
 			{
-				c.visible = false;
-				radiusMax = radiusMax * SpaceMediator.SIZE;
-				c.graphics.lineStyle(1,color,alpha,true,"normal",null,null,1);
-				c.graphics.drawCircle(0,0,radiusMax);
-				unit.addChild(c);
+				_fireCircle.visible = value;
 			}
 			
+						
 			private function updateSector(c:MovieClip, radiusMax:int, radiusMin:int, color:int, alpha:Number):void
 			{
 				c.visible = false;
 				radiusMax = radiusMax * SpaceMediator.SIZE;
-				radiusMin = radiusMin * SpaceMediator.SIZE;
 				c.graphics.lineStyle(1,color,alpha,true,"normal",null,null,1);
-				c.graphics.drawCircle(0,0,radiusMin);
-				c.graphics.beginFill(color,alpha);
 				c.graphics.drawCircle(0,0,radiusMax);
-				c.graphics.endFill();
 				unit.addChild(c);
 			}
 		]]>

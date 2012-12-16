@@ -7,6 +7,7 @@
 			   minWidth="600"
 			   applicationComplete="init(event)" xmlns:view="view.*"
 			   mouseWheel="scroll(event)"
+			   frameRate="60"
 			   >
 	<fx:Script>
 		<![CDATA[

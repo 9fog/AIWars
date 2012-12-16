@@ -37,19 +37,25 @@ package view
 		private var _view:SpaceView;
 		private var _controller:Engine;
 		private var _maskList:Array=[];
+		private var _lastSpace:Space;
 		
 		
-		public function get showViewDistanceCircle():Boolean
+		
+		
+		public function showFireDistanceCircle(unit:UnitVO):Boolean
 		{
 			if (_view)
-				return _view.cbView.selected;
+				if (_view.cbFire.selected)
+					return findInMaskList(unit.userId) 
 			return false;
 		}
 		
-		public function get showFireDistanceCircle():Boolean
+		public function findInMaskList(uid:int):Boolean
 		{
-			if (_view)
-				return _view.cbFire.selected;
+			for each (var i:UserVO in _maskList) 
+			{
+				if (i.id == uid) return true;
+			}
 			return false;
 		}
 		
@@ -97,7 +103,7 @@ package view
 				case ActionEvent.CHANGE_VIEW:
 				{
 					_view.map.showGrid = _view.cbGrid.selected;
-					
+					updateAllCircles();
 					break;
 				}
 					
@@ -107,7 +113,14 @@ package view
 						_maskList.push(event.obj.user as UserVO);
 					else
 						_maskList = removeUserFromMask(_maskList, event.obj.user as UserVO);
+					updateMask();
+					updateAllCircles();
 					break;
+				}
+					
+				case ActionEvent.UPDATE_MASK:
+				{
+					updateMask();
 				}
 			}
 		}
@@ -144,20 +157,39 @@ package view
 			return out;
 		}
 		
+		private function updateMask():void
+		{
+			if (_view.cbMask.selected && _lastSpace)
+				_view.maskLayer.update(_lastSpace, SIZE, _maskList);
+		}
+		
+		private function updateAllCircles():void
+		{
+			if (_lastSpace)
+			{
+				var arr:Array = findAll(UnitView);
+				for each(var unit:UnitView in arr)
+				{
+					unit.updateCircle(showFireDistanceCircle(unit.vo as UnitVO));
+				}
+			}
+		}
+		
 		private function updateView(e:EngineEvent):void
 		{
 			
-			
-			
-		//	trace("update",e.space.turnId);
+			//	trace("update",e.space.turnId);
 			var space:Space = e.space;
+			_lastSpace = space;
+			if (space.turnId == 0)
+				createMap(space);
+			
 			
 			if (space.turnId == 0)
 			{
-				createMap(space);
-				for each (var i:UserVO in space.users) 
+				for each (var iu:UserVO in space.users) 
 				{
-					_maskList.push(i);	
+					_maskList.push(iu);	
 				}
 			}
 			
@@ -166,8 +198,8 @@ package view
 				i.show = findUser(_maskList,i.id);	
 			}
 			
-			
-			_view.maskLayer.update(space, SIZE, _maskList);
+			//mask
+			updateMask();
 			
 			if (_view.txtLog.text.length>1000)
 				_view.txtLog.text = "";
@@ -189,6 +221,7 @@ package view
 				}
 			}
 			
+			
 			//uniits
 			for each (var unit:UnitVO in space.units)
 			{
@@ -202,7 +235,9 @@ package view
 				}
 			}
 			
+			
 			removeDeadUnits(space);
+			
 			
 			//booms
 			for each (var boom:BoomVO in space.booms)
@@ -218,6 +253,7 @@ package view
 			
 			//player
 			_view.playerPanel.update(space.users);
+			
 		}
 		
 		/**
@@ -230,9 +266,9 @@ package view
 			_view.map.init(space, SIZE);
 			var conteiner:BorderContainer = _view.conteiner;
 			
-				conteiner.width = space.map.width * SIZE+2;
-				conteiner.height = space.map.height * SIZE+2;
-				_view.onResize(null);
+			conteiner.width = space.map.width * SIZE+2;
+			conteiner.height = space.map.height * SIZE+2;
+			_view.onResize(null);
 		}
 		
 		/**
@@ -249,7 +285,7 @@ package view
 			cell.y = item.y * len;
 			cell.rotation = 0;
 			cell.vo = item.clone;
-			_view.map.addChild(cell);
+			_view.unitConteiner.addElement(cell);
 		}
 		
 		/**
@@ -319,9 +355,10 @@ package view
 				var y:Number = item.y * len+len/2;
 				
 				//if ((int(y)-int(cell.y)) != 0 || (int(x)-int(cell.x)) != 0)
-					cell.rotation = 180 * Math.atan2(y-cell.y, x-cell.x) / Math.PI;
+				cell.rotation = 180 * Math.atan2(y-cell.y, x-cell.x) / Math.PI;
 				
-				cell.update(item, this);
+				cell.update(item);
+				cell.updateCircle(showFireDistanceCircle(item));
 				
 				TweenLite.to(cell,1,{x:x, y:y, ease:Linear.easeNone});
 			}
@@ -350,9 +387,9 @@ package view
 		public function updateFlag(item:FlagVO):void
 		{
 			var cell:FlagView  = findFlag(item.id);
-			cell.update(item, this);
+			cell.update(item);
 		}
-				
+		
 		/**
 		 * finish animation
 		 */ 
@@ -395,9 +432,23 @@ package view
 			return null;
 		}
 		
-
 		
-			
+		public function findAll(c:Class):Array
+		{
+			var arr:Array = [];
+			var conteiner:BorderContainer = _view.unitConteiner;
+			for(var i:int = conteiner.numElements-1; i >= 0; i--)
+			{
+				var unit:* = conteiner.getElementAt(i);
+				if (unit is c)
+				{
+					arr.push(unit);
+				}
+			}
+			return arr;
+		}
+		
+		
 		public function scroll(delta:int):void
 		{
 			_view.scaling(delta);
@@ -411,7 +462,7 @@ package view
 				var unit:* = conteiner.getElementAt(i);
 				if (unit is UnitView || unit is BoomView)
 				{
-						_view.unitConteiner.removeElement(unit);	
+					_view.unitConteiner.removeElement(unit);	
 				}
 			}
 		}

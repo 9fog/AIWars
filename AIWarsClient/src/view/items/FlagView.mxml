@@ -17,10 +17,10 @@
 			
 			import view.SpaceMediator;
 			
-			override public function update(value:AItemVO, spaceMediateor:SpaceMediator):void
+			override public function update(value:AItemVO):void
 			{
 				var prevProgress:int = (vo as FlagVO).progress;
-				super.update(value, spaceMediateor);
+				super.update(value);
 				var flag:FlagVO = vo as FlagVO;
 				if (flag.progress != prevProgress)
 				{

@@ -59,6 +59,16 @@ package model.vo
 			return item;
 		}
 		
+		public function set setData(u:UserVO):void
+		{
+			name = u.name;
+			color = u.color;
+			coins = u.coins;
+			recons = u.recons;
+			attacks = u.attacks;
+			artillerys = u.artillerys;
+		}
+		
 		override public function calculateStep(space:Space):void
 		{
 			for each(var unit:UnitVO in space.units)

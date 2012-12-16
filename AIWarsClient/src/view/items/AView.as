@@ -21,7 +21,7 @@ package view.items
 			_vo = value;
 		}
 		
-		public function update(value:AItemVO, spaceMediateor:SpaceMediator):void
+		public function update(value:AItemVO):void
 		{
 			_vo = value;
 		}

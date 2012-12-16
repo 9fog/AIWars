@@ -72,6 +72,8 @@ package view.components
 					}
 				}
 			}
+			
+			cacheAsBitmap = true;
 		}
 	}
 }

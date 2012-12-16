@@ -5,7 +5,7 @@
 		 width="400" height="300"
 		 title="AIWars (simple view)"
 		 currentState="play" xmlns:view="view.*"
-		 resize="onResize(event)" xmlns:components="view.components.*"
+		 resize="onResize(event)" xmlns:components="view.components.*" xmlns:utils="view.utils.*"
 		 >
 	
 	<fx:Script>
@@ -105,6 +105,19 @@
 				dispatchEvent(new ActionEvent(ActionEvent.CHANGE_VIEW));
 			}
 			
+			protected function setMask(event:Event):void
+			{
+				if (cbMask.selected)
+				{
+					unitConteiner.mask = maskLayer;
+					dispatchEvent(new ActionEvent(ActionEvent.UPDATE_MASK));
+				}
+				else
+				{
+					unitConteiner.mask = null;
+				}
+			}
+			
 		]]>
 	</fx:Script>
 	
@@ -137,6 +150,8 @@
 				horizontalAlign="left"
 				paddingLeft="3"
 				>
+				
+				
 				<s:Button 
 					height="20" 
 					label="play"
@@ -156,6 +171,7 @@
 					click="restart(event)"
 					/>
 				<s:Label text="use scroll to zoom it"/>
+				
 				<mx:HSlider 
 					id="slider"
 					width="100%" 
@@ -190,6 +206,8 @@
 				height="100%"
 				id="bc"
 				>
+				<utils:FPSCounter x = "10" y= "5"/>
+				<utils:ChildCounter conteiner="{unitConteiner}"  x = "10" y= "25"/>
 				<s:Scroller left="0" right="0" top="0" bottom="0">  
 					<s:HGroup
 						width="100%" 
@@ -202,13 +220,20 @@
 						verticalAlign="middle"
 						id="hc"
 						>
+						
 						<s:BorderContainer id="conteiner" width="100%" height="100%"
 										   backgroundAlpha.play="0.5"
 										   backgroundAlpha.pause="0.6"
 										   backgroundAlpha.end="0.6"
 										   backgroundColor="#1E4E1E">
-							<components:MaskLayer id="maskLayer" cacheAsBitmap="true"/>
-							<s:BorderContainer id="unitConteiner" mask="{maskLayer}" cacheAsBitmap="true">
+							<components:MaskLayer id="maskLayer" cacheAsBitmap="true" />
+							<s:BorderContainer 
+								id="unitConteiner" 
+								cacheAsBitmap="true"
+								borderAlpha="0"
+								backgroundAlpha="0"
+								mask="{maskLayer}"
+								>
 								<components:MapPanel id="map"/>
 							</s:BorderContainer>
 						</s:BorderContainer>
@@ -227,8 +252,8 @@
 					>
 					
 					<s:CheckBox id="cbGrid" label="grid" selected="true" change="changeView(event)"/>
-					<s:CheckBox id="cbView" label="view distance" selected="false" change="changeView(event)"/>
-					<s:CheckBox id="cbFire" label="fire distance" selected="false" change="changeView(event)"/>
+					<s:CheckBox id="cbMask" label="fog" selected="true" change="setMask(event)"/>
+					<s:CheckBox id="cbFire" label="fire" selected="false" change="changeView(event)"/>
 					
 				</s:HGroup>
 				<components:PlayerPanel

@@ -11,6 +11,7 @@ package view
 		public static var SLIDE:String = "SLIDE";
 		public static var CHANGE_VIEW:String = "CHANGE_VIEW";
 		public static var CHANGE_DG_VIEW:String = "CHANGE_DG_VIEW";
+		public static var UPDATE_MASK:String = "UPDATE_MASK";
 		
 		public var data:String;
 		public var obj:Object;
